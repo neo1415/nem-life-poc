@@ -8,18 +8,19 @@
 4. `docs/build/MODULE_STATUS.md`
 5. `docs/build/CURRENT_PASS_REPORT.md`
 6. All relevant `docs/steering/*`
-7. `docs/modules/module-02-design-system.md`
+7. `docs/modules/module-03-question-engine.md`
 
 ## Continue Module
 
-Start Module 2: Design System and Base UI.
+Start Module 3: Configurable Question Engine.
 
 ## Already Complete
 
 - Module 0 verified.
 - Module 1 verified.
-- Canonical docs and build-control files exist.
-- Next.js foundation, strict TypeScript, Tailwind tokens, lint/format/test/build/audit/verify/E2E tooling exist.
+- Module 2 verified.
+- Baseline and Module 2 commits are pushed to GitHub remote `origin`.
+- `/demo/ui` previews the reusable component system.
 
 ## Failed
 
@@ -27,10 +28,9 @@ No current failing required checks.
 
 ## Do Not Redo
 
-- Do not move source docs back out of `docs/`. `agent-docs` remains the original attachment-derived source, but `docs/` is now canonical.
-- Do not rebuild Module 0 or Module 1 unless a regression is discovered.
-- Do not remove the `postcss` override until Next depends on a patched PostCSS version.
-- Do not replace `corepack pnpm` in `verify` unless the environment reliably exposes bare `pnpm`.
+- Do not rebuild Module 0, Module 1, or Module 2 unless a regression is discovered.
+- Do not put question, scoring, recommendation, lead, report, or admin business logic inside Module 2 UI components.
+- Do not add deferred UI dependencies without auditing them first.
 
 ## Commands To Run
 
@@ -46,8 +46,7 @@ No current failing required checks.
 
 ## Risks To Watch
 
-- Do not expose `.env` secrets.
-- Do not implement product modules early.
-- Do not claim PASS if verification is skipped or fails.
-- Module 2 may consider UI helper dependencies, but every addition must be audited first.
-- Keep product logic out of UI components.
+- Module 3 must keep question config and navigation logic out of UI components.
+- Do not collect contact details in Module 3.
+- Do not introduce prohibited POC data fields.
+- Keep demo copy clearly labeled as demo or estimated where applicable.

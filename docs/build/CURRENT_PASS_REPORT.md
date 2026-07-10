@@ -2,57 +2,58 @@
 
 ## Plan
 
-Target modules: Module 0 and Module 1.
-
-Expected files:
-
-- Root agent and project files.
-- Canonical `docs/PRD.md`, `docs/modules/*`, `docs/steering/*`.
-- Build-control files under `docs/build/`.
-- Next.js App Router foundation under `src/`.
-- Tooling files for TypeScript, Tailwind, ESLint, Prettier, Vitest, Playwright, pnpm, and CI.
-- `docs/dependency-audit.md`, `README.md`, `.gitignore`, `.env.example`.
-
-Risk areas:
-
-- Network access required for dependency registry checks, install, audit, and Playwright browser download.
-- Module 1 must not overbuild product features.
-- `.env` may contain local credentials and must not be copied into docs or client code.
-- Admin placeholder must not pretend auth exists.
+Target module: Module 2 - Design System and Base UI.
 
 ## Completed
 
-- Canonical docs copied from `agent-docs`.
-- Module 0 steering framework created.
-- Build-control files created.
-- Next.js App Router foundation created.
-- Strict TypeScript, Tailwind/PostCSS, ESLint, Prettier, Vitest, React Testing Library, Playwright, and CI configured.
-- Public, mock NEM entry, protection-check placeholder, and admin placeholder routes created.
-- Validation and security foundation stubs added.
-- Dependency audit created and updated after compatibility/security findings.
+- Initial Git repository created, remote `origin` connected, and verified Module 0/1 baseline pushed to `origin/main`.
+- Reusable UI primitives created under `src/components/ui/`.
+- Layout shells created under `src/components/layout/`.
+- Guided-flow display components created under `src/components/quiz/`.
+- Score/result display components created under `src/components/score/`.
+- Recommendation preview components created under `src/components/recommendations/`.
+- Dashboard, admin, and report preview components created.
+- Internal UI preview route created at `/demo/ui`.
+- Design-system CSS tokens and shared component styles added to `src/app/globals.css`.
+- Design-system documentation created at `docs/design-system.md`.
+- Module 2 implementation record appended to `docs/modules/module-02-design-system.md`.
+- Component tests added for required behaviors and accessibility contracts.
+- Module 2 dependency audit added with no new dependencies installed.
 
 ## Failed
 
-- Initial `pnpm install` timed out before lockfile creation; rerun completed.
-- TypeScript `7.0.2` caused `@typescript-eslint` compatibility failure; pinned `5.9.3`.
-- ESLint `10.6.0` caused Next/React plugin peer/runtime failure; pinned `9.39.4`.
-- `pnpm audit` initially found vulnerable transitive `postcss`; added override to `8.5.16`.
-- E2E initially failed because `@playwright/test` and Chromium browser binary were missing, then because a stale Next dev server held port 3000. Both were fixed.
+- First Module 2 `verify` stopped at formatting; fixed by running Prettier.
+- Initial component test run exposed a Windows Vitest alias issue; fixed `vitest.config.ts` to use `fileURLToPath`.
 
 ## Deferred
 
-- Module 2 design system.
-- Module 3 question engine.
-- Module 4 customer flow.
-- Module 5 scoring.
-- Real auth, database persistence, CRM/core integration, communication sending, payment, document upload, and BVN/NIN verification.
+- Radix, CVA, clsx, tailwind-merge, and lucide-react remain deferred until a future module proves need.
+- Real Family Protection Check starts in Module 4.
+- Question engine starts in Module 3.
+- Scoring starts in Module 5.
+- Recommendation engine starts in Module 6.
+- Report generation starts in Module 9.
+- Admin dashboard starts in Module 11.
 
 ## Files Changed
 
-- Created/updated root project files: `AGENTS.md`, `README.md`, `package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `.gitignore`, `.env.example`, `.nvmrc`, `.prettierignore`.
-- Created/updated tooling files: `tsconfig.json`, `next.config.ts`, `eslint.config.mjs`, `prettier.config.mjs`, `postcss.config.mjs`, `vitest.config.ts`, `playwright.config.ts`, `.github/workflows/ci.yml`.
-- Created/updated app foundation under `src/app`, `src/lib`, `src/test`, and architecture folders.
-- Created canonical docs under `docs/PRD.md`, `docs/modules/*`, `docs/steering/*`, `docs/build/*`, and `docs/dependency-audit.md`.
+- `src/app/globals.css`
+- `src/app/demo/ui/page.tsx`
+- `src/components/ui/*`
+- `src/components/layout/*`
+- `src/components/quiz/*`
+- `src/components/score/*`
+- `src/components/recommendations/*`
+- `src/components/dashboard/*`
+- `src/components/admin/*`
+- `src/components/report/*`
+- `src/lib/formatting/class-names.ts`
+- `vitest.config.ts`
+- `README.md`
+- `docs/design-system.md`
+- `docs/dependency-audit.md`
+- `docs/modules/module-02-design-system.md`
+- `docs/build/*`
 
 ## Tests Run
 
@@ -65,8 +66,8 @@ Risk areas:
 - `corepack pnpm verify`: PASS
 - `corepack pnpm audit`: PASS, no known vulnerabilities
 - `corepack pnpm test:e2e`: PASS, 2 tests passed
-- Unit tests inside verify: 2 files, 3 tests passed
-- Build inside verify: PASS, static routes generated for `/`, `/admin`, `/demo/nem-entry`, `/protection-check`
+- Unit tests inside verify: 10 files, 12 tests passed
+- Build inside verify: PASS, static route generated for `/demo/ui`
 
 ## Final Status
 

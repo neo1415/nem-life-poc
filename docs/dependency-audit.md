@@ -70,3 +70,25 @@ pnpm is pinned through `packageManager`. `pnpm-workspace.yaml` sets `minimumRele
 - TypeScript `7.0.2` was initially audited but rejected after ESLint failed with `@typescript-eslint` compatibility errors. TypeScript `5.9.3` is pinned for compatibility.
 - ESLint `10.6.0` was initially audited but rejected after Next/React lint plugins failed their peer range and crashed. ESLint `9.39.4` is pinned for compatibility.
 - `pnpm audit` found GHSA-qx2v-qp2m-jg93 in transitive `postcss <8.5.10` via `next`. `pnpm-workspace.yaml` overrides `postcss` to patched `8.5.16`.
+
+## Module 2 Dependency Audit
+
+Audit date: 2026-07-10.
+
+No new dependencies were installed for Module 2.
+
+| package/category           | reason considered                  | reason approved/rejected/deferred                                       | future module                                   |
+| -------------------------- | ---------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------- |
+| `@radix-ui/react-slot`     | Polymorphic component composition  | Deferred; native buttons/links satisfy Module 2 primitives              | Reconsider if composition needs grow            |
+| `@radix-ui/react-dialog`   | Accessible modal/drawer support    | Deferred; Module 2 did not create interactive dialogs                   | Module 2 follow-up or admin modules             |
+| `@radix-ui/react-label`    | Label primitive                    | Deferred; native `label` is sufficient                                  | Not currently needed                            |
+| `@radix-ui/react-progress` | Progress primitive                 | Deferred; semantic text plus CSS progress is sufficient                 | Module 3/4 if needed                            |
+| `@radix-ui/react-checkbox` | Checkbox primitive                 | Deferred; native checkbox is sufficient                                 | Module 8 if custom behavior is required         |
+| `@radix-ui/react-select`   | Custom select                      | Deferred; native select is sufficient and accessible                    | Later admin config modules                      |
+| `@radix-ui/react-tabs`     | Tabs                               | Deferred; no tabs required in Module 2                                  | Later admin/report modules                      |
+| `class-variance-authority` | Variant class management           | Deferred; local typed variant classes are manageable                    | Reconsider if variants become complex           |
+| `clsx`                     | Class name joining                 | Deferred; local `classNames` helper covers current need                 | Reconsider if conditions grow                   |
+| `tailwind-merge`           | Tailwind class conflict resolution | Deferred; components use stable CSS classes, not large Tailwind strings | Reconsider if Tailwind-heavy APIs are added     |
+| `lucide-react`             | Icons                              | Deferred; Module 2 preview does not require icons                       | Add after audit when real iconography is needed |
+
+Module 2 verification must still run `corepack pnpm audit`.
