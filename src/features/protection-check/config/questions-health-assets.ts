@@ -1,0 +1,148 @@
+import type { Question } from "../types/question.types";
+import { option } from "./question-option";
+
+export const healthAndAssetQuestions: Question[] = [
+  {
+    id: "health_protection",
+    version: 1,
+    section: "current_cover",
+    title: "Does your family currently have health cover?",
+    whyWeAsk: "Health protection can reduce the pressure of hospital bills during emergencies.",
+    type: "single_choice",
+    required: true,
+    allowNotSure: true,
+    options: [
+      option("everyone", "Yes, everyone is covered", 10),
+      option("only_me", "Only I am covered", 20, { followUpQuestionIds: ["health_cover_gaps"] }),
+      option("some", "Some family members are covered", 30, {
+        followUpQuestionIds: ["health_cover_gaps"],
+      }),
+      option("no", "No", 40, { followUpQuestionIds: ["health_cover_gaps"] }),
+      option("not_sure", "I am not sure", 50, { followUpQuestionIds: ["health_cover_gaps"] }),
+    ],
+    scoringTags: ["health_cover"],
+    recommendationTags: ["health_cover"],
+    privacyLevel: "low",
+    sensitivity: "low",
+    analyticsKey: "question_health_protection",
+    adminLabel: "HEALTH_PROTECTION",
+    customerLabel: "Health protection",
+    displayOrder: 100,
+    isActive: true,
+  },
+  {
+    id: "health_cover_gaps",
+    version: 1,
+    section: "current_cover",
+    title: "Who may still need cover?",
+    type: "multi_choice",
+    required: false,
+    options: [
+      "Spouse",
+      "Children",
+      "Parents",
+      "Domestic staff",
+      "Business employees",
+      "No one for now",
+    ].map((label, index) =>
+      option(label.toLowerCase().replaceAll(" ", "_"), label, (index + 1) * 10),
+    ),
+    scoringTags: ["health_gap"],
+    recommendationTags: ["health_cover"],
+    privacyLevel: "low",
+    sensitivity: "low",
+    analyticsKey: "question_health_cover_gaps",
+    adminLabel: "HEALTH_COVER_GAPS",
+    customerLabel: "Health cover gaps",
+    displayOrder: 110,
+    isActive: true,
+    dependsOn: {
+      mode: "all",
+      conditions: [
+        { questionId: "health_protection", operator: "not_includes_option", optionId: "everyone" },
+      ],
+    },
+  },
+  {
+    id: "property_business_needs",
+    version: 1,
+    section: "property_business",
+    title: "Which of these do you currently need to protect?",
+    type: "multi_choice",
+    required: false,
+    options: [
+      "Car",
+      "Home",
+      "Business/shop/office",
+      "Equipment",
+      "Goods/stock",
+      "Travel",
+      "Valuable items",
+      "None for now",
+    ].map((label, index) =>
+      option(
+        index === 7 ? "none" : label.toLowerCase().replaceAll("/", "_").replaceAll(" ", "_"),
+        label,
+        (index + 1) * 10,
+      ),
+    ),
+    scoringTags: ["asset_need"],
+    recommendationTags: ["property_business"],
+    privacyLevel: "low",
+    sensitivity: "low",
+    analyticsKey: "question_property_business_needs",
+    adminLabel: "PROPERTY_BUSINESS_NEEDS",
+    customerLabel: "Property and business needs",
+    displayOrder: 120,
+    isActive: true,
+  },
+  {
+    id: "existing_property_business_insurance",
+    version: 1,
+    section: "property_business",
+    title: "Which of these already have insurance?",
+    type: "multi_choice",
+    required: false,
+    allowNotSure: true,
+    options: [
+      "Car",
+      "Home",
+      "Business/shop/office",
+      "Equipment",
+      "Goods/stock",
+      "Travel",
+      "Valuable items",
+      "None",
+      "I am not sure",
+    ].map((label, index) =>
+      option(
+        index === 7
+          ? "none"
+          : index === 8
+            ? "not_sure"
+            : label.toLowerCase().replaceAll("/", "_").replaceAll(" ", "_"),
+        label,
+        (index + 1) * 10,
+      ),
+    ),
+    scoringTags: ["asset_cover"],
+    recommendationTags: ["property_business"],
+    privacyLevel: "low",
+    sensitivity: "low",
+    analyticsKey: "question_existing_property_business_insurance",
+    adminLabel: "EXISTING_PROPERTY_BUSINESS_INSURANCE",
+    customerLabel: "Existing property and business insurance",
+    displayOrder: 130,
+    isActive: true,
+    dependsOn: {
+      mode: "all",
+      conditions: [
+        {
+          questionId: "property_business_needs",
+          operator: "not_includes_option",
+          optionId: "none",
+        },
+      ],
+    },
+  },
+];

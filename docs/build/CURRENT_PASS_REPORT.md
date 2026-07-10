@@ -2,72 +2,68 @@
 
 ## Plan
 
-Target module: Module 2 - Design System and Base UI.
+Target module: Module 3 - Configurable Question Engine.
 
 ## Completed
 
-- Initial Git repository created, remote `origin` connected, and verified Module 0/1 baseline pushed to `origin/main`.
-- Reusable UI primitives created under `src/components/ui/`.
-- Layout shells created under `src/components/layout/`.
-- Guided-flow display components created under `src/components/quiz/`.
-- Score/result display components created under `src/components/score/`.
-- Recommendation preview components created under `src/components/recommendations/`.
-- Dashboard, admin, and report preview components created.
-- Internal UI preview route created at `/demo/ui`.
-- Design-system CSS tokens and shared component styles added to `src/app/globals.css`.
-- Design-system documentation created at `docs/design-system.md`.
-- Module 2 implementation record appended to `docs/modules/module-02-design-system.md`.
-- Component tests added for required behaviors and accessibility contracts.
-- Module 2 dependency audit added with no new dependencies installed.
+- Question, option, answer, session, branching, privacy, and progress types created.
+- Zod runtime schemas created for question config, answers, and sessions.
+- Default 18-question Family Protection Check catalog created under `src/features/protection-check/config/`.
+- Pure engine services created for config validation, answer normalization, branching/navigation, progress, render adaptation, and session updates.
+- Internal question-engine demo route created at `/demo/question-engine`.
+- Module 3 dependency audit added with no new dependencies installed.
+- Focused tests added for config validation, answer normalization, navigation/branching, and progress.
 
 ## Failed
 
-- First Module 2 `verify` stopped at formatting; fixed by running Prettier.
-- Initial component test run exposed a Windows Vitest alias issue; fixed `vitest.config.ts` to use `fileURLToPath`.
+- Initial default catalog validation falsely flagged safety copy containing prohibited terms such as "no exact address"; fixed validator to scan request-like labels while retaining prohibited privacy checks.
+- Initial terminal/progress tests did not account for branch-visible follow-ups; fixed tests to use non-branching answers where testing terminal completion.
+- First `corepack pnpm format:check` found formatting drift in new files; fixed by running `corepack pnpm format`.
 
 ## Deferred
 
-- Radix, CVA, clsx, tailwind-merge, and lucide-react remain deferred until a future module proves need.
 - Real Family Protection Check starts in Module 4.
-- Question engine starts in Module 3.
 - Scoring starts in Module 5.
 - Recommendation engine starts in Module 6.
+- Lead capture starts in Module 8.
 - Report generation starts in Module 9.
-- Admin dashboard starts in Module 11.
+- Admin question editor and persistence are deferred.
+- Analytics integration is deferred.
 
 ## Files Changed
 
-- `src/app/globals.css`
-- `src/app/demo/ui/page.tsx`
-- `src/components/ui/*`
-- `src/components/layout/*`
-- `src/components/quiz/*`
-- `src/components/score/*`
-- `src/components/recommendations/*`
-- `src/components/dashboard/*`
-- `src/components/admin/*`
-- `src/components/report/*`
-- `src/lib/formatting/class-names.ts`
-- `vitest.config.ts`
+- `src/app/demo/question-engine/page.tsx`
+- `src/features/protection-check/config/*`
+- `src/features/protection-check/schemas/*`
+- `src/features/protection-check/services/*`
+- `src/features/protection-check/tests/*`
+- `src/features/protection-check/types/*`
 - `README.md`
-- `docs/design-system.md`
 - `docs/dependency-audit.md`
-- `docs/modules/module-02-design-system.md`
+- `docs/modules/module-03-question-engine.md`
 - `docs/build/*`
 
 ## Tests Run
 
-- `corepack pnpm verify`
+- `corepack pnpm typecheck`
+- `corepack pnpm lint`
+- `corepack pnpm format:check`
+- `corepack pnpm test:unit`
+- `corepack pnpm build`
 - `corepack pnpm audit`
+- `corepack pnpm verify`
 - `corepack pnpm test:e2e`
 
 ## Verification Results
 
-- `corepack pnpm verify`: PASS
+- `corepack pnpm typecheck`: PASS
+- `corepack pnpm lint`: PASS
+- `corepack pnpm format:check`: PASS
+- `corepack pnpm test:unit`: PASS, 14 files and 35 tests passed
+- `corepack pnpm build`: PASS, static route generated for `/demo/question-engine`
 - `corepack pnpm audit`: PASS, no known vulnerabilities
+- `corepack pnpm verify`: PASS
 - `corepack pnpm test:e2e`: PASS, 2 tests passed
-- Unit tests inside verify: 10 files, 12 tests passed
-- Build inside verify: PASS, static route generated for `/demo/ui`
 
 ## Final Status
 

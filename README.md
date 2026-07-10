@@ -49,6 +49,7 @@ pnpm test:e2e
 - `/`: Module 1 public foundation placeholder.
 - `/demo/nem-entry`: mock NEM entry placeholder.
 - `/demo/ui`: internal Module 2 design-system preview.
+- `/demo/question-engine`: internal Module 3 question-engine demo, not the final customer flow.
 - `/protection-check`: future Family Protection Check placeholder.
 - `/admin`: admin placeholder with no real data or claimed auth.
 

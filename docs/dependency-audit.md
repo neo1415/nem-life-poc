@@ -92,3 +92,19 @@ No new dependencies were installed for Module 2.
 | `lucide-react`             | Icons                              | Deferred; Module 2 preview does not require icons                       | Add after audit when real iconography is needed |
 
 Module 2 verification must still run `corepack pnpm audit`.
+
+## Module 3 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 3.
+
+| package/category                              | reason considered                       | reason approved/rejected/deferred                                            | future module                                |
+| --------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------- |
+| form libraries (`react-hook-form`, `formik`)  | Could manage quiz forms                 | Rejected; Module 3 only needs typed engine services and simple demo state    | Module 8 only if justified                   |
+| state machines (`xstate`)                     | Could model branching flow              | Rejected; deterministic service functions are sufficient and easier to audit | Reconsider only if branching becomes complex |
+| state libraries (`zustand`, `redux`, `jotai`) | Could hold quiz state                   | Rejected; local/session state is enough for engine foundation                | Later only if persistence needs prove it     |
+| analytics SDKs                                | Future question events                  | Deferred; Module 3 only prepares analytics keys                              | Future analytics module                      |
+| AI SDKs                                       | Future question generation/explanations | Rejected for POC v1; deterministic config only                               | Future approved AI work                      |
+
+Existing `zod` is used for runtime validation. Module 3 verification must run `corepack pnpm audit`.

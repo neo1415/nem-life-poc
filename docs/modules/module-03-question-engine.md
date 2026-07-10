@@ -1710,3 +1710,62 @@ Do not add a form/state machine library unless there is an exceptional documente
 
 Build the engine cleanly, test it properly, and make it ready for Module 4\.
 
+---
+
+# Module 3 Implementation Record
+
+## Purpose
+
+Create the configurable question engine foundation for the NEM Life+ Family Protection Check.
+
+## Scope
+
+Module 3 owns question, option, answer, session, branching, validation, navigation, progress, and render-adapter foundations. It does not implement the final customer journey, scoring, recommendations, lead capture, report generation, persistence, or live analytics.
+
+## Architecture Decisions
+
+- Question catalog is centralized under `src/features/protection-check/config/` and split by domain area to keep files maintainable.
+- Runtime validation uses existing `zod` schemas in `src/features/protection-check/schemas/`.
+- Pure services under `src/features/protection-check/services/` handle config validation, branching/navigation, answer normalization, progress calculation, and engine session updates.
+- UI components remain dumb; `question-render-adapter.ts` maps engine config into display props.
+
+## Models
+
+- `Question` supports ID, version, section, copy, type, options, validation, branching, scoring/recommendation tags, privacy/sensitivity, analytics keys, admin/customer labels, display order, activity state, dependencies, and metadata.
+- `QuestionOption` supports customer labels, admin labels, values, tags, follow-up IDs, display order, active state, and metadata.
+- `Answer` separates raw payloads from normalized answers, selected options, skipped/not-sure flags, source, validation status, and timestamps.
+- `ProtectionCheckSession` supports status, current question, visited history, answers, source channel, scenario ID, and metadata.
+
+## Validation Rules
+
+Config validation catches malformed schemas, duplicate question IDs, duplicate option IDs, unknown branch references, circular branching, prohibited POC privacy levels, missing `whyWeAsk` text for moderate/high sensitivity, and missing not-sure options where configured.
+
+## Default Catalog
+
+The initial catalog includes 18 configured questions from soft personalization through external insurance categories, with branch conditions for dependent count, life-cover range, health-cover gaps, property/business insurance, and external insurance categories.
+
+## Demo Page
+
+`/demo/question-engine` is an internal engine harness only. It shows question rendering, option selection, validation errors, branch behavior, progress, back navigation, and current answer state.
+
+## Tests
+
+Added focused tests for:
+
+- config validation
+- answer validation and normalization
+- navigation and branching
+- progress calculation
+
+## Known Limitations
+
+- Full customer Family Protection Check flow begins in Module 4.
+- Scoring engine begins in Module 5.
+- Recommendation engine begins in Module 6.
+- Lead capture begins in Module 8.
+- Report generation begins in Module 9.
+- Admin question editing, persistence/database, and analytics integration are deferred.
+
+## Handoff Notes For Module 4
+
+Use `defaultQuestionCatalog`, `createSession`, `answerCurrentQuestion`, `moveToPreviousQuestion`, `getEngineState`, and `toQuestionRenderModel` to build the customer-facing flow. Keep presentation in UI components and flow/business rules in `src/features/protection-check/`.
