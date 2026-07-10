@@ -1,0 +1,15 @@
+packages:
+  - "."
+
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+
+minimumReleaseAge: 1440
+
+onlyBuiltDependencies:
+  - sharp
+  - unrs-resolver
+
+overrides:
+  postcss: 8.5.16
