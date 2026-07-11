@@ -5,7 +5,10 @@ import type {
   ScoreConfidence,
 } from "@/features/scoring/types/scoring.types";
 import { generateRecommendations } from "@/features/recommendations/services/recommendation-orchestrator";
-import type { RecommendationCta } from "@/features/recommendations/types/recommendation.types";
+import type {
+  CtaType,
+  RecommendationCta,
+} from "@/features/recommendations/types/recommendation.types";
 import { defaultQuestionCatalog } from "../config/questions";
 import type { ProtectionCheckSession } from "../types/session.types";
 import type { CustomerCta, CustomerResultState } from "../types/customer-result.types";
@@ -100,9 +103,31 @@ function mapCta(cta: RecommendationCta, productId = "result"): CustomerCta {
     id: `${productId}_${cta.type}`,
     label: cta.label,
     level: cta.level,
-    href: cta.isDemoLink ? cta.href : undefined,
-    placeholder: `${cta.label} will be connected in a later module. For now, this demo shows where the customer would continue.`,
+    leadIntent: leadIntentForCta(cta.type),
+    href: leadIntentForCta(cta.type)
+      ? `/protection-check/lead?intent=${leadIntentForCta(cta.type)}`
+      : undefined,
+    placeholder: leadIntentForCta(cta.type)
+      ? `${cta.label} opens the consent-based follow-up step.`
+      : `${cta.label} is not available in the demo yet.`,
   };
+}
+
+function leadIntentForCta(type: CtaType) {
+  const map: Partial<Record<CtaType, string>> = {
+    send_report: "send_report",
+    save_result: "save_result",
+    ask_advisor: "ask_advisor",
+    call_me_later: "call_me_later",
+    request_review: "request_review",
+    start_registration: "start_registration",
+    get_quote: "get_quote",
+    start_protection_plan: "start_protection_plan",
+    continue_to_nem_life: "start_protection_plan",
+    view_options: "view_recommended_plans",
+    learn_more: "learn_more",
+  };
+  return map[type];
 }
 
 function dedupeCtas(ctas: CustomerCta[]): CustomerCta[] {

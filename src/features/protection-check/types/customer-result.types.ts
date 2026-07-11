@@ -3,6 +3,7 @@ export type CustomerCta = {
   label: string;
   level: "primary" | "secondary" | "support";
   placeholder: string;
+  leadIntent?: string;
   href?: string;
 };
 

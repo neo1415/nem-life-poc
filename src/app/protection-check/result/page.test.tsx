@@ -51,19 +51,20 @@ describe("protection check result route", () => {
     );
   });
 
-  it("renders honest CTA placeholders without lead, payment, or fake purchase fields", async () => {
+  it("routes honest CTAs to lead capture without payment or fake purchase fields", async () => {
     saveCheckSession(makeCompletedSession("business_owner"), window.sessionStorage);
 
     render(<ProtectionCheckResultRoute />);
 
-    const cta = (await screen.findAllByRole("button")).find(
-      (button) => !/start again/i.test(button.textContent ?? ""),
+    expect(
+      await screen.findByRole("heading", {
+        name: /your estimated family protection score is ready/i,
+      }),
+    ).toBeInTheDocument();
+    const leadLinks = (await screen.findAllByRole("link")).filter((link) =>
+      (link.getAttribute("href") ?? "").includes("/protection-check/lead?intent="),
     );
-    expect(cta).toBeDefined();
-    if (!cta) return;
-    fireEvent.click(cta);
-
-    expect(await screen.findByRole("status")).toHaveTextContent(/connected in a later module/i);
+    expect(leadLinks.length).toBeGreaterThan(0);
     expect(screen.queryByText(/pay now/i)).not.toBeInTheDocument();
     expect(screen.queryByLabelText(/email/i)).not.toBeInTheDocument();
     expect(screen.queryByLabelText(/phone/i)).not.toBeInTheDocument();

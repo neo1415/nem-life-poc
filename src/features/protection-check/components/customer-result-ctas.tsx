@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Callout } from "@/components/ui/callout";
 import type { CustomerCta } from "../types/customer-result.types";
 
@@ -47,14 +48,32 @@ function CtaRow({
   return (
     <div className="ds-action-row">
       {ctas.slice(0, 4).map((cta) => (
-        <button
-          className={`ds-button ds-button--${variant} ds-button--md`}
-          key={cta.id}
-          onClick={() => onSelect(cta.placeholder)}
-        >
-          <span>{cta.label}</span>
-        </button>
+        <CtaButton cta={cta} key={cta.id} onSelect={onSelect} variant={variant} />
       ))}
     </div>
+  );
+}
+
+function CtaButton({
+  cta,
+  variant,
+  onSelect,
+}: {
+  cta: CustomerCta;
+  variant: "primary" | "outline" | "support";
+  onSelect: (message: string) => void;
+}) {
+  const className = `ds-button ds-button--${variant} ds-button--md`;
+  if (cta.href) {
+    return (
+      <Link className={className} href={cta.href}>
+        <span>{cta.label}</span>
+      </Link>
+    );
+  }
+  return (
+    <button className={className} onClick={() => onSelect(cta.placeholder)}>
+      <span>{cta.label}</span>
+    </button>
   );
 }

@@ -176,3 +176,20 @@ No new dependencies were installed for Module 7.
 | database/auth packages  | Could persist or protect customer results | Rejected; Module 7 uses validated sessionStorage and does not add leads/admin/private data | Module 8/14 if approved |
 
 Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 7. Module 7 verification must run `corepack pnpm audit`.
+
+## Module 8 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 8.
+
+| package/category          | reason considered                 | reason approved/rejected/deferred                                                  | future module             |
+| ------------------------- | --------------------------------- | ---------------------------------------------------------------------------------- | ------------------------- |
+| form libraries            | Could manage lead form state      | Rejected; native inputs, React state, and Zod validation are sufficient            | Reconsider only if needed |
+| database/Supabase clients | Could persist leads               | Rejected; Module 8 uses a demo store abstraction and no database integration       | Later if approved         |
+| CRM SDKs                  | Could push lead records           | Rejected; real CRM integration is out of scope                                     | Future CRM module         |
+| email/SMS/WhatsApp SDKs   | Could send confirmation messages  | Rejected; Module 8 must not send live messages                                     | Later only if approved    |
+| payment/pricing SDKs      | Could support quote/purchase flow | Rejected; payment, purchase, and final premium logic are out of scope              | Later only if approved    |
+| analytics/AI/PDF packages | Could track, explain, or report   | Rejected; Module 8 uses deterministic copy and does not generate reports or use AI | Future approved modules   |
+
+Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 8. Module 8 verification must run `corepack pnpm audit`.

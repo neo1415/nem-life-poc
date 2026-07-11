@@ -53,10 +53,13 @@ pnpm test:e2e
 - `/demo/scoring`: internal Module 5 scoring-engine demo, not the final customer result page.
 - `/demo/recommendations`: internal Module 6 recommendation-engine demo, not the final customer result page.
 - `/demo/customer-result`: internal Module 7 customer-result demo using mock answer sets.
+- `/demo/leads`: internal Module 8 session-only demo lead summary.
 - `/protection-check`: redirects to the guided check start route.
 - `/protection-check/start`: Module 4 guided Family Protection Check flow.
 - `/protection-check/complete`: safe completion handoff, answer review, and result-page entry.
 - `/protection-check/result`: Module 7 customer result page with estimated score, recommendations, budget preview, and honest CTA placeholders.
+- `/protection-check/lead`: Module 8 consent-based lead capture after result value is shown.
+- `/protection-check/lead/confirm`: Module 8 demo lead confirmation page.
 - `/admin`: admin placeholder with no real data or claimed auth.
 
 ## Folder Overview
@@ -80,4 +83,4 @@ All dependencies must be audited in `docs/dependency-audit.md` before installati
 
 ## Known Limitations
 
-The customer check flow, internal scoring demo, recommendation demo, and customer result page are available, but lead capture starts in Module 8, reports in Module 9, customer dashboard preview in Module 10, and admin dashboard in Module 11.
+The customer check flow, internal scoring demo, recommendation demo, customer result page, and consent-based demo lead capture are available, but reports start in Module 9, customer dashboard preview in Module 10, and admin dashboard in Module 11.

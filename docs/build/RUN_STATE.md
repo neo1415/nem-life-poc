@@ -2,11 +2,11 @@
 
 ## Current Pass
 
-Pass 7 completed.
+Pass 8 completed.
 
 ## Current Module Bundle
 
-Module 7.
+Module 8.
 
 ## Completed Modules
 
@@ -18,6 +18,7 @@ Module 7.
 - Module 5: Scoring Engine
 - Module 6: Recommendation Engine
 - Module 7: Result and Recommended Plan
+- Module 8: Lead Capture and Consent
 
 ## In-Progress Modules
 
@@ -29,14 +30,15 @@ None.
 
 ## Last Successful Verification
 
-2026-07-11 Pass 7:
+2026-07-11 Pass 8:
 
 - `corepack pnpm typecheck` passed.
-- Focused Module 7 tests passed with 4 files and 12 tests.
+- Focused Module 8 tests passed with 7 files and 20 tests.
 - `corepack pnpm lint` passed.
 - `corepack pnpm format:check` passed.
-- `corepack pnpm test:unit` passed with 36 files and 86 tests.
-- `corepack pnpm build` passed and generated `/protection-check/result` and `/demo/customer-result`.
+- `corepack pnpm test:unit` passed with 42 files and 101 tests.
+- `corepack pnpm build` passed and generated `/protection-check/lead`,
+  `/protection-check/lead/confirm`, and `/demo/leads`.
 - `corepack pnpm audit` passed with no known vulnerabilities.
 - `corepack pnpm verify` passed.
 - `corepack pnpm test:e2e` passed with 2 Playwright tests.
@@ -49,9 +51,9 @@ None currently.
 
 - Node `v24.14.1` and pnpm `11.7.0` are available.
 - Use `corepack pnpm ...` in this Windows shell if bare `pnpm` is not on PATH.
-- Module 7 installed no new dependencies.
+- Module 8 installed no new dependencies.
 - Supabase persistence is deferred until a later module explicitly requires it.
 
 ## Next Recommended Action
 
-Start Module 8: Lead Capture and Lead Store. Read the Module 8 PRD and all relevant steering docs before coding.
+Start Module 9: Report Preview / PDF. Read the Module 9 PRD and all relevant steering docs before coding.

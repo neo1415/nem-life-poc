@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import Link from "next/link";
 import type { CustomerResultViewModel } from "../types/customer-result.types";
 
 export function CustomerRecommendedPlan({
@@ -30,25 +31,52 @@ export function CustomerRecommendedPlan({
             <p className="ds-muted">{product.explanation}</p>
             <p className="ds-muted">{product.confidenceLabel}</p>
             <div className="ds-action-row">
-              <button
-                className="ds-button ds-button--primary ds-button--md"
-                onClick={() => onCta(product.cta.placeholder)}
-              >
-                <span>{product.cta.label}</span>
-              </button>
-              {product.secondaryCtas.slice(0, 1).map((cta) => (
-                <button
-                  className="ds-button ds-button--outline ds-button--md"
-                  key={cta.id}
-                  onClick={() => onCta(cta.placeholder)}
+              {product.cta.href ? (
+                <Link
+                  className="ds-button ds-button--primary ds-button--md"
+                  href={product.cta.href}
                 >
-                  <span>{cta.label}</span>
+                  <span>{product.cta.label}</span>
+                </Link>
+              ) : (
+                <button
+                  className="ds-button ds-button--primary ds-button--md"
+                  onClick={() => onCta(product.cta.placeholder)}
+                >
+                  <span>{product.cta.label}</span>
                 </button>
+              )}
+              {product.secondaryCtas.slice(0, 1).map((cta) => (
+                <SecondaryCta cta={cta} key={cta.id} onCta={onCta} />
               ))}
             </div>
           </Card>
         ))}
       </div>
     </section>
+  );
+}
+
+function SecondaryCta({
+  cta,
+  onCta,
+}: {
+  cta: CustomerResultViewModel["recommendedProducts"][number]["secondaryCtas"][number];
+  onCta: (message: string) => void;
+}) {
+  if (cta.href) {
+    return (
+      <Link className="ds-button ds-button--outline ds-button--md" href={cta.href}>
+        <span>{cta.label}</span>
+      </Link>
+    );
+  }
+  return (
+    <button
+      className="ds-button ds-button--outline ds-button--md"
+      onClick={() => onCta(cta.placeholder)}
+    >
+      <span>{cta.label}</span>
+    </button>
   );
 }

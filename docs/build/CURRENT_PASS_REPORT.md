@@ -2,62 +2,56 @@
 
 ## Plan
 
-Target module: Module 7 - Customer Result and Recommended Plan.
+Target module: Module 8 - Lead Capture and Consent.
 
 ## Completed
 
-- Customer result route added at `/protection-check/result`.
-- Completion route updated to link completed checks to "View My Estimated Score".
-- Internal demo route added at `/demo/customer-result`.
-- Customer-safe result view model added for score, score band, area breakdown, gaps,
-  recommendations, CTA hierarchy, budget preview, disclaimers, and review answers.
-- Result session loader revalidates the namespaced stored session before scoring.
-- Module 5 scoring and Module 6 recommendation engines are used without moving domain logic into UI
-  components.
-- Missing and invalid session states added.
-- CTA behavior uses honest accessible placeholder callouts.
-- Module 7 dependency audit added with no new dependencies installed.
-- Module 7 tests added for view model, loader, UI, CTAs, copy safety, privacy, accessibility basics,
-  and integration pipeline.
+- Lead capture route added at `/protection-check/lead`.
+- Lead confirmation route added at `/protection-check/lead/confirm`.
+- Internal demo lead route added at `/demo/leads`.
+- Result CTAs now route supported intents into the consent-based lead flow.
+- CTA intent config, consent copy, lead model, validation schemas, context builder, demo store,
+  lead creator, audit-event helper, and confirmation view model added.
+- Lead form added with full name, email, phone, contact preference, contact time, optional note,
+  visible consent, and privacy notice.
+- Demo lead store uses namespaced session storage and validates loaded/saved records.
+- Tests added for validation, consent, prohibited fields, lead context, lead store, confirmation
+  view model, form behavior, and result CTA routing.
 
 ## Failed
 
-- Initial full lint failed on an unescaped apostrophe in JSX and synchronous `setState` in an
-  effect. Both were fixed and lint passed on rerun.
+- Initial focused CTA routing tests failed because they read the result route before the async
+  session loader finished and because one recommendation CTA type still mapped to the old placeholder
+  behavior. The test wait and CTA intent mapping were corrected.
 
 ## Deferred
 
-- Lead capture starts in Module 8.
 - Report generation starts in Module 9.
 - Customer dashboard preview starts in Module 10.
 - Admin dashboard starts in Module 11.
-- Real registration, purchase, payment, pricing, CRM, VaultLyne, and live NEM integrations are
-  deferred.
-- AI explanation is deferred.
+- Real CRM integration, real email/SMS/WhatsApp delivery, real advisor assignment, real
+  registration, purchase, payment, authentication, and database persistence are deferred.
 
 ## Files Changed
 
-- `src/app/protection-check/result/page.tsx`
-- `src/app/protection-check/result/page.test.tsx`
-- `src/app/protection-check/complete/page.tsx`
-- `src/app/demo/customer-result/page.tsx`
-- `src/features/protection-check/components/check-completion-panel.tsx`
-- `src/features/protection-check/components/customer-*`
-- `src/features/protection-check/components/review-answers.tsx`
+- `src/app/protection-check/lead/*`
+- `src/app/demo/leads/page.tsx`
+- `src/features/leads/*`
 - `src/features/protection-check/services/customer-result-view-model.ts`
-- `src/features/protection-check/services/result-session-loader.ts`
+- `src/features/protection-check/components/customer-result-ctas.tsx`
+- `src/features/protection-check/components/customer-recommended-plan.tsx`
 - `src/features/protection-check/types/customer-result.types.ts`
-- `src/features/protection-check/tests/customer-result-*`
-- `src/features/protection-check/tests/result-session-loader.test.ts`
+- `src/features/protection-check/tests/result-cta-lead-routing.test.tsx`
+- `src/app/protection-check/result/page.test.tsx`
 - `README.md`
 - `docs/dependency-audit.md`
-- `docs/modules/module-07-customer-result-and-plan.md`
+- `docs/modules/module-08-lead-capture-and-consent.md`
 - `docs/build/*`
 
 ## Tests Run
 
 - `corepack pnpm typecheck`
-- `corepack pnpm test:unit src/features/protection-check/tests/customer-result-view-model.test.ts src/features/protection-check/tests/result-session-loader.test.ts src/app/protection-check/result/page.test.tsx src/app/protection-check/complete/page.test.tsx`
+- `corepack pnpm test:unit src/features/leads src/features/protection-check/tests/result-cta-lead-routing.test.tsx src/app/protection-check/result/page.test.tsx`
 - `corepack pnpm lint`
 - `corepack pnpm format:check`
 - `corepack pnpm test:unit`
@@ -69,12 +63,12 @@ Target module: Module 7 - Customer Result and Recommended Plan.
 ## Verification Results
 
 - `corepack pnpm typecheck`: PASS.
-- Focused Module 7 tests: PASS, 4 files and 12 tests passed.
-- `corepack pnpm lint`: PASS after fixes.
+- Focused Module 8 tests: PASS, 7 files and 20 tests passed.
+- `corepack pnpm lint`: PASS.
 - `corepack pnpm format:check`: PASS.
-- `corepack pnpm test:unit`: PASS, 36 files and 86 tests passed.
-- `corepack pnpm build`: PASS, static routes generated for `/protection-check/result` and
-  `/demo/customer-result`.
+- `corepack pnpm test:unit`: PASS, 42 files and 101 tests passed.
+- `corepack pnpm build`: PASS, routes generated for `/protection-check/lead`,
+  `/protection-check/lead/confirm`, and `/demo/leads`.
 - `corepack pnpm audit`: PASS, no known vulnerabilities.
 - `corepack pnpm verify`: PASS.
 - `corepack pnpm test:e2e`: PASS, 2 Playwright tests passed.
