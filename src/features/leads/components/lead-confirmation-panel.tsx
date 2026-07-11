@@ -22,6 +22,16 @@ export function LeadConfirmationPanel({ lead }: { lead: Lead }) {
           Preferred contact: {view.contactMethodLabel}. Next step: {view.nextStepCopy}
         </p>
         <div className="ds-action-row">
+          {lead.ctaIntent === "send_report" ? (
+            <>
+              <Link className="button-link" href="/protection-check/report/preview">
+                View Report
+              </Link>
+              <Link className="button-link secondary" href="/protection-check/report/email-preview">
+                Preview Email
+              </Link>
+            </>
+          ) : null}
           <Link className="button-link" href="/protection-check/result">
             Return to My Result
           </Link>

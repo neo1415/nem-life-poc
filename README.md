@@ -54,12 +54,17 @@ pnpm test:e2e
 - `/demo/recommendations`: internal Module 6 recommendation-engine demo, not the final customer result page.
 - `/demo/customer-result`: internal Module 7 customer-result demo using mock answer sets.
 - `/demo/leads`: internal Module 8 session-only demo lead summary.
+- `/demo/reports`: internal Module 9 fixture-only report preview.
 - `/protection-check`: redirects to the guided check start route.
 - `/protection-check/start`: Module 4 guided Family Protection Check flow.
 - `/protection-check/complete`: safe completion handoff, answer review, and result-page entry.
 - `/protection-check/result`: Module 7 customer result page with estimated score, recommendations, budget preview, and honest CTA placeholders.
 - `/protection-check/lead`: Module 8 consent-based lead capture after result value is shown.
-- `/protection-check/lead/confirm`: Module 8 demo lead confirmation page.
+- `/protection-check/lead/confirm`: Module 8 demo lead confirmation page with Module 9 report links for send-report intent.
+- `/protection-check/report`: Module 9 report landing with safe empty/invalid states.
+- `/protection-check/report/preview`: Module 9 customer-safe report preview with print/save behavior.
+- `/protection-check/report/email-preview`: Module 9 simulated email preview. No email is sent.
+- `/protection-check/report/confirm`: Module 9 simulated report confirmation.
 - `/admin`: admin placeholder with no real data or claimed auth.
 
 ## Folder Overview
@@ -83,4 +88,4 @@ All dependencies must be audited in `docs/dependency-audit.md` before installati
 
 ## Known Limitations
 
-The customer check flow, internal scoring demo, recommendation demo, customer result page, and consent-based demo lead capture are available, but reports start in Module 9, customer dashboard preview in Module 10, and admin dashboard in Module 11.
+The customer check flow, internal scoring demo, recommendation demo, customer result page, consent-based demo lead capture, and report preview/email simulation are available. Customer dashboard preview starts in Module 10, and admin dashboard starts in Module 11.

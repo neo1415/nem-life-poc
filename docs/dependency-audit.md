@@ -193,3 +193,21 @@ No new dependencies were installed for Module 8.
 | analytics/AI/PDF packages | Could track, explain, or report   | Rejected; Module 8 uses deterministic copy and does not generate reports or use AI | Future approved modules   |
 
 Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 8. Module 8 verification must run `corepack pnpm audit`.
+
+## Module 9 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 9.
+
+| package/category     | reason considered                    | reason approved/rejected/deferred                                                 | future module                |
+| -------------------- | ------------------------------------ | --------------------------------------------------------------------------------- | ---------------------------- |
+| PDF libraries        | Could create downloaded PDF files    | Rejected; browser print/save behavior satisfies Module 9 and avoids heavy runtime | Dedicated future PDF module  |
+| email/SMTP SDKs      | Could send the report email          | Rejected; Module 9 requires simulation only and must not send live messages       | Future delivery module       |
+| CRM SDKs             | Could attach reports to lead records | Rejected; real CRM integration is out of scope                                    | Future CRM module            |
+| template libraries   | Could render report sections         | Rejected; typed React components and deterministic copy are sufficient            | Reconsider only if needed    |
+| analytics SDKs       | Could track report events            | Rejected; no external analytics is required                                       | Future analytics module      |
+| AI SDKs              | Could generate report copy           | Rejected; Module 9 requires deterministic templates and no uncontrolled AI copy   | Future approved AI work      |
+| chart/animation libs | Could decorate report visuals        | Rejected; existing CSS/cards are enough and keep the report lightweight           | Admin/dashboard if justified |
+
+Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 9. Module 9 verification must run `corepack pnpm audit`.

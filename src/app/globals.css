@@ -624,6 +624,21 @@ a {
   padding-bottom: 1rem;
 }
 
+.ds-report-footer {
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  display: grid;
+  gap: 0.25rem;
+  padding-top: 1rem;
+}
+
+.print-page {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
 @media (max-width: 720px) {
   .ds-admin-shell {
     grid-template-columns: 1fr;
@@ -644,5 +659,37 @@ a {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .ds-page {
+    padding: 0;
+    width: 100%;
+  }
+
+  .print-page {
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0;
+  }
+
+  .ds-card,
+  .surface {
+    break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
   }
 }
