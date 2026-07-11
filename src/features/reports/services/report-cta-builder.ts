@@ -11,6 +11,7 @@ const allowedLabels = new Set([
   "Continue to NEM Life",
   "Preview Email",
   "View Report",
+  "Continue to Dashboard Preview",
 ]);
 
 export function buildReportCtas(intent?: LeadIntent): ReportCta[] {
@@ -28,6 +29,13 @@ export function buildReportCtas(intent?: LeadIntent): ReportCta[] {
       type: "lead_capture",
       isDemoLink: true,
       note: "Demo follow-up link; no purchase or payment happens here.",
+    },
+    {
+      label: "Continue to Dashboard Preview",
+      href: "/protection-check/dashboard-preview",
+      type: "demo",
+      isDemoLink: true,
+      note: "Opens the future customer dashboard preview in this demo.",
     },
   ];
 

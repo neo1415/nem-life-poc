@@ -55,6 +55,8 @@ pnpm test:e2e
 - `/demo/customer-result`: internal Module 7 customer-result demo using mock answer sets.
 - `/demo/leads`: internal Module 8 session-only demo lead summary.
 - `/demo/reports`: internal Module 9 fixture-only report preview.
+- `/demo/customer-dashboard`: internal Module 10 customer dashboard demo. Not a real customer account.
+- `/dashboard-preview`: redirects to the customer dashboard preview.
 - `/protection-check`: redirects to the guided check start route.
 - `/protection-check/start`: Module 4 guided Family Protection Check flow.
 - `/protection-check/complete`: safe completion handoff, answer review, and result-page entry.
@@ -65,6 +67,7 @@ pnpm test:e2e
 - `/protection-check/report/preview`: Module 9 customer-safe report preview with print/save behavior.
 - `/protection-check/report/email-preview`: Module 9 simulated email preview. No email is sent.
 - `/protection-check/report/confirm`: Module 9 simulated report confirmation.
+- `/protection-check/dashboard-preview`: Module 10 customer dashboard preview using completed check context.
 - `/admin`: admin placeholder with no real data or claimed auth.
 
 ## Folder Overview
@@ -88,4 +91,4 @@ All dependencies must be audited in `docs/dependency-audit.md` before installati
 
 ## Known Limitations
 
-The customer check flow, internal scoring demo, recommendation demo, customer result page, consent-based demo lead capture, and report preview/email simulation are available. Customer dashboard preview starts in Module 10, and admin dashboard starts in Module 11.
+The customer check flow, internal scoring demo, recommendation demo, customer result page, consent-based demo lead capture, report preview/email simulation, and customer dashboard preview are available. Admin dashboard starts in Module 11.

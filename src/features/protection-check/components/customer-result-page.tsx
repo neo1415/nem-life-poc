@@ -51,6 +51,23 @@ export function CustomerResultPage({ demoResult }: { demoResult?: CustomerResult
         secondary={result.secondaryCtas}
         support={result.supportCtas}
       />
+      <section aria-labelledby="dashboard-preview-title" className="ds-stack">
+        <div className="ds-card ds-stack">
+          <p className="ds-eyebrow">Saved result preview</p>
+          <h2 id="dashboard-preview-title">Continue to Dashboard Preview</h2>
+          <p className="ds-muted">
+            See how this result could look inside a future NEM Life+ customer dashboard.
+          </p>
+          <div className="ds-action-row">
+            <a className="button-link" href="/protection-check/dashboard-preview">
+              View Dashboard Preview
+            </a>
+            <a className="button-link secondary" href="/protection-check/lead?intent=save_result">
+              Save My Result
+            </a>
+          </div>
+        </div>
+      </section>
       <CustomerResultDisclaimers disclaimers={result.disclaimers} />
       <section aria-labelledby="result-actions-title" className="ds-stack">
         <div className="ds-card__topline">

@@ -211,3 +211,21 @@ No new dependencies were installed for Module 9.
 | chart/animation libs | Could decorate report visuals        | Rejected; existing CSS/cards are enough and keep the report lightweight           | Admin/dashboard if justified |
 
 Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 9. Module 9 verification must run `corepack pnpm audit`.
+
+## Module 10 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 10.
+
+| package/category          | reason considered                      | reason approved/rejected/deferred                                      | future module                     |
+| ------------------------- | -------------------------------------- | ---------------------------------------------------------------------- | --------------------------------- |
+| chart libraries           | Could visualize dashboard engines      | Rejected; cards, badges, and text statuses satisfy Module 10           | Admin/dashboard only if justified |
+| dashboard UI libraries    | Could speed up dashboard layout        | Rejected; existing design-system components and CSS are sufficient     | Not currently needed              |
+| auth libraries            | Could create a real customer portal    | Rejected; Module 10 is a preview and must not create real accounts     | Future auth module if approved    |
+| database/Supabase clients | Could persist dashboard state          | Rejected; Module 10 uses browser demo context and no customer database | Future persistence module         |
+| payment SDKs              | Could show premium/payment actions     | Rejected; payment and real premium data are out of scope               | Future approved payment work      |
+| email/SMS/WhatsApp SDKs   | Could contact customers from dashboard | Rejected; Module 10 must not send live messages                        | Future delivery module            |
+| analytics/AI SDKs         | Could track or explain dashboard usage | Rejected; deterministic copy and no external analytics/AI are required | Future approved analytics/AI work |
+
+Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 10. Module 10 verification must run `corepack pnpm audit`.

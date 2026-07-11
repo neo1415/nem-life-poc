@@ -1,5 +1,27 @@
 # **MODULE 10 PROMPT — Customer Dashboard Preview, Five-Engine Summary, Saved Result Experience, Protection Timeline, and Monthly Protection Guidance**
 
+## **Module 10 Implementation Notes**
+
+Module 10 creates the customer dashboard preview only. It adds:
+
+* `/protection-check/dashboard-preview`
+* `/dashboard-preview`
+* `/demo/customer-dashboard`
+* `src/features/customer-dashboard`
+
+The implementation includes a validated `CustomerDashboardSnapshot`, dashboard-safe view model, five-engine mapper, monthly protection guidance, protection timeline, report summary, lead follow-up summary, future verified-data placeholders, empty/invalid states, and focused tests.
+
+No real authentication, customer account persistence, NEM system integration, CRM sync, payment, policy, premium, claims, beneficiary, document upload, email/SMS/WhatsApp, admin dashboard, AI, chart library, dashboard library, or database dependency was added.
+
+Known handoff notes:
+
+* Module 11 begins the admin dashboard.
+* Module 12 begins admin configuration preview.
+* Verified customer data requires approved NEM records and integrations.
+* Final dashboard copy and product links need NEM legal/compliance review.
+
+---
+
 You are building the NEM Life+ Proof of Concept.
 
 This is Module 10\.
@@ -1826,4 +1848,3 @@ Do not expose prohibited data.
 Make the dashboard preview useful, honest, executive-demo-ready, and safe.
 
 Build it cleanly, test it properly, and prepare it for Module 11\.
-
