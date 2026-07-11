@@ -1842,3 +1842,72 @@ The engine should map gaps to relevant NEM product categories, choose safe CTAs,
 
 Build it cleanly, test it properly, and prepare it for Module 7\.
 
+---
+
+# Implementation Record
+
+## Purpose
+
+Module 6 adds the deterministic NEM Life+ recommendation domain layer. It consumes Module 5 `ProtectionProfile` and `ScoreBreakdown` outputs, maps score gaps and profile signals to product categories, chooses safe CTA groups, generates admin opportunity tags, calculates future lead priority, and returns typed recommendation reasoning.
+
+## Scope Delivered
+
+- Created `src/features/recommendations` with typed config, schemas, services, and tests.
+- Added product category, recommended product, CTA, admin tag, lead priority, audit, and recommendation result models.
+- Added centralized product category copy, demo links, CTA labels, rule metadata, lead priority thresholds, and disclaimer text.
+- Added product mapper, deduplication, CTA selector, lead priority calculator, reasoning, and orchestrator services.
+- Added `/demo/recommendations` as an internal recommendation demo, clearly labeled as not the final customer result page.
+- Reused Module 5 mock answer fixtures and scoring output for recommendation tests and demo output.
+
+## Product Categories
+
+- Life Cover
+- NEM Health
+- NEM Asset / Wealth Planning
+- Motor / General Insurance
+- Home / Fire / Burglary
+- Business Protection
+- Professional Indemnity
+- Beneficiary / Claims Readiness
+- Family Document Readiness
+
+## Pipeline
+
+Module 5 profile and score breakdown -> product signal mapping -> deduplication -> lead priority calculation -> CTA selection -> recommendation reasoning -> output validation -> typed `RecommendationResult`.
+
+## Privacy and Safety
+
+The recommendation engine collects no new personal data. It uses validated answers already normalized by Module 5, score gaps, broad categories, budget ranges, and demo metadata only. It does not use BVN, NIN, exact address, payment details, policy numbers, uploads, salary, medical records, or real NEM records. Output includes the required guidance-only recommendation disclaimer.
+
+## Non-Goals Preserved
+
+Module 6 does not implement the final result page, recommended plan UI, lead capture, report generation, customer dashboard, admin dashboard, real product purchase, real pricing, payment, underwriting, policy issuance, CRM integration, live NEM integration, or AI recommendations.
+
+## Demo Page
+
+`/demo/recommendations` shows mock answer-set recommendation output, product categories, CTA mappings, admin opportunity tags, lead priority, and audit trail for internal review only. It is not the final customer result page.
+
+## Tests Added
+
+- Product mapper tests
+- CTA selector tests
+- Lead priority tests
+- Deduplication tests
+- Recommendation copy safety tests
+- Orchestrator tests
+- Demo fixture/persona tests
+
+## Known Limitations
+
+- Product links are demo/config placeholders until NEM confirms real URLs.
+- Final product and pricing rules require NEM validation.
+- Customer result page begins in Module 7.
+- Lead capture begins in Module 8.
+- Report generation begins in Module 9.
+- Customer dashboard preview begins in Module 10.
+- Admin dashboard begins in Module 11.
+- No live NEM integration or AI recommendation is included.
+
+## Handoff Notes
+
+Module 7 can render `RecommendationResult.recommendedProducts`, `ctaGroups`, `customerSummary`, and `disclaimer` beside the Module 5 score result. Module 8 can use `leadPriority` and `adminOpportunityTags` after consent and lead capture are implemented, without creating leads inside the recommendation engine.

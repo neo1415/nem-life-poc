@@ -140,3 +140,20 @@ No new dependencies were installed for Module 5.
 | database/auth packages | Could persist or protect scoring artifacts | Rejected; persistence/auth are deferred                                       | Module 8/14 if approved          |
 
 Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 5. Module 5 verification must run `corepack pnpm audit`.
+
+## Module 6 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 6.
+
+| package/category         | reason considered                            | reason approved/rejected/deferred                                                     | future module                    |
+| ------------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------- |
+| rules-engine libraries   | Could express recommendation rules           | Rejected; typed config and pure TypeScript services are sufficient for POC rules      | Reconsider only if rules explode |
+| AI SDKs                  | Could generate customer explanations         | Rejected; Module 6 requires deterministic templates and no AI                         | Future approved AI work          |
+| analytics SDKs           | Could track recommendation events            | Deferred; Module 6 only prepares deterministic recommendation output                  | Future analytics module          |
+| chart/UI libraries       | Could visualize recommendations              | Rejected; internal demo uses existing UI components                                   | Module 7/admin only if needed    |
+| CRM/payment/pricing SDKs | Could connect CTAs to real downstream action | Rejected; real purchase, payment, pricing, CRM, and lead persistence are out of scope | Later modules if approved        |
+| database/auth packages   | Could persist or protect recommendation data | Rejected; Module 6 creates no leads, admin dashboard, or private persistence          | Module 8/14 if approved          |
+
+Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 6. Module 6 verification must run `corepack pnpm audit`.
