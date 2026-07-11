@@ -12,7 +12,7 @@
 
 ## Continue Module
 
-Start Module 4: Customer Check Flow.
+Start Module 5: Scoring Engine.
 
 ## Already Complete
 
@@ -20,9 +20,12 @@ Start Module 4: Customer Check Flow.
 - Module 1 verified.
 - Module 2 verified.
 - Module 3 verified.
-- Baseline and Module 2 commits are pushed to GitHub remote `origin`.
+- Module 4 verified.
+- Baseline through Module 4 commits are pushed to GitHub remote `origin`.
 - `/demo/ui` previews the reusable component system.
 - `/demo/question-engine` previews the configurable question engine.
+- `/protection-check/start` runs the guided customer flow.
+- `/protection-check/complete` shows the safe completion handoff and answer review.
 
 ## Failed
 
@@ -31,7 +34,7 @@ No current failing required checks.
 ## Do Not Redo
 
 - Do not rebuild Module 0, Module 1, or Module 2 unless a regression is discovered.
-- Do not put scoring, recommendation, lead, report, or admin business logic into Module 3.
+- Do not put scoring, recommendation, lead, report, or admin business logic into Module 4.
 - Do not add form, state-machine, analytics, or AI dependencies without auditing them first.
 
 ## Commands To Run
@@ -48,7 +51,8 @@ No current failing required checks.
 
 ## Risks To Watch
 
-- Module 4 must consume the engine without duplicating question config in React components.
+- Module 5 must consume completed answers without moving scoring into Module 4 UI components.
+- Do not show recommendations or lead capture before their assigned modules.
 - Do not collect contact details before the PRD-approved lead-capture point.
 - Do not introduce prohibited POC data fields.
 - Keep demo copy clearly labeled as demo or estimated where applicable.

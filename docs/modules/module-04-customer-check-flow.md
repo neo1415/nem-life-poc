@@ -1232,3 +1232,68 @@ Do not add dependencies for convenience.
 
 Build the flow cleanly, test it properly, and prepare it for Module 5\.
 
+---
+
+# Module 4 Implementation Record
+
+## Purpose
+
+Create the customer-facing entry, landing page, guided Family Protection Check flow, and safe completion handoff.
+
+## Scope
+
+Module 4 owns the first usable customer journey: mock NEM entry, NEM Life+ landing, guided configured questions, back/continue/skip behavior, progress, why-we-ask display, answer validation, safe session handoff, and review answers.
+
+Module 4 does not implement scoring, recommendations, lead capture, report generation, admin dashboard, real persistence, CRM integration, payment, document upload, or AI.
+
+## Route Map
+
+- `/demo/nem-entry`: mock NEM channel entry card. It is clearly labeled as a demo and links to the NEM Life+ landing page.
+- `/`: NEM Life+ landing page with required hero copy, benefits, trust note, and how-it-works section.
+- `/protection-check`: redirects to `/protection-check/start`.
+- `/protection-check/start`: interactive one-question-at-a-time guided flow using Module 3 config and services.
+- `/protection-check/complete`: safe completion handoff with answer review and no score/recommendation/lead capture.
+
+## State and Session Approach
+
+The guided flow uses React state during the session and stores only POC-safe answer/session data in namespaced `sessionStorage` for the completion handoff. Loaded session data is revalidated with the Module 3 session schema before use. A reset action clears the stored session.
+
+## Architecture Decisions
+
+- Pages stay small and use feature components under `src/features/protection-check/components/`.
+- The flow reuses Module 3 `defaultQuestionCatalog`, `answerCurrentQuestion`, `moveToPreviousQuestion`, `getEngineState`, and `toQuestionRenderModel`.
+- Review data is built through `review-answers.ts` so customer pages do not expose admin labels, scoring tags, recommendation tags, or metadata.
+- Module 2 UI components are reused for buttons, cards, callouts, fields, inputs, question cards, option buttons, and progress.
+
+## Privacy Boundaries
+
+No BVN, NIN, payment, exact address, policy number, upload, salary, contact lead form, lead consent, or real integration fields are collected. The flow only captures configured broad POC-safe answers from Module 3.
+
+## UX and Accessibility Notes
+
+The flow shows one question at a time with section progress, visible validation errors, back navigation, optional skip where configured, not-sure options where configured, and collapsible why-we-ask copy. Completion uses clear estimated-language handoff and does not display a fake score.
+
+## Tests
+
+Added tests for:
+
+- landing route CTA and no contact capture
+- mock NEM entry CTA
+- completion route empty state
+- session store save/load/clear and invalid data handling
+- customer-safe review answer labels
+- guided flow first question, validation, forward/back navigation, not-sure option, why-we-ask, and absence of score/recommendation/lead capture
+
+## Known Limitations
+
+- Score calculation begins in Module 5.
+- Recommendation engine begins in Module 6.
+- Result/recommended plan begins in Module 7.
+- Lead capture begins in Module 8.
+- Report generation begins in Module 9.
+- Admin dashboard begins in Module 11.
+- Database persistence, CRM integration, and VaultLyne integration remain deferred.
+
+## Handoff Notes For Module 5
+
+Module 5 should consume the completed session answers from the existing session model and add deterministic scoring in `src/features/scoring/`. It must not calculate score inside the Module 4 UI components.

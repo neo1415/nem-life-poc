@@ -108,3 +108,19 @@ No new dependencies were installed for Module 3.
 | AI SDKs                                       | Future question generation/explanations | Rejected for POC v1; deterministic config only                               | Future approved AI work                      |
 
 Existing `zod` is used for runtime validation. Module 3 verification must run `corepack pnpm audit`.
+
+## Module 4 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 4.
+
+| package/category            | reason considered                  | reason approved/rejected/deferred                                                     | future module                               |
+| --------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------- |
+| form libraries              | Could manage the guided check form | Rejected; Module 3 validation plus React state is sufficient                          | Module 8 only if justified                  |
+| state management libraries  | Could persist quiz/session state   | Rejected; namespaced `sessionStorage` and typed services are enough for this POC flow | Later only if product state becomes complex |
+| wizard/onboarding libraries | Could render step flows            | Rejected; would duplicate Module 3 engine/navigation                                  | Not currently needed                        |
+| analytics SDKs              | Could track question events        | Deferred; Module 4 has no real analytics integration                                  | Future analytics module                     |
+| auth/database libraries     | Could persist sessions             | Rejected; persistence is deferred and no auth is required for public check            | Module 8/14 if approved                     |
+
+Existing React, Next.js, and Zod capabilities cover Module 4. Module 4 verification must run `corepack pnpm audit`.

@@ -50,7 +50,9 @@ pnpm test:e2e
 - `/demo/nem-entry`: mock NEM entry placeholder.
 - `/demo/ui`: internal Module 2 design-system preview.
 - `/demo/question-engine`: internal Module 3 question-engine demo, not the final customer flow.
-- `/protection-check`: future Family Protection Check placeholder.
+- `/protection-check`: redirects to the guided check start route.
+- `/protection-check/start`: Module 4 guided Family Protection Check flow.
+- `/protection-check/complete`: Module 4 safe completion handoff and answer review.
 - `/admin`: admin placeholder with no real data or claimed auth.
 
 ## Folder Overview
@@ -74,4 +76,4 @@ All dependencies must be audited in `docs/dependency-audit.md` before installati
 
 ## Known Limitations
 
-Module 1 is foundation only. Product screens start in Module 4, design system components in Module 2, question engine in Module 3, scoring in Module 5, recommendations in Module 6, and admin dashboard in Module 11.
+The customer check flow is available, but scoring starts in Module 5, recommendations in Module 6, lead capture in Module 8, reports in Module 9, and admin dashboard in Module 11.
