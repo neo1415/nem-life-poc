@@ -124,3 +124,19 @@ No new dependencies were installed for Module 4.
 | auth/database libraries     | Could persist sessions             | Rejected; persistence is deferred and no auth is required for public check            | Module 8/14 if approved                     |
 
 Existing React, Next.js, and Zod capabilities cover Module 4. Module 4 verification must run `corepack pnpm audit`.
+
+## Module 5 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 5.
+
+| package/category       | reason considered                          | reason approved/rejected/deferred                                             | future module                    |
+| ---------------------- | ------------------------------------------ | ----------------------------------------------------------------------------- | -------------------------------- |
+| scoring/rules engines  | Could calculate weighted scores            | Rejected; deterministic TypeScript services are sufficient and easier to test | Not currently needed             |
+| chart libraries        | Could visualize score output               | Rejected; internal demo uses existing score/UI components                     | Module 7 or admin only if needed |
+| AI SDKs                | Could generate explanations                | Rejected; Module 5 requires deterministic templates only                      | Future approved AI work          |
+| state libraries        | Could hold score state                     | Rejected; scoring is pure function output                                     | Not currently needed             |
+| database/auth packages | Could persist or protect scoring artifacts | Rejected; persistence/auth are deferred                                       | Module 8/14 if approved          |
+
+Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 5. Module 5 verification must run `corepack pnpm audit`.

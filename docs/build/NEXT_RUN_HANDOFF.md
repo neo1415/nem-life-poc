@@ -8,11 +8,11 @@
 4. `docs/build/MODULE_STATUS.md`
 5. `docs/build/CURRENT_PASS_REPORT.md`
 6. All relevant `docs/steering/*`
-7. `docs/modules/module-04-customer-check-flow.md`
+7. `docs/modules/module-05-scoring-engine.md`
 
 ## Continue Module
 
-Start Module 5: Scoring Engine.
+Start Module 6: Recommendation Engine.
 
 ## Already Complete
 
@@ -21,11 +21,12 @@ Start Module 5: Scoring Engine.
 - Module 2 verified.
 - Module 3 verified.
 - Module 4 verified.
-- Baseline through Module 4 commits are pushed to GitHub remote `origin`.
+- Baseline through Module 5 commits are pushed to GitHub remote `origin`.
 - `/demo/ui` previews the reusable component system.
 - `/demo/question-engine` previews the configurable question engine.
 - `/protection-check/start` runs the guided customer flow.
 - `/protection-check/complete` shows the safe completion handoff and answer review.
+- `/demo/scoring` previews deterministic scoring output using mock answer sets.
 
 ## Failed
 
@@ -34,7 +35,7 @@ No current failing required checks.
 ## Do Not Redo
 
 - Do not rebuild Module 0, Module 1, or Module 2 unless a regression is discovered.
-- Do not put scoring, recommendation, lead, report, or admin business logic into Module 4.
+- Do not put recommendation, lead, report, or admin business logic into Module 5.
 - Do not add form, state-machine, analytics, or AI dependencies without auditing them first.
 
 ## Commands To Run

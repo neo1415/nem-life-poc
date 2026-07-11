@@ -2,27 +2,27 @@
 
 ## Plan
 
-Target module: Module 4 - Customer Check Flow.
+Target module: Module 5 - Scoring Engine.
 
 ## Completed
 
-- Mock NEM entry route updated with required Module 4 entry card and demo labeling.
-- NEM Life+ landing route updated with required hero copy, trust note, benefit cards, and how-it-works section.
-- `/protection-check` now routes users into `/protection-check/start`.
-- Guided check flow created using Module 3 question config, engine, validation, navigation, progress, and render adapter.
-- Safe completion handoff route created at `/protection-check/complete`.
-- Customer-safe answer review added with no admin labels, tags, score, recommendation, or lead capture.
-- Namespaced session storage helper added for POC-safe completed-session handoff.
-- Module 4 dependency audit added with no new dependencies installed.
-- Tests added for route copy, session storage, answer review, and guided-flow behavior.
+- Deterministic scoring domain added under `src/features/scoring`.
+- Protection answers normalize into a validated `ProtectionProfile`.
+- Config-driven score areas, weights, bands, gap copy, and explanation templates added.
+- Area scoring, gap detection, score-band resolution, confidence, summary generation, and audit trail services added.
+- Internal `/demo/scoring` page added and clearly labeled as not the final customer result page.
+- Module 4 completion handoff now links safely to the internal scoring demo.
+- Four mock answer-set fixtures added for expected demo personas.
+- Module 5 dependency audit added with no new dependencies installed.
+- Scoring unit tests added for normalization, areas, gaps, bands, explanations, orchestration, and fixtures.
 
 ## Failed
 
-- Initial E2E failed because the old foundation assertion expected Module 1 heading copy; updated the E2E assertion to the Module 4 landing page headline.
+- Initial focused typecheck failed on an overly loose gap config type; fixed with a typed `satisfies` config.
+- Initial focused scoring tests failed because an unknown-status test relied on an employer-cover fixture; fixed by making the unknown case explicit.
 
 ## Deferred
 
-- Scoring starts in Module 5.
 - Recommendation engine starts in Module 6.
 - Result/recommended plan starts in Module 7.
 - Lead capture starts in Module 8.
@@ -33,29 +33,23 @@ Target module: Module 4 - Customer Check Flow.
 
 ## Files Changed
 
-- `src/app/(public)/page.tsx`
-- `src/app/(public)/page.test.tsx`
-- `src/app/demo/nem-entry/page.tsx`
-- `src/app/demo/nem-entry/page.test.tsx`
-- `src/app/protection-check/page.tsx`
-- `src/app/protection-check/start/page.tsx`
-- `src/app/protection-check/complete/page.tsx`
-- `src/app/protection-check/complete/page.test.tsx`
-- `src/app/globals.css`
-- `src/features/protection-check/components/*`
-- `src/features/protection-check/services/check-session-store.ts`
-- `src/features/protection-check/services/review-answers.ts`
-- `src/features/protection-check/tests/*`
+- `src/app/demo/scoring/page.tsx`
+- `src/features/scoring/config/*`
+- `src/features/scoring/schemas/*`
+- `src/features/scoring/services/*`
+- `src/features/scoring/types/*`
+- `src/features/scoring/tests/*`
+- `src/features/protection-check/components/check-completion-panel.tsx`
+- `src/test/fixtures/protection-check-answer-sets.ts`
 - `README.md`
 - `docs/dependency-audit.md`
-- `docs/modules/module-04-customer-check-flow.md`
+- `docs/modules/module-05-scoring-engine.md`
 - `docs/build/*`
 
 ## Tests Run
 
 - `corepack pnpm typecheck`
-- `corepack pnpm test:unit src/features/protection-check src/app`
-- `corepack pnpm format`
+- `corepack pnpm test:unit src/features/scoring`
 - `corepack pnpm format:check`
 - `corepack pnpm lint`
 - `corepack pnpm test:unit`
@@ -67,11 +61,11 @@ Target module: Module 4 - Customer Check Flow.
 ## Verification Results
 
 - `corepack pnpm typecheck`: PASS
-- `corepack pnpm test:unit src/features/protection-check src/app`: PASS, 10 files and 33 tests passed
+- `corepack pnpm test:unit src/features/scoring`: PASS, 7 files and 21 tests passed
 - `corepack pnpm format:check`: PASS
 - `corepack pnpm lint`: PASS
-- `corepack pnpm test:unit`: PASS, 19 files and 44 tests passed
-- `corepack pnpm build`: PASS, static routes generated for `/protection-check/start` and `/protection-check/complete`
+- `corepack pnpm test:unit`: PASS, 26 files and 65 tests passed
+- `corepack pnpm build`: PASS, static route generated for `/demo/scoring`
 - `corepack pnpm audit`: PASS, no known vulnerabilities
 - `corepack pnpm verify`: PASS
 - `corepack pnpm test:e2e`: PASS, 2 tests passed

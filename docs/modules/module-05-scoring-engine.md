@@ -1719,3 +1719,73 @@ The system calculates an estimated score from answers, detects gaps, explains th
 
 Build it cleanly, test it properly, and prepare it for Module 6 and Module 7\.
 
+---
+
+# Implementation Record
+
+## Purpose
+
+Module 5 adds the deterministic NEM Life+ scoring domain layer. It consumes validated Module 3/4 answers, normalizes them into a `ProtectionProfile`, calculates an estimated Family Protection Score, detects review gaps, assigns a score band, generates calm explanations, calculates confidence, and returns an audit trail.
+
+## Scope Delivered
+
+- Created `src/features/scoring` with typed config, schemas, services, and tests.
+- Added centralized score area weights totaling 100 points.
+- Added configurable score bands for major gaps, several gaps, good start, and strong base.
+- Added deterministic gap copy and explanation templates with no sales CTAs.
+- Added `calculateFamilyProtectionScore` orchestration with typed success/error results.
+- Added four mock answer fixtures for the required personas.
+- Added `/demo/scoring` as an internal scoring demo, clearly labeled as not the final customer result page.
+- Added a safe link from `/protection-check/complete` to the internal scoring demo.
+
+## Scoring Areas
+
+- Life Cover: 25 points
+- Health Protection: 15 points
+- Dependents Covered: 10 points
+- Premium Continuity: 10 points
+- Beneficiary Readiness: 15 points
+- Document Readiness: 10 points
+- Property and Business Protection: 10 points
+- Emergency and Wealth Planning: 5 points
+
+## Pipeline
+
+Validated answers -> profile normalization -> area scoring -> gap detection -> score band resolution -> confidence calculation -> summary generation -> audit trail -> validated score breakdown.
+
+## Privacy and Safety
+
+The scorer uses answer IDs, option IDs, state/city/LGA, broad ranges, broad insurance categories, and readiness answers only. It does not collect BVN, NIN, exact address, payment details, policy numbers, uploads, salary, medical records, or real NEM records. Output includes the required estimated-score disclaimer.
+
+## Non-Goals Preserved
+
+Module 5 does not implement product recommendations, sales CTAs, lead capture, report generation, customer dashboard, admin dashboard, database persistence, AI explanations, underwriting, pricing, payment, policy issuance, or fake NEM verification.
+
+## Demo Page
+
+`/demo/scoring` shows mock answer-set score output, area scores, gaps, band, summary, confidence, and audit trail for internal review only. It is not the final customer result page.
+
+## Tests Added
+
+- Profile normalization tests
+- Area scoring tests
+- Gap detection tests
+- Score band tests
+- Explanation safety tests
+- Orchestrator tests
+- Demo fixture/persona tests
+
+## Known Limitations
+
+- Scoring weights are demo defaults and need NEM product/business validation before real use.
+- Recommendations begin in Module 6.
+- Customer result page begins in Module 7.
+- Lead capture begins in Module 8.
+- Report generation begins in Module 9.
+- Customer dashboard preview begins in Module 10.
+- Admin dashboard begins in Module 11.
+- Persistence, live NEM records, and AI explanations remain deferred.
+
+## Handoff Notes
+
+Module 6 can use `ScoreBreakdown.gaps`, `ScoreBreakdown.areas`, `ProtectionProfile`, and `auditTrail` to produce recommendation rules without moving recommendation logic into the scoring layer. Module 7 can render customer-facing score output while hiding raw audit IDs unless explicitly designed for internal/admin use.

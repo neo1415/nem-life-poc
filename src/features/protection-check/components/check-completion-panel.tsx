@@ -53,8 +53,8 @@ export function CheckCompletionPanel() {
           estimate your Family Protection Score and explain possible gaps.
         </p>
         <Callout title="Important note" tone="warning">
-          No score has been generated yet in this demo step. Score calculation is handled in the
-          next module.
+          This completion page is not the final customer result page. Score calculation is available
+          only in the internal demo until the result experience is built.
         </Callout>
         <div className="ds-action-row">
           <a className="button-link secondary" href="#review-title">
@@ -69,9 +69,9 @@ export function CheckCompletionPanel() {
           >
             Start Again
           </Button>
-          <Button disabled title="Module 5 will enable this action">
-            Continue to Score Preview
-          </Button>
+          <Link className="button-link" href="/demo/scoring">
+            Continue to Score Engine Demo
+          </Link>
         </div>
       </Card>
       <ReviewAnswers items={reviewItems} />
