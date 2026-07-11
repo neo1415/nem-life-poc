@@ -1,5 +1,25 @@
 # **MODULE 11 PROMPT — Admin Lead Dashboard, Lead Detail, Status Workflow, Filters, Metrics, and Export Simulation**
 
+## Implementation Notes - 2026-07-11
+
+Module 11 implements the admin lead dashboard preview only. The normal admin routes load validated Module 8 demo leads from browser session storage, convert them into admin-safe view models, mask contact details, compute local metrics, and render local-only status, note, filter, search, detail, and export simulation UI.
+
+Route map:
+
+- `/admin`: demo admin overview with metrics, opportunities, and recent leads.
+- `/admin/leads`: validated demo lead list with search, filters, metrics, and accessible detail links.
+- `/admin/leads/[leadId]`: lead detail preview with masked contact data, consent, score/gaps, recommendations, demo status workflow, and local follow-up notes.
+- `/admin/leads/export`: safe CSV/export preview only; no file is sent to NEM systems.
+- `/demo/admin`: generated mock admin demo with obviously fake leads and the required `Admin Demo - Not Production CRM` boundary.
+
+Boundary notes:
+
+- Every admin route states `Demo admin view - not a production CRM.` or the explicit demo-admin variant.
+- No real authentication, RBAC, database persistence, CRM sync, staff assignment, notifications, audit persistence, payment, policy, underwriting, claims, BVN/NIN, document upload, or AI behavior was added.
+- Status updates and follow-up notes are local demo interactions only.
+- Export contains safe fields only and excludes raw answers, raw audit trail, prohibited sensitive fields, and unmasked contact details.
+- Module 12 can build the admin configuration preview on top of these route and component boundaries. Real auth/RBAC, CRM, database persistence, staff assignment, audit logging, and production export controls remain deferred to later approved modules.
+
 You are building the NEM Life+ Proof of Concept.
 
 This is Module 11\.
@@ -1742,4 +1762,3 @@ Do not build real integrations.
 Make the admin dashboard useful, honest, demo-ready, and safe.
 
 Build it cleanly, test it properly, and prepare it for Module 12\.
-

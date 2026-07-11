@@ -56,6 +56,7 @@ pnpm test:e2e
 - `/demo/leads`: internal Module 8 session-only demo lead summary.
 - `/demo/reports`: internal Module 9 fixture-only report preview.
 - `/demo/customer-dashboard`: internal Module 10 customer dashboard demo. Not a real customer account.
+- `/demo/admin`: internal Module 11 admin demo with obviously fake mock leads. Not a production CRM.
 - `/dashboard-preview`: redirects to the customer dashboard preview.
 - `/protection-check`: redirects to the guided check start route.
 - `/protection-check/start`: Module 4 guided Family Protection Check flow.
@@ -68,7 +69,10 @@ pnpm test:e2e
 - `/protection-check/report/email-preview`: Module 9 simulated email preview. No email is sent.
 - `/protection-check/report/confirm`: Module 9 simulated report confirmation.
 - `/protection-check/dashboard-preview`: Module 10 customer dashboard preview using completed check context.
-- `/admin`: admin placeholder with no real data or claimed auth.
+- `/admin`: Module 11 demo admin overview using validated session demo leads. Not production-secure.
+- `/admin/leads`: Module 11 demo admin lead list with local filters, search, metrics, and status controls.
+- `/admin/leads/[leadId]`: Module 11 demo lead detail view with masked contact data, consent, status workflow, and local notes.
+- `/admin/leads/export`: Module 11 export simulation preview. No file is sent to NEM systems.
 
 ## Folder Overview
 
@@ -91,4 +95,4 @@ All dependencies must be audited in `docs/dependency-audit.md` before installati
 
 ## Known Limitations
 
-The customer check flow, internal scoring demo, recommendation demo, customer result page, consent-based demo lead capture, report preview/email simulation, and customer dashboard preview are available. Admin dashboard starts in Module 11.
+The customer check flow, internal scoring demo, recommendation demo, customer result page, consent-based demo lead capture, report preview/email simulation, customer dashboard preview, and demo admin lead dashboard are available. Admin configuration preview starts in Module 12.

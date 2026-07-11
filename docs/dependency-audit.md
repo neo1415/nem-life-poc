@@ -229,3 +229,23 @@ No new dependencies were installed for Module 10.
 | analytics/AI SDKs         | Could track or explain dashboard usage | Rejected; deterministic copy and no external analytics/AI are required | Future approved analytics/AI work |
 
 Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 10. Module 10 verification must run `corepack pnpm audit`.
+
+## Module 11 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 11.
+
+| package/category          | reason considered                                  | reason approved/rejected/deferred                                                   | future module                        |
+| ------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------ |
+| table libraries           | Could render sortable/filterable admin lead lists  | Rejected; accessible list/card markup and local filtering satisfy the POC dashboard | Reconsider only if admin scale grows |
+| chart/dashboard libraries | Could visualize admin metrics                      | Rejected; metric cards and text summaries are enough for executive demo value       | Future reporting module if approved  |
+| CSV/Excel libraries       | Could generate export files                        | Rejected; Module 11 only needs safe CSV string/preview simulation                   | Future production export controls    |
+| auth/RBAC libraries       | Could secure admin routes                          | Rejected; Module 11 must not fake production auth or RBAC                           | Module 14 or later approved auth     |
+| database/Supabase clients | Could persist leads, notes, and status changes     | Rejected; Module 11 uses validated browser demo leads and local simulation only     | Future persistence module            |
+| CRM SDKs                  | Could sync lead records to NEM systems             | Rejected; real CRM integration is explicitly out of scope                           | Future CRM integration module        |
+| email/SMS/WhatsApp SDKs   | Could notify staff or customers                    | Rejected; Module 11 sends no live notifications                                     | Future delivery module               |
+| analytics/AI SDKs         | Could track admin usage or summarize lead priority | Rejected; deterministic services and no external analytics/AI are required          | Future approved analytics/AI work    |
+| state libraries           | Could manage filters/status/note UI state          | Rejected; small React state and pure services are sufficient                        | Reconsider only if complexity grows  |
+
+Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 11. Module 11 verification must run `corepack pnpm audit`.
