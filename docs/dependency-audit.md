@@ -249,3 +249,23 @@ No new dependencies were installed for Module 11.
 | state libraries           | Could manage filters/status/note UI state          | Rejected; small React state and pure services are sufficient                        | Reconsider only if complexity grows  |
 
 Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 11. Module 11 verification must run `corepack pnpm audit`.
+
+## Module 12 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 12.
+
+| package/category             | reason considered                          | reason approved/rejected/deferred                                                 | future module                       |
+| ---------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------- | ----------------------------------- |
+| form-builder libraries       | Could create editable admin forms          | Rejected; native inputs and typed editor services are enough for preview          | Future production admin if needed   |
+| JSON/code editor libraries   | Could render import/export config          | Rejected; textarea/JSON preview is enough and safer for POC                       | Future controlled config tooling    |
+| rules-engine libraries       | Could express recommendation/scoring rules | Rejected; structured TypeScript configs and validators satisfy Module 12          | Reconsider if rule volume grows     |
+| drag-and-drop libraries      | Could reorder questions                    | Rejected; no drag/drop needed for preview                                         | Future production editor            |
+| state management libraries   | Could manage draft state                   | Rejected; server-rendered preview and small demo store abstraction are sufficient | Reconsider only if complexity grows |
+| table/chart/dashboard libs   | Could display config health                | Rejected; cards and lists are enough                                              | Future reporting if approved        |
+| auth/RBAC/database libraries | Could make config admin production-like    | Rejected; Module 12 must not fake production auth, RBAC, or persistence           | Module 14 or future approved work   |
+| workflow/approval engines    | Could route legal/compliance approvals     | Rejected; approval workflow is explicitly deferred                                | Future production hardening         |
+| analytics/AI/payment SDKs    | Could track, generate, or monetize config  | Rejected; no analytics, AI-generated config, or payment behavior is allowed       | Future approved modules only        |
+
+Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 12. Module 12 verification must run `corepack pnpm audit`.

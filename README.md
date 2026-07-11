@@ -57,6 +57,7 @@ pnpm test:e2e
 - `/demo/reports`: internal Module 9 fixture-only report preview.
 - `/demo/customer-dashboard`: internal Module 10 customer dashboard demo. Not a real customer account.
 - `/demo/admin`: internal Module 11 admin demo with obviously fake mock leads. Not a production CRM.
+- `/demo/config`: internal Module 12 configuration demo. Not production settings.
 - `/dashboard-preview`: redirects to the customer dashboard preview.
 - `/protection-check`: redirects to the guided check start route.
 - `/protection-check/start`: Module 4 guided Family Protection Check flow.
@@ -73,6 +74,14 @@ pnpm test:e2e
 - `/admin/leads`: Module 11 demo admin lead list with local filters, search, metrics, and status controls.
 - `/admin/leads/[leadId]`: Module 11 demo lead detail view with masked contact data, consent, status workflow, and local notes.
 - `/admin/leads/export`: Module 11 export simulation preview. No file is sent to NEM systems.
+- `/admin/config`: Module 12 configuration overview with validation status and preview-only boundary.
+- `/admin/config/questions`: Module 12 question catalog and safe question editor preview.
+- `/admin/config/scoring`: Module 12 scoring weights and score-band editor preview.
+- `/admin/config/recommendations`: Module 12 recommendation rule and lead-priority preview.
+- `/admin/config/products`: Module 12 product category mapping preview.
+- `/admin/config/ctas`: Module 12 CTA and disclaimer copy preview.
+- `/admin/config/preview`: Module 12 draft config preview against mock personas.
+- `/admin/config/export`: Module 12 JSON export/import simulation. Nothing is published.
 
 ## Folder Overview
 
@@ -95,4 +104,4 @@ All dependencies must be audited in `docs/dependency-audit.md` before installati
 
 ## Known Limitations
 
-The customer check flow, internal scoring demo, recommendation demo, customer result page, consent-based demo lead capture, report preview/email simulation, customer dashboard preview, and demo admin lead dashboard are available. Admin configuration preview starts in Module 12.
+The customer check flow, internal scoring demo, recommendation demo, customer result page, consent-based demo lead capture, report preview/email simulation, customer dashboard preview, demo admin lead dashboard, and admin configuration preview are available. Demo scenarios start in Module 13.

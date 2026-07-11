@@ -1,5 +1,30 @@
 # **MODULE 12 PROMPT — Admin Configuration Preview, Question Editor, Scoring Weights, Recommendation Rules, CTA Copy, and Product Mapping Editor**
 
+## Implementation Notes - 2026-07-11
+
+Module 12 implements a preview-only admin configuration surface. It loads the existing code-backed question, scoring, recommendation, product, CTA, lead priority, and disclaimer configuration into a typed `ConfigDraft`, validates it, and renders safe admin preview pages. It does not publish, persist to a production database, change live flows, or claim RBAC/auth protection.
+
+Route map:
+
+- `/admin/config`: configuration overview, health metrics, validation, and reset preview.
+- `/admin/config/questions`: question catalog plus safe question/option editor preview.
+- `/admin/config/scoring`: scoring weight and score-band preview.
+- `/admin/config/recommendations`: recommendation rule and lead-priority preview.
+- `/admin/config/products`: product category mapping preview.
+- `/admin/config/ctas`: CTA label/routing and disclaimer copy preview.
+- `/admin/config/preview`: mock-persona preview runner for score, recommendations, CTA, report copy, and lead priority impact.
+- `/admin/config/export`: sanitized JSON export/import simulation; nothing is published to live NEM systems.
+- `/demo/config`: internal demo route labeled `Configuration Demo - Not Production Settings`.
+
+Safety notes:
+
+- Every config admin page states that changes are preview-only and are not published to live NEM systems.
+- No form-builder, JSON editor, code editor, rules engine, auth/RBAC, database, workflow, analytics, AI, or payment dependency was added.
+- Validation blocks prohibited data collection, unsafe copy, invalid scoring totals/bands, unsafe CTA/product routes, missing questions, and removal of required disclaimer concepts.
+- Import simulation parses JSON only, rejects code-like content, validates shape, and never auto-publishes.
+- Export simulation sanitizes prohibited sensitive terms and excludes customer PII, leads, secrets, audit logs, and live-publish claims.
+- Module 13 can build demo scenarios on top of these preview structures; Module 14 can harden auth/RBAC, audit, route separation, approvals, and production config controls.
+
 You are building the NEM Life+ Proof of Concept.
 
 This is Module 12\.
@@ -1963,4 +1988,3 @@ Do not store customer PII in config.
 Make the config preview useful, safe, demo-ready, and ready for future production hardening.
 
 Build it cleanly, test it properly, and prepare it for Module 13\.
-
