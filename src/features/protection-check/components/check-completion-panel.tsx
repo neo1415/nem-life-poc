@@ -49,14 +49,17 @@ export function CheckCompletionPanel() {
       <Card tone="success" className="ds-stack">
         <h2>Your check is complete.</h2>
         <p>
-          You have completed the first step. In the next step, NEM Life+ will use your answers to
-          estimate your Family Protection Score and explain possible gaps.
+          You have completed the first step. NEM Life+ can now use your answers to estimate your
+          Family Protection Score and explain possible gaps.
         </p>
         <Callout title="Important note" tone="warning">
-          This completion page is not the final customer result page. Score calculation is available
-          only in the internal demo until the result experience is built.
+          The result is still an estimate based on your answers. It is not verified against live NEM
+          records and does not issue a policy.
         </Callout>
         <div className="ds-action-row">
+          <Link className="button-link" href="/protection-check/result">
+            View My Estimated Score
+          </Link>
           <a className="button-link secondary" href="#review-title">
             Review My Answers
           </a>
@@ -69,9 +72,6 @@ export function CheckCompletionPanel() {
           >
             Start Again
           </Button>
-          <Link className="button-link" href="/demo/scoring">
-            Continue to Score Engine Demo
-          </Link>
         </div>
       </Card>
       <ReviewAnswers items={reviewItems} />

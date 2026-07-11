@@ -7,8 +7,8 @@ export default function ProtectionCheckCompletePage() {
         <p className="ds-eyebrow">Family Protection Check</p>
         <h1>Your check is complete.</h1>
         <p>
-          This page is a safe handoff into the scoring module. It does not show a score,
-          recommendations, or lead capture.
+          This page is a safe handoff into your estimated result. It still does not collect leads,
+          request payment, or connect to live NEM systems.
         </p>
       </header>
       <CheckCompletionPanel />

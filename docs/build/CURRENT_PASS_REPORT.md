@@ -2,52 +2,64 @@
 
 ## Plan
 
-Target module: Module 6 - Recommendation Engine.
+Target module: Module 7 - Customer Result and Recommended Plan.
 
 ## Completed
 
-- Deterministic recommendation domain added under `src/features/recommendations`.
-- Product category model, recommendation model, CTA model, admin tag model, and lead priority model added.
-- Config-driven product categories, CTA labels, rule mappings, lead priority thresholds, and recommendation copy added.
-- Product mapping, deduplication, CTA selection, lead priority, reasoning, and recommendation orchestration services added.
-- Module 5 scoring outputs are consumed without recalculating score or mutating score results.
-- Internal `/demo/recommendations` page added and clearly labeled as not the final customer result page.
-- Module 6 dependency audit added with no new dependencies installed.
-- Recommendation unit tests added for mapper, CTA selector, lead priority, dedupe, copy safety, orchestration, and fixtures.
+- Customer result route added at `/protection-check/result`.
+- Completion route updated to link completed checks to "View My Estimated Score".
+- Internal demo route added at `/demo/customer-result`.
+- Customer-safe result view model added for score, score band, area breakdown, gaps,
+  recommendations, CTA hierarchy, budget preview, disclaimers, and review answers.
+- Result session loader revalidates the namespaced stored session before scoring.
+- Module 5 scoring and Module 6 recommendation engines are used without moving domain logic into UI
+  components.
+- Missing and invalid session states added.
+- CTA behavior uses honest accessible placeholder callouts.
+- Module 7 dependency audit added with no new dependencies installed.
+- Module 7 tests added for view model, loader, UI, CTAs, copy safety, privacy, accessibility basics,
+  and integration pipeline.
 
 ## Failed
 
-- Initial focused typecheck failed because recommendation rule score-area IDs were too broadly typed; fixed with `ScoreAreaId[]`.
-- Initial focused typecheck also exposed schema-parsed score-area widening; fixed by validating the output while returning the strongly typed result object.
+- Initial full lint failed on an unescaped apostrophe in JSX and synchronous `setState` in an
+  effect. Both were fixed and lint passed on rerun.
 
 ## Deferred
 
-- Result/recommended plan starts in Module 7.
 - Lead capture starts in Module 8.
 - Report generation starts in Module 9.
+- Customer dashboard preview starts in Module 10.
 - Admin dashboard starts in Module 11.
-- Persistence/database, CRM integration, and VaultLyne integration are deferred.
-- Analytics integration is deferred.
+- Real registration, purchase, payment, pricing, CRM, VaultLyne, and live NEM integrations are
+  deferred.
+- AI explanation is deferred.
 
 ## Files Changed
 
-- `src/app/demo/recommendations/page.tsx`
-- `src/features/recommendations/config/*`
-- `src/features/recommendations/schemas/*`
-- `src/features/recommendations/services/*`
-- `src/features/recommendations/types/*`
-- `src/features/recommendations/tests/*`
+- `src/app/protection-check/result/page.tsx`
+- `src/app/protection-check/result/page.test.tsx`
+- `src/app/protection-check/complete/page.tsx`
+- `src/app/demo/customer-result/page.tsx`
+- `src/features/protection-check/components/check-completion-panel.tsx`
+- `src/features/protection-check/components/customer-*`
+- `src/features/protection-check/components/review-answers.tsx`
+- `src/features/protection-check/services/customer-result-view-model.ts`
+- `src/features/protection-check/services/result-session-loader.ts`
+- `src/features/protection-check/types/customer-result.types.ts`
+- `src/features/protection-check/tests/customer-result-*`
+- `src/features/protection-check/tests/result-session-loader.test.ts`
 - `README.md`
 - `docs/dependency-audit.md`
-- `docs/modules/module-06-recommendation-engine.md`
+- `docs/modules/module-07-customer-result-and-plan.md`
 - `docs/build/*`
 
 ## Tests Run
 
 - `corepack pnpm typecheck`
-- `corepack pnpm test:unit src/features/recommendations`
-- `corepack pnpm format:check`
+- `corepack pnpm test:unit src/features/protection-check/tests/customer-result-view-model.test.ts src/features/protection-check/tests/result-session-loader.test.ts src/app/protection-check/result/page.test.tsx src/app/protection-check/complete/page.test.tsx`
 - `corepack pnpm lint`
+- `corepack pnpm format:check`
 - `corepack pnpm test:unit`
 - `corepack pnpm build`
 - `corepack pnpm audit`
@@ -56,15 +68,16 @@ Target module: Module 6 - Recommendation Engine.
 
 ## Verification Results
 
-- `corepack pnpm typecheck`: PASS
-- `corepack pnpm test:unit src/features/recommendations`: PASS, 7 files and 10 tests passed
-- `corepack pnpm format:check`: PASS
-- `corepack pnpm lint`: PASS
-- `corepack pnpm test:unit`: PASS, 33 files and 75 tests passed
-- `corepack pnpm build`: PASS, static route generated for `/demo/recommendations`
-- `corepack pnpm audit`: PASS, no known vulnerabilities
-- `corepack pnpm verify`: PASS
-- `corepack pnpm test:e2e`: PASS, 2 tests passed
+- `corepack pnpm typecheck`: PASS.
+- Focused Module 7 tests: PASS, 4 files and 12 tests passed.
+- `corepack pnpm lint`: PASS after fixes.
+- `corepack pnpm format:check`: PASS.
+- `corepack pnpm test:unit`: PASS, 36 files and 86 tests passed.
+- `corepack pnpm build`: PASS, static routes generated for `/protection-check/result` and
+  `/demo/customer-result`.
+- `corepack pnpm audit`: PASS, no known vulnerabilities.
+- `corepack pnpm verify`: PASS.
+- `corepack pnpm test:e2e`: PASS, 2 Playwright tests passed.
 
 ## Final Status
 

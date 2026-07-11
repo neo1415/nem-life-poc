@@ -157,3 +157,22 @@ No new dependencies were installed for Module 6.
 | database/auth packages   | Could persist or protect recommendation data | Rejected; Module 6 creates no leads, admin dashboard, or private persistence          | Module 8/14 if approved          |
 
 Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 6. Module 6 verification must run `corepack pnpm audit`.
+
+## Module 7 Dependency Audit
+
+Audit date: 2026-07-11.
+
+No new dependencies were installed for Module 7.
+
+| package/category        | reason considered                         | reason approved/rejected/deferred                                                          | future module           |
+| ----------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------- |
+| chart libraries         | Could visualize score breakdown           | Rejected; existing score ring, cards, badges, and CSS are sufficient                       | Admin only if justified |
+| animation libraries     | Could add score reveal motion             | Rejected; Module 7 uses no extra motion and respects global reduced-motion CSS             | Later only if approved  |
+| PDF/report libraries    | Could support report CTA                  | Rejected; report generation belongs to Module 9                                            | Module 9                |
+| form/state libraries    | Could manage result UI state              | Rejected; small React state and existing session services are sufficient                   | Module 8 only if needed |
+| email/SMS/WhatsApp SDKs | Could power report/advisor CTAs           | Rejected; Module 7 only renders honest placeholders                                        | Not in Module 7         |
+| payment/pricing SDKs    | Could support plan purchase or quote flow | Rejected; payment, purchase, and final premium calculation are out of scope                | Later only if approved  |
+| analytics/AI SDKs       | Could explain or track result behavior    | Rejected; deterministic templates and no live analytics/AI are required for Module 7       | Future approved module  |
+| database/auth packages  | Could persist or protect customer results | Rejected; Module 7 uses validated sessionStorage and does not add leads/admin/private data | Module 8/14 if approved |
+
+Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 7. Module 7 verification must run `corepack pnpm audit`.

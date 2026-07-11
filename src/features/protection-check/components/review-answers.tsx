@@ -2,7 +2,7 @@ import type { ReviewAnswerItem } from "../services/review-answers";
 import { Card } from "@/components/ui/card";
 
 type ReviewAnswersProps = {
-  items: ReviewAnswerItem[];
+  items: Omit<ReviewAnswerItem, "questionId">[];
 };
 
 export function ReviewAnswers({ items }: ReviewAnswersProps) {
@@ -20,7 +20,7 @@ export function ReviewAnswers({ items }: ReviewAnswersProps) {
       <h2 id="review-title">Review My Answers</h2>
       <div className="ds-stack">
         {items.map((item) => (
-          <Card key={item.questionId}>
+          <Card key={`${item.section}-${item.question}`}>
             <p className="ds-eyebrow">{item.section}</p>
             <h3>{item.question}</h3>
             <p>{item.answer}</p>
