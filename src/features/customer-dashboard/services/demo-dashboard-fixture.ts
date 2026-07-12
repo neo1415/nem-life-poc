@@ -8,8 +8,10 @@ import { buildCustomerDashboardSnapshot } from "./dashboard-snapshot-builder";
 import { buildDashboardViewModel } from "./dashboard-view-model";
 import type { CustomerDashboardViewModel } from "../types/customer-dashboard.types";
 
-export function buildDemoDashboardViewModel(): CustomerDashboardViewModel {
-  const session = makeDemoSession();
+export function buildDemoDashboardViewModel(
+  fixtureId = "business_owner",
+): CustomerDashboardViewModel {
+  const session = makeDemoSession(fixtureId);
   const result = buildCustomerResultViewModel(session);
   if (result.status !== "success") throw new Error("Demo dashboard result failed.");
   const context = buildLeadResultContext(session);
@@ -51,9 +53,9 @@ export function buildDemoDashboardViewModel(): CustomerDashboardViewModel {
   return view;
 }
 
-function makeDemoSession(): ProtectionCheckSession {
+function makeDemoSession(fixtureId: string): ProtectionCheckSession {
   const fixture =
-    protectionCheckAnswerSets.find((item) => item.id === "business_owner") ??
+    protectionCheckAnswerSets.find((item) => item.id === fixtureId) ??
     protectionCheckAnswerSets[0]!;
   return {
     id: `demo_dashboard_${fixture.id}`,

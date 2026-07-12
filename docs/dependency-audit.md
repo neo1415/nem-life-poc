@@ -269,3 +269,22 @@ No new dependencies were installed for Module 12.
 | analytics/AI/payment SDKs    | Could track, generate, or monetize config  | Rejected; no analytics, AI-generated config, or payment behavior is allowed       | Future approved modules only        |
 
 Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 12. Module 12 verification must run `corepack pnpm audit`.
+
+## Module 13 Dependency Audit
+
+Audit date: 2026-07-12.
+
+No new dependencies were installed for Module 13.
+
+| package/category          | reason considered                         | reason approved/rejected/deferred                                           | future module                    |
+| ------------------------- | ----------------------------------------- | --------------------------------------------------------------------------- | -------------------------------- |
+| faker/mock-data libraries | Could generate demo personas              | Rejected; static fictional fixtures are safer and deterministic             | Not needed for POC v1            |
+| tour/onboarding libraries | Could guide executive demos               | Rejected; simple route cards and script panels are enough                   | Future if approved               |
+| animation libraries       | Could improve guided check transitions    | Rejected; CSS transitions/keyframes satisfy the UI refresh without new deps | Future only if audited           |
+| chart libraries           | Could visualize persona comparison        | Rejected; cards and accessible tables are enough                            | Future reporting if approved     |
+| analytics SDKs            | Could track demo engagement               | Rejected; live analytics is out of scope                                    | Future analytics module          |
+| state libraries           | Could manage seeded demo state            | Rejected; existing browser demo storage is sufficient                       | Reconsider only if state expands |
+| auth/database/CRM SDKs    | Could make demo data look production-like | Rejected; Module 13 must not fake live auth, persistence, CRM, or NEM sync  | Future approved modules          |
+| AI SDKs                   | Could generate demo scripts/personas      | Rejected; Module 13 requires deterministic scripted demo content            | Future approved AI work          |
+
+Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 13. Module 13 verification must run `corepack pnpm audit`.

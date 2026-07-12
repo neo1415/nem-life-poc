@@ -18,6 +18,7 @@
   --color-info: #1d5f91;
   --color-focus: #1d4ed8;
   --shadow-soft: 0 18px 45px rgb(62 39 35 / 0.08);
+  --shadow-guided: 0 28px 80px rgb(50 18 31 / 0.18);
   --radius-sm: 6px;
   --radius-md: 8px;
 }
@@ -96,6 +97,17 @@ a {
   width: min(100% - 2rem, 1180px);
   margin-inline: auto;
   padding-block: 2rem 4rem;
+}
+
+.ds-page--guided {
+  width: 100%;
+  padding: 0;
+}
+
+.ds-check-header {
+  margin-inline: auto;
+  max-width: 1120px;
+  padding: 2rem 1rem 1rem;
 }
 
 .ds-page__header,
@@ -453,6 +465,111 @@ a {
   gap: 1rem;
 }
 
+.ds-guided-check {
+  align-items: center;
+  background:
+    radial-gradient(circle at 12% 18%, rgb(232 195 106 / 0.42), transparent 28rem),
+    radial-gradient(circle at 88% 12%, rgb(123 30 58 / 0.22), transparent 24rem),
+    linear-gradient(135deg, #fffaf3 0%, #fbefe4 48%, #f5e5dc 100%);
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: minmax(260px, 0.42fr) minmax(0, 0.58fr);
+  min-height: min(760px, calc(100vh - 4rem));
+  overflow: hidden;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  position: relative;
+}
+
+.ds-guided-check__orb {
+  border-radius: 999px;
+  filter: blur(2px);
+  opacity: 0.7;
+  pointer-events: none;
+  position: absolute;
+}
+
+.ds-guided-check__orb--gold {
+  background: rgb(232 195 106 / 0.45);
+  height: 11rem;
+  left: 6%;
+  top: 9%;
+  width: 11rem;
+}
+
+.ds-guided-check__orb--burgundy {
+  background: rgb(123 30 58 / 0.18);
+  bottom: 8%;
+  height: 14rem;
+  right: 8%;
+  width: 14rem;
+}
+
+.ds-guided-check__rail,
+.ds-question-card {
+  backdrop-filter: blur(18px);
+  background: rgb(255 255 255 / 0.72);
+  border: 1px solid rgb(255 255 255 / 0.65);
+  box-shadow: var(--shadow-guided);
+  position: relative;
+  z-index: 1;
+}
+
+.ds-guided-check__rail {
+  border-radius: 8px;
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.ds-guided-check__rail h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.ds-guided-check__rail p {
+  margin: 0;
+}
+
+.ds-question-stage {
+  align-self: stretch;
+  display: grid;
+  min-height: 0;
+}
+
+.ds-question-stage--forward {
+  animation: question-forward 360ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.ds-question-stage--back {
+  animation: question-back 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.ds-question-card {
+  align-content: center;
+  gap: clamp(0.75rem, 2vh, 1rem);
+  min-height: min(640px, calc(100vh - 8rem));
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.ds-question-card__step {
+  color: var(--color-brand-burgundy);
+  font-weight: 800;
+  margin: 0;
+}
+
+.ds-question-card h2 {
+  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  line-height: 1.04;
+  margin: 0 0 0.5rem;
+  max-width: 15ch;
+}
+
+.ds-question-card .ds-lede,
+.ds-question-card .ds-muted {
+  margin-block: 0.25rem 0;
+}
+
 .ds-list {
   display: grid;
   gap: 0.5rem;
@@ -462,22 +579,33 @@ a {
 
 .ds-choice-grid {
   display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
 .ds-option {
   align-items: flex-start;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: rgb(255 255 255 / 0.82);
+  border: 1px solid rgb(123 30 58 / 0.12);
   border-radius: var(--radius-md);
   color: var(--color-text);
   cursor: pointer;
   display: flex;
   gap: 0.75rem;
-  min-height: 56px;
-  padding: 0.9rem;
+  min-height: 52px;
+  padding: 0.75rem;
   text-align: left;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.ds-option:hover {
+  border-color: rgb(123 30 58 / 0.38);
+  box-shadow: 0 10px 24px rgb(62 39 35 / 0.08);
+  transform: translateY(-1px);
 }
 
 .ds-option small {
@@ -488,7 +616,10 @@ a {
 
 .ds-option--selected {
   border-color: var(--color-brand-burgundy);
-  box-shadow: 0 0 0 2px #f6e8ed;
+  background: #fff8eb;
+  box-shadow:
+    0 0 0 2px #f6e8ed,
+    0 10px 24px rgb(62 39 35 / 0.08);
 }
 
 .ds-why {
@@ -508,17 +639,17 @@ a {
 }
 
 .ds-progress__track {
-  background: var(--color-surface-muted);
+  background: rgb(255 255 255 / 0.78);
   border-radius: 999px;
   height: 0.6rem;
   overflow: hidden;
 }
 
 .ds-progress__track span {
-  background: var(--color-brand-burgundy);
+  background: linear-gradient(90deg, var(--color-brand-burgundy), var(--color-brand-gold));
   display: block;
   height: 100%;
-  transition: width 180ms ease;
+  transition: width 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .ds-step,
@@ -619,6 +750,25 @@ a {
   padding: 1rem;
 }
 
+.ds-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.ds-table th,
+.ds-table td {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.ds-table td span {
+  color: var(--color-text-muted);
+  display: block;
+  font-size: 0.9rem;
+}
+
 .ds-report-header {
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 1rem;
@@ -651,6 +801,40 @@ a {
   .ds-admin-shell__rail {
     position: static;
   }
+
+  .ds-check-header {
+    padding-top: 1rem;
+  }
+
+  .ds-guided-check {
+    grid-template-columns: 1fr;
+    min-height: calc(100vh - 1rem);
+    padding: 0.75rem;
+  }
+
+  .ds-guided-check__rail {
+    padding: 1rem;
+  }
+
+  .ds-guided-check__rail h2 {
+    font-size: 1.45rem;
+  }
+
+  .ds-guided-check__rail p {
+    display: none;
+  }
+
+  .ds-question-card {
+    min-height: auto;
+  }
+
+  .ds-question-card h2 {
+    max-width: none;
+  }
+
+  .ds-choice-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -659,6 +843,30 @@ a {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes question-forward {
+  from {
+    opacity: 0;
+    transform: translateX(2rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes question-back {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }
 

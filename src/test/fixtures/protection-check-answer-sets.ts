@@ -102,4 +102,21 @@ export const protectionCheckAnswerSets: Fixture[] = [
       answer("external_insurance_categories", ["motor", "home"]),
     ]),
   },
+  {
+    id: "unsure_customer",
+    label: "Unsure Customer",
+    description: "Low-confidence customer who needs guidance before choosing a path.",
+    answers: baseAnswers([
+      answer("protection_intent", ["not_sure"]),
+      answer("financial_dependents", ["not_sure"]),
+      answer("dependent_count", ["not_sure"]),
+      answer("existing_life_cover", ["not_sure"]),
+      answer("monthly_protection_comfort", ["need_guidance"]),
+      answer("health_protection", ["not_sure"]),
+      answer("health_cover_gaps", ["spouse", "children"]),
+      answer("beneficiary_readiness", ["not_sure"]),
+      answer("document_readiness", ["not_really"]),
+      answer("external_insurance_elsewhere", ["not_sure"]),
+    ]),
+  },
 ];

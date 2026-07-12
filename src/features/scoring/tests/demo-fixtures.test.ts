@@ -16,6 +16,10 @@ const expected = {
     gaps: ["property_business_gap", "documents_not_organized"],
   },
   better_protected_customer: { bands: ["good_start", "strong_base"], gaps: [] },
+  unsure_customer: {
+    bands: ["major_gaps", "several_gaps"],
+    gaps: ["life_cover_missing", "family_health_gap", "beneficiary_unclear"],
+  },
 };
 
 describe("demo scoring fixtures", () => {

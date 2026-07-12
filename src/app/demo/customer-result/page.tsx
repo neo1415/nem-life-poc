@@ -1,20 +1,26 @@
 import { CustomerResultPage } from "@/features/protection-check/components/customer-result-page";
 import { buildCustomerResultViewModel } from "@/features/protection-check/services/customer-result-view-model";
 import type { ProtectionCheckSession } from "@/features/protection-check/types/session.types";
-import { protectionCheckAnswerSets } from "@/test/fixtures/protection-check-answer-sets";
+import { getDemoScenario } from "@/features/demo-scenarios/services/demo-scenario-loader";
+import { loadDemoScenarios } from "@/features/demo-scenarios/services/demo-scenario-loader";
 
-export default function DemoCustomerResultPage() {
-  const fixture = protectionCheckAnswerSets[0]!;
+export default async function DemoCustomerResultPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ scenario?: string }>;
+}) {
+  const { scenario: scenarioId } = await searchParams;
+  const scenario = (scenarioId && getDemoScenario(scenarioId)) || loadDemoScenarios()[0]!;
   const session: ProtectionCheckSession = {
-    id: `demo_${fixture.id}`,
+    id: `demo_${scenario.id}`,
     status: "completed",
     startedAt: "2026-07-11T12:00:00.000Z",
     updatedAt: "2026-07-11T12:10:00.000Z",
     completedAt: "2026-07-11T12:10:00.000Z",
-    visitedQuestionIds: fixture.answers.map((answer) => answer.questionId),
-    answers: Object.fromEntries(fixture.answers.map((answer) => [answer.questionId, answer])),
-    sourceChannel: "demo",
-    scenarioId: fixture.id,
+    visitedQuestionIds: scenario.answerSet.map((answer) => answer.questionId),
+    answers: Object.fromEntries(scenario.answerSet.map((answer) => [answer.questionId, answer])),
+    sourceChannel: scenario.sourceChannel,
+    scenarioId: scenario.id,
   };
   const result = buildCustomerResultViewModel(session);
 

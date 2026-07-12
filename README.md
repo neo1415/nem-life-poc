@@ -58,6 +58,12 @@ pnpm test:e2e
 - `/demo/customer-dashboard`: internal Module 10 customer dashboard demo. Not a real customer account.
 - `/demo/admin`: internal Module 11 admin demo with obviously fake mock leads. Not a production CRM.
 - `/demo/config`: internal Module 12 configuration demo. Not production settings.
+- `/demo`: Module 13 demo hub for executive/scenario routes.
+- `/demo/executive`: Module 13 boardroom-friendly executive demo mode.
+- `/demo/scenarios`: Module 13 fictional persona selector.
+- `/demo/scenarios/[scenarioId]`: Module 13 scenario detail and presenter script.
+- `/demo/scenarios/compare`: Module 13 persona comparison with demo-only metrics.
+- `/demo/reset`: Module 13 browser demo-data reset.
 - `/dashboard-preview`: redirects to the customer dashboard preview.
 - `/protection-check`: redirects to the guided check start route.
 - `/protection-check/start`: Module 4 guided Family Protection Check flow.
@@ -104,4 +110,4 @@ All dependencies must be audited in `docs/dependency-audit.md` before installati
 
 ## Known Limitations
 
-The customer check flow, internal scoring demo, recommendation demo, customer result page, consent-based demo lead capture, report preview/email simulation, customer dashboard preview, demo admin lead dashboard, and admin configuration preview are available. Demo scenarios start in Module 13.
+The customer check flow, internal scoring demo, recommendation demo, customer result page, consent-based demo lead capture, report preview/email simulation, customer dashboard preview, demo admin lead dashboard, admin configuration preview, and executive demo scenarios are available. Security/privacy hardening continues in Module 14.

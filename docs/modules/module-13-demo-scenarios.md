@@ -1,5 +1,36 @@
 # **MODULE 13 PROMPT — Demo Scenarios, Persona Journeys, Executive Demo Mode, Seed Data, and End-to-End POC Storyline**
 
+## Implementation Notes - 2026-07-12
+
+Module 13 adds an executive demo layer and fictional scenario system for repeatable NEM Life+ presentations.
+
+Route map:
+
+- `/demo`: demo hub linking executive demo, scenarios, admin/config demos, comparison, and reset.
+- `/demo/executive`: boardroom-friendly executive demo mode with recommended personas and demo metrics.
+- `/demo/scenarios`: selector for five fictional personas.
+- `/demo/scenarios/[scenarioId]`: scenario detail, output summary, and presenter script.
+- `/demo/scenarios/compare`: persona comparison across estimated score, priority, recommendations, CTA, source, and admin story.
+- `/demo/reset`: browser-only reset for NEM Life+ demo storage keys.
+- `/demo/customer-result?scenario=...`, `/demo/reports?scenario=...`, and `/demo/customer-dashboard?scenario=...`: existing demo outputs now respect selected scenarios.
+
+Personas:
+
+- Tunde Adebayo, existing NEM motor customer.
+- Amaka Okorie, corporate employee with partial cover.
+- Chinedu Eze, business owner with dependents.
+- Bisi Lawal, better protected review/retention customer.
+- Sade Bello, unsure low-confidence prospect.
+
+Safety notes:
+
+- All scenario records are fictional and marked demo-only.
+- Scenario output uses the existing score, recommendation, lead, report, dashboard, and admin view-model engines.
+- No faker, tour, animation, chart, analytics, state, auth, database, CRM, or AI dependency was added.
+- No live NEM data, CRM sync, email delivery, advisor assignment, payment, policy issuance, claims action, or verified-record claim is implemented or claimed.
+- The guided check UI was refreshed with CSS-only directional motion, a stable progress rail, NEM gradient/material depth, reduced-motion support, and tighter option layouts.
+- Module 14 should harden route separation, audit, validation, and admin security; Module 15 should deepen QA; Module 16 should finalize handoff docs.
+
 You are building the NEM Life+ Proof of Concept.
 
 This is Module 13\.
@@ -2068,4 +2099,3 @@ Do not add dependencies for convenience.
 Make the demo impressive, coherent, honest, repeatable, and safe.
 
 Build it cleanly, test it properly, and prepare it for Module 14\.
-

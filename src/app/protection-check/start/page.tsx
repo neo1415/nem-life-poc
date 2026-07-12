@@ -4,13 +4,13 @@ import { ProtectionCheckFlow } from "@/features/protection-check/components/prot
 
 export default function ProtectionCheckStartPage() {
   return (
-    <main className="ds-page">
-      <header className="ds-page__header">
+    <main className="ds-page ds-page--guided">
+      <header className="ds-page__header ds-check-header">
         <p className="ds-eyebrow">Family Protection Check</p>
-        <h1>Answer one simple question at a time.</h1>
+        <h1>Let us build your family protection picture.</h1>
         <p>
-          Your answers help build a protection picture for the next module. No score,
-          recommendation, or lead capture happens on this step.
+          Move through a calm guided check, see an estimated score, and understand which protection
+          gaps may deserve a closer review.
         </p>
         <Callout title="Safe to start" tone="info">
           No BVN, NIN, payment, exact address, policy number, contact lead form, or document upload

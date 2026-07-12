@@ -30,6 +30,7 @@ export function ProtectionCheckFlow() {
   const [selectedOptionIds, setSelectedOptionIds] = useState<string[]>([]);
   const [textValue, setTextValue] = useState("");
   const [error, setError] = useState<string>();
+  const [direction, setDirection] = useState<"forward" | "back">("forward");
   const state = useMemo(() => getEngineState(defaultQuestionCatalog, session), [session]);
 
   if (config.status !== "success") {
@@ -68,6 +69,7 @@ export function ProtectionCheckFlow() {
       return;
     }
 
+    setDirection("forward");
     setSession(result.session);
     resetDraft();
   }
@@ -75,6 +77,7 @@ export function ProtectionCheckFlow() {
   function goBack() {
     const result = moveToPreviousQuestion(defaultQuestionCatalog, session);
     if (result.status === "success") {
+      setDirection("back");
       setSession(result.session);
       resetDraft();
     }
@@ -91,66 +94,86 @@ export function ProtectionCheckFlow() {
   }
 
   return (
-    <QuestionCard
-      title={model.title}
-      description={model.description}
-      helperText={model.helperText}
-      whyWeAsk={model.whyWeAsk}
-      progress={
+    <section className="ds-guided-check" aria-label="Family Protection Check guided flow">
+      <div className="ds-guided-check__orb ds-guided-check__orb--gold" aria-hidden="true" />
+      <div className="ds-guided-check__orb ds-guided-check__orb--burgundy" aria-hidden="true" />
+      <aside className="ds-guided-check__rail" aria-label="Journey guide">
+        <p className="ds-eyebrow">Guided check</p>
+        <h2>One calm step at a time.</h2>
+        <p>
+          We only ask what helps estimate your protection picture. Your answers stay in this demo
+          session until you choose a follow-up step.
+        </p>
         <ProgressTracker
           currentStep={state.progress.currentStep}
           totalSteps={state.progress.totalSteps}
           sectionLabel={state.progress.currentSectionLabel}
         />
-      }
-      actions={
-        <>
-          <Button variant="outline" onClick={goBack} disabled={state.progress.currentStep === 1}>
-            Back
-          </Button>
-          {state.currentQuestion.skippable ? (
-            <Button variant="ghost" onClick={() => submitAnswer(true)}>
-              Skip
-            </Button>
-          ) : null}
-          <Button onClick={() => submitAnswer()}>Continue</Button>
-        </>
-      }
-    >
-      <div role="group" aria-labelledby="question-title">
-        {model.options.length > 0 ? (
-          <ChoiceGrid>
-            {model.options.map((option) => (
-              <OptionButton
-                key={option.id}
-                label={option.label}
-                description={option.description}
-                selected={selectedOptionIds.includes(option.id)}
-                onClick={() => chooseOption(option.id)}
-              />
-            ))}
-          </ChoiceGrid>
-        ) : (
-          <Field
-            htmlFor={model.id}
-            label={model.required ? "Your answer" : "Your answer, optional"}
-            helperText="Use first name or state and city/LGA only where requested."
-            error={error}
-            required={model.required}
-          >
-            <Input
-              id={model.id}
-              value={textValue}
-              onChange={(event) => {
-                setTextValue(event.target.value);
-                setError(undefined);
-              }}
-            />
-          </Field>
-        )}
+      </aside>
+      <div
+        key={state.currentQuestion.id}
+        className={`ds-question-stage ds-question-stage--${direction}`}
+      >
+        <QuestionCard
+          title={model.title}
+          description={model.description}
+          helperText={model.helperText}
+          whyWeAsk={model.whyWeAsk}
+          stepLabel={`Step ${state.progress.currentStep} of ${state.progress.totalSteps}`}
+          actions={
+            <>
+              <Button
+                variant="outline"
+                onClick={goBack}
+                disabled={state.progress.currentStep === 1}
+              >
+                Back
+              </Button>
+              {state.currentQuestion.skippable ? (
+                <Button variant="ghost" onClick={() => submitAnswer(true)}>
+                  Skip
+                </Button>
+              ) : null}
+              <Button onClick={() => submitAnswer()}>Continue</Button>
+            </>
+          }
+        >
+          <div role="group" aria-labelledby="question-title">
+            {model.options.length > 0 ? (
+              <ChoiceGrid>
+                {model.options.map((option) => (
+                  <OptionButton
+                    key={option.id}
+                    label={option.label}
+                    description={option.description}
+                    selected={selectedOptionIds.includes(option.id)}
+                    onClick={() => chooseOption(option.id)}
+                  />
+                ))}
+              </ChoiceGrid>
+            ) : (
+              <Field
+                htmlFor={model.id}
+                label={model.required ? "Your answer" : "Your answer, optional"}
+                helperText="Use first name or state and city/LGA only where requested."
+                error={error}
+                required={model.required}
+              >
+                <Input
+                  id={model.id}
+                  value={textValue}
+                  onChange={(event) => {
+                    setTextValue(event.target.value);
+                    setError(undefined);
+                  }}
+                />
+              </Field>
+            )}
+          </div>
+          {error && model.options.length > 0 ? <FieldError>{error}</FieldError> : null}
+        </QuestionCard>
       </div>
-      {error && model.options.length > 0 ? <FieldError>{error}</FieldError> : null}
-    </QuestionCard>
+    </section>
   );
 }
 
