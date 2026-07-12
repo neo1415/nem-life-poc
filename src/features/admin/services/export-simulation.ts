@@ -1,5 +1,6 @@
 import { exportRowSchema } from "../schemas/export.schema";
 import type { AdminLead } from "../types/admin-lead.types";
+import { assertSafeExportText, safeAdminExportFields } from "@/lib/security/export-safety";
 
 export function buildSafeExportRows(leads: AdminLead[]) {
   return leads.map((lead) =>
@@ -26,14 +27,18 @@ export function buildSafeExportRows(leads: AdminLead[]) {
 
 export function buildSafeCsv(leads: AdminLead[]): string {
   const rows = buildSafeExportRows(leads);
-  const headers = Object.keys(rows[0] ?? { leadId: "" });
+  const headers = safeAdminExportFields.filter((field) => field in (rows[0] ?? { leadId: "" }));
   return [
     "Export simulation - no file has been sent to NEM systems.",
     headers.join(","),
     ...rows.map((row) =>
-      headers.map((header) => escapeCsv(String(row[header as keyof typeof row]))).join(","),
+      headers.map((header) => escapeCsv(safeCell(String(row[header])))).join(","),
     ),
   ].join("\n");
+}
+
+function safeCell(value: string) {
+  return assertSafeExportText(value) ? value : "[removed sensitive demo field]";
 }
 
 function escapeCsv(value: string) {

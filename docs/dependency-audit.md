@@ -288,3 +288,52 @@ No new dependencies were installed for Module 13.
 | AI SDKs                   | Could generate demo scripts/personas      | Rejected; Module 13 requires deterministic scripted demo content            | Future approved AI work          |
 
 Existing TypeScript, Zod, React, Next.js, Vitest, and Playwright cover Module 13. Module 13 verification must run `corepack pnpm audit`.
+
+## Module 14 Dependency Audit
+
+Audit date: 2026-07-12.
+
+No new dependencies were installed for Module 14.
+
+Required audit commands:
+
+- `corepack pnpm list --depth 0`: passed, 18 direct packages.
+- `corepack pnpm list --depth 1`: passed, 148 packages.
+- `corepack pnpm outdated`: completed with newer major versions available for `eslint` and `typescript`.
+- `corepack pnpm licenses list`: passed; observed OSS licenses include MIT, Apache-2.0, ISC, BSD, MPL-2.0, BlueOak, CC0/CC-BY, Python-2.0, and LGPL transitively through Sharp binaries.
+
+Direct package review:
+
+| package                     | version | type    | purpose                   | decision      | notes                                           |
+| --------------------------- | ------- | ------- | ------------------------- | ------------- | ----------------------------------------------- |
+| `next`                      | 16.2.10 | runtime | App Router framework      | keep          | Required foundation.                            |
+| `react`                     | 19.2.7  | runtime | UI runtime                | keep          | Required by Next app.                           |
+| `react-dom`                 | 19.2.7  | runtime | DOM rendering             | keep          | Required by Next app.                           |
+| `zod`                       | 4.4.3   | runtime | Runtime validation        | keep          | Central to security hardening.                  |
+| `@playwright/test`          | 1.61.1  | dev     | E2E/accessibility tests   | keep          | Required for milestone verification.            |
+| `@tailwindcss/postcss`      | 4.3.2   | dev     | Tailwind/PostCSS pipeline | keep          | Existing styling pipeline.                      |
+| `tailwindcss`               | 4.3.2   | dev     | CSS utility engine        | keep          | Existing design system foundation.              |
+| `@testing-library/react`    | 16.3.2  | dev     | Component testing         | keep          | Required by current tests.                      |
+| `@testing-library/jest-dom` | 6.9.1   | dev     | DOM matchers              | keep          | Required by current tests.                      |
+| `jsdom`                     | 29.1.1  | dev     | Browser-like unit env     | keep          | Required by Vitest DOM tests.                   |
+| `vitest`                    | 4.1.10  | dev     | Unit test runner          | keep          | Required verification tool.                     |
+| `eslint`                    | 9.39.4  | dev     | Linting                   | defer upgrade | Newer major available; defer to tooling pass.   |
+| `eslint-config-next`        | 16.2.10 | dev     | Next lint rules           | keep          | Tied to framework version.                      |
+| `prettier`                  | 3.9.5   | dev     | Formatting                | keep          | Required verification tool.                     |
+| `typescript`                | 5.9.3   | dev     | Type checking             | defer upgrade | Newer major available; defer due compiler risk. |
+| `@types/node`               | 26.1.1  | dev     | Node typings              | keep          | Required by TypeScript.                         |
+| `@types/react`              | 19.2.17 | dev     | React typings             | keep          | Required by TypeScript.                         |
+| `@types/react-dom`          | 19.2.3  | dev     | React DOM typings         | keep          | Required by TypeScript.                         |
+
+Rejected Module 14 package categories:
+
+| package/category       | reason considered               | decision                                                     |
+| ---------------------- | ------------------------------- | ------------------------------------------------------------ |
+| security scanner SDKs  | Could automate more checks      | Rejected; use existing scripts and docs for POC hardening.   |
+| auth/RBAC libraries    | Could protect admin routes      | Rejected; production auth is deferred and must not be faked. |
+| logging/SIEM SDKs      | Could create audit logging      | Rejected; production logging infrastructure is out of scope. |
+| DLP/secrets SDKs       | Could scan sensitive data       | Rejected; production DLP is deferred.                        |
+| sanitization libraries | Could sanitize unsafe HTML      | Rejected; no unsafe HTML rendering was found or introduced.  |
+| analytics/AI SDKs      | Could monitor or explain issues | Rejected; no analytics or AI is needed for Module 14.        |
+
+Module 14 uses native Next.js headers, TypeScript utilities, Zod-backed validation already in the app, and Vitest/Playwright verification.

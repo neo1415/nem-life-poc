@@ -1,35 +1,14 @@
 import type { ConfigValidationIssue } from "../types/config-admin.types";
+import { findForbiddenClaims } from "@/lib/security/copy-safety";
 
-const unsafePhrases = [
-  "guaranteed approval",
-  "final premium",
-  "nem has verified",
-  "email sent",
-  "advisor assigned",
-  "crm synced",
-  "fully protected",
-  "policy issued",
-  "claim processed",
-  "must buy",
-  "pay now",
-  "live in production",
-  "published to nem",
-  "approved by compliance",
-];
-
-const fearPhrases = ["your family is at risk", "too late", "danger", "unprotected"];
+const extraUnsafePhrases = ["pay now", "live in production", "published to nem"];
 
 export function validateCopySafety(text: string, path = "copy"): ConfigValidationIssue[] {
   const normalized = text.toLowerCase();
   const issues: ConfigValidationIssue[] = [];
-  unsafePhrases.forEach((phrase) => {
+  [...findForbiddenClaims(text), ...extraUnsafePhrases].forEach((phrase) => {
     if (normalized.includes(phrase)) {
       issues.push(issue(`copy_${slug(phrase)}`, "copy", path, `Unsafe claim: ${phrase}.`));
-    }
-  });
-  fearPhrases.forEach((phrase) => {
-    if (normalized.includes(phrase)) {
-      issues.push(issue(`fear_${slug(phrase)}`, "copy", path, `Fear-based copy: ${phrase}.`));
     }
   });
   return issues;

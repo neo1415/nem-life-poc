@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { containsProhibitedPocFieldName } from "@/lib/security/prohibited-data";
 
 export const leadIntentSchema = z.enum([
   "send_report",
@@ -24,18 +25,6 @@ export const preferredContactMethodSchema = z.enum([
 export const preferredContactTimeSchema = z.enum(["morning", "afternoon", "evening", "anytime"]);
 
 const phonePattern = /^[+()0-9\s-]{7,20}$/;
-const prohibitedKeys = new Set([
-  "bvn",
-  "nin",
-  "exactAddress",
-  "cardNumber",
-  "bankAccount",
-  "policyNumber",
-  "upload",
-  "password",
-  "salary",
-]);
-
 export const leadFormInputSchema = z
   .object({
     fullName: z.string().trim().min(2, "Enter your full name.").max(80, "Name is too long."),
@@ -47,7 +36,7 @@ export const leadFormInputSchema = z
     customerMessage: z.string().trim().max(300).optional().or(z.literal("")),
   })
   .strict()
-  .refine((input) => !Object.keys(input).some((key) => prohibitedKeys.has(key)), {
+  .refine((input) => !containsProhibitedPocFieldName(Object.keys(input)), {
     message: "Unsupported sensitive fields are not accepted.",
   });
 

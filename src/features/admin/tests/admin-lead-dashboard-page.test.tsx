@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+import { adminDemoWarning } from "@/lib/security/demo-boundary";
 import { AdminDemoBanner } from "../components/admin-demo-banner";
 import { AdminEmptyState } from "../components/admin-empty-state";
 import { ExportSimulationPanel } from "../components/export-simulation-panel";
@@ -22,7 +23,7 @@ describe("admin lead dashboard components", () => {
       </div>,
     );
 
-    expect(screen.getByText("Demo admin view - not a production CRM.")).toBeInTheDocument();
+    expect(screen.getByText(adminDemoWarning)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Lead metrics" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Lead list" })).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: "View Lead Detail" }).length).toBeGreaterThan(0);

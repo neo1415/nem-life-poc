@@ -1,6 +1,6 @@
-export function ConfigDemoBanner({
-  title = "Configuration demo - changes are for preview only and are not published to live NEM systems.",
-}) {
+import { configDemoWarning } from "@/lib/security/demo-boundary";
+
+export function ConfigDemoBanner({ title = configDemoWarning }) {
   return (
     <section className="ds-card ds-card--warning" aria-label="Configuration demo boundary">
       <p className="ds-eyebrow">Preview only</p>

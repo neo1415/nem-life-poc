@@ -4,6 +4,7 @@ import {
   latestLeadIdKey,
 } from "@/features/leads/services/lead-store";
 import { checkSessionStorageKey } from "@/features/protection-check/services/check-session-store";
+import { removeNemLifeStorageKeys } from "@/lib/security/storage-namespace";
 import { clearSeededScenarios, demoScenarioSeedKey } from "./demo-seed-service";
 
 export const resettableDemoKeys = [
@@ -18,6 +19,6 @@ export function resetNemLifeDemoData(storage: Storage | undefined) {
   if (!storage) return { status: "storage_error" as const, clearedKeys: [] as string[] };
   clearDemoLeads(storage);
   clearSeededScenarios(storage);
-  resettableDemoKeys.forEach((key) => storage.removeItem(key));
-  return { status: "success" as const, clearedKeys: resettableDemoKeys };
+  const clearedKeys = removeNemLifeStorageKeys(storage, resettableDemoKeys);
+  return { status: "success" as const, clearedKeys };
 }

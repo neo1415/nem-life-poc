@@ -1,5 +1,30 @@
 # **MODULE 14 PROMPT — Security, Privacy, Data Protection, Abuse-Case Review, Hardening, and Compliance Audit**
 
+## Implementation Notes - 2026-07-12
+
+Module 14 adds the security/privacy audit layer for the POC without adding production auth or fake production controls.
+
+Implemented hardening:
+
+- Central security utilities for prohibited POC data, forbidden copy claims, demo/admin/config boundary warnings, safe errors, storage namespace reset, export field allowlists, security headers, and route inventory.
+- Baseline Next.js headers: `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, and `X-Frame-Options`.
+- Config validation now shares central forbidden-claim and prohibited-data definitions.
+- Admin export simulation uses an allowlisted field order and redacts cells containing prohibited POC terms.
+- Demo reset uses a namespace helper and preserves unrelated browser storage.
+- Admin, config, and demo warning copy is centralized and regression-tested.
+
+Documentation added under `docs/security/`:
+
+- route inventory, data inventory, threat model, abuse cases, validation boundaries, storage/retention, export/print, admin/demo boundary, view model, config safety, security headers, error handling, logging, build/supply-chain, environment, consent/privacy notice, data protection readiness, copy safety, manual checklist, and production readiness gaps.
+
+Tests added:
+
+- prohibited data, copy safety, route inventory, storage namespace, admin/demo boundary, customer view model safety, export safety, config safety, safe errors, and security headers.
+
+Deferred by design:
+
+- production auth/RBAC, database security, production audit logs, rate limiting, secrets manager, SIEM/DLP, CRM/email/SMS vendor review, penetration testing, formal DPIA/privacy review, legal/compliance approval, and production incident response.
+
 You are building the NEM Life+ Proof of Concept.
 
 This is Module 14\.
@@ -1982,4 +2007,3 @@ Document production readiness gaps honestly.
 Make the POC safer, cleaner, more defensible, and harder to misuse.
 
 Build it cleanly, test it properly, and prepare it for Module 15\.
-

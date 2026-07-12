@@ -1,17 +1,11 @@
+import { prohibitedPocDataTerms } from "@/lib/security/prohibited-data";
+
 const prohibitedTerms = [
-  "bvn",
-  "nin",
-  "exact address",
+  ...prohibitedPocDataTerms.map((term) => term.toLowerCase()),
   "payment",
   "bank",
   "card",
-  "policy number",
-  "document upload",
-  "password",
   "salary",
-  "medical record",
-  "claim record",
-  "insurer login",
 ];
 
 export function containsProhibitedDataRequest(text: string): boolean {
