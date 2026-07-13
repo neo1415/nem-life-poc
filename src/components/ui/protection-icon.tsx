@@ -1,7 +1,19 @@
 import type { SVGProps } from "react";
 
 export type ProtectionIconName =
-  "eye" | "search" | "shield" | "people" | "heart" | "wallet" | "home" | "folder" | "map";
+  | "eye"
+  | "search"
+  | "shield"
+  | "people"
+  | "heart"
+  | "health"
+  | "wallet"
+  | "home"
+  | "folder"
+  | "map"
+  | "user"
+  | "check"
+  | "warning";
 
 export function ProtectionIcon({
   name,
@@ -35,6 +47,7 @@ export function ProtectionIcon({
     heart: (
       <path d="M20.8 8.5c0 5-8.8 10.7-8.8 10.7S3.2 13.5 3.2 8.5A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.3Z" />
     ),
+    health: <path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5Z" />,
     wallet: (
       <>
         <path d="M4 6.5h14a2 2 0 0 1 2 2v9H4a2 2 0 0 1-2-2v-11a2 2 0 0 0 2 2Z" />
@@ -57,6 +70,19 @@ export function ProtectionIcon({
       <>
         <path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2Z" />
         <path d="M9 3v16M15 5v16" />
+      </>
+    ),
+    user: (
+      <>
+        <circle cx="12" cy="8" r="3.5" />
+        <path d="M4.5 21c.7-5 3.2-7.5 7.5-7.5s6.8 2.5 7.5 7.5" />
+      </>
+    ),
+    check: <path d="m4 12.5 5 5L20 6.5" />,
+    warning: (
+      <>
+        <path d="M12 3 2.8 20h18.4Z" />
+        <path d="M12 9v4.5M12 17h.01" />
       </>
     ),
   };

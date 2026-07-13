@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ProtectionCheckFlow } from "../components/protection-check-flow";
 import { ProtectionMapRail } from "../components/protection-map-rail";
@@ -29,8 +29,9 @@ describe("protection check flow", () => {
     expect(
       screen.getByRole("heading", { name: /who are you mainly trying to protect/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText("Life").closest("li")).toHaveTextContent("In progress");
-    expect(screen.getByText("Health").closest("li")).toHaveTextContent("Upcoming");
+    const map = screen.getByRole("complementary", { name: /your protection map/i });
+    expect(within(map).getByText("Life").closest("li")).toHaveTextContent("In progress");
+    expect(within(map).getByText("Health").closest("li")).toHaveTextContent("Upcoming");
 
     fireEvent.click(screen.getByRole("button", { name: /my children/i }));
     fireEvent.click(screen.getByRole("button", { name: /continue/i }));
@@ -42,6 +43,35 @@ describe("protection check flow", () => {
     expect(
       screen.getByRole("heading", { name: /who are you mainly trying to protect/i }),
     ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /my children/i })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+  });
+
+  it("resumes an in-progress session after the flow remounts", async () => {
+    const firstRender = render(<ProtectionCheckFlow />);
+    fireEvent.click(screen.getByRole("button", { name: /skip/i }));
+    fireEvent.click(screen.getByRole("button", { name: /my spouse/i }));
+    fireEvent.click(screen.getByRole("button", { name: /continue/i }));
+    firstRender.unmount();
+
+    render(<ProtectionCheckFlow />);
+
+    await waitFor(() =>
+      expect(
+        screen.getByRole("heading", { name: /do people currently depend/i }),
+      ).toBeInTheDocument(),
+    );
+  });
+
+  it("keeps the in-progress session when the customer saves and exits", () => {
+    render(<ProtectionCheckFlow />);
+    fireEvent.click(screen.getByRole("button", { name: /skip/i }));
+    fireEvent.click(screen.getByRole("button", { name: /save & exit/i }));
+
+    expect(push).toHaveBeenCalledWith("/");
+    expect(window.sessionStorage.length).toBe(1);
   });
 
   it("blocks required questions when unanswered and accepts not-sure options", () => {

@@ -15,6 +15,7 @@ type QuestionCardProps = {
   stageTitle?: string;
   stageDescription?: string;
   icon?: ProtectionIconName;
+  questionId?: string;
   children: ReactNode;
 };
 
@@ -31,10 +32,14 @@ export function QuestionCard({
   stageTitle,
   stageDescription,
   icon = "shield",
+  questionId,
   children,
 }: QuestionCardProps) {
   return (
-    <div className={`ds-question-composition ds-question-composition--${presentation}`}>
+    <div
+      className={`ds-question-composition ds-question-composition--${presentation}`}
+      data-question-id={questionId}
+    >
       {stageTitle ? (
         <header className="ds-question-stage-heading">
           <p>{stepLabel}</p>

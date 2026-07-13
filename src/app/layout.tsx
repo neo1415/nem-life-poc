@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./serene-layouts.css";
 import "./stitch-fidelity.css";
+import "./figma-foundations-landing.css";
+import "./figma-assessment.css";
+import "./figma-assessment-responsive.css";
+import "./figma-result.css";
+import "./figma-dashboard-operations.css";
 
 export const metadata: Metadata = {
   title: "NEM Life+ POC",

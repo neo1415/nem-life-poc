@@ -85,3 +85,39 @@ Reason: "no scrolling needed" is a layout target, not permission to clip content
 Decision: retain the configured PRD sequence (family, location, existing life cover, monthly budget, health, property, readiness) even where the Stitch examples present protection areas in a different visual order. The map rail reflects the area for the current question and derives completion only from actual submitted progress.
 
 Reason: the references guide composition and interaction, but cannot silently replace branching, persistence, validation, or approved business flow. This also prevents untouched map areas from appearing complete after the first answer.
+
+## 2026-07-13: Figma Editable Screens Are Binding
+
+Decision: use Figma page `7:4` (`10 — Editable Screens`) as the binding visual source and the existing PRDs/configuration as the binding content and behavior source.
+
+Reason: the editable Figma file is now accessible through MCP and contains ten top-level desktop frames with exact dimensions and layer hierarchy.
+
+## 2026-07-13: Explicit Protection Category Map
+
+Decision: map each question by business purpose in `ASSESSMENT_FLOW_MAP.md` and typed presentation configuration rather than inferring its category from text or raw section order.
+
+Reason: the PRD sequence crosses categories, so keyword or positional inference creates false completion states and unstable sidebar behavior.
+
+## 2026-07-13: No Compound Assessment Screens
+
+Decision: retain one configured question transaction per screen, including the dependents, life-cover, health, location, and readiness follow-ups.
+
+Reason: each follow-up has its own visibility, validation, persistence, and Back behavior. The approved Figma patterns are reused on the separate follow-up screen, preserving clarity and viewport fit without duplicating engine state.
+
+## 2026-07-13: Editable Frame Geometry Supersedes Earlier Radius Assumption
+
+Decision: use the tighter 8px card and control geometry visible in Figma page `7:4` for the reconstructed customer and operational screens.
+
+Reason: the editable Figma frames are the binding screen source. The earlier Serene 24px decision remains historical context but does not override the final frame geometry.
+
+## 2026-07-13: Collapsed Answer Review Preserves Functionality
+
+Decision: keep result answer review available in a collapsed section after the designed score, plan, CTAs, and disclaimers.
+
+Reason: removing the review shortened the page but violated the requirement to preserve existing behavior. Collapsing it retains access without weakening the Figma first-viewport hierarchy.
+
+## 2026-07-13: Report Links Do Not Print Raw URLs
+
+Decision: retain recommendation CTAs in the report PDF but suppress the global raw-URL print suffix within the report document.
+
+Reason: raw query-string URLs caused overlapping print content and are not useful customer-facing report copy. The link label remains visible and the interactive HTML retains the real destination.

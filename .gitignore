@@ -7,5 +7,6 @@ out
 coverage
 playwright-report
 test-results
+tmp
 *.tsbuildinfo
 .vercel

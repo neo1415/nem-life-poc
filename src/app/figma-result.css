@@ -1,0 +1,162 @@
+/* Result frame 31:242 and recommendation frame 9:2. */
+.ds-result-surface {
+  background: var(--fig-bg);
+  min-height: 100vh;
+}
+.ds-result-topbar {
+  justify-content: space-between;
+}
+.ds-result-topbar span {
+  color: var(--fig-subtle);
+  font-size: 0.78rem;
+}
+.ds-result-shell {
+  grid-template-columns: minmax(0, 1fr) 286px;
+}
+.ds-result-page {
+  gap: 40px;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 36px 56px 64px;
+  width: 100%;
+}
+.ds-result-header {
+  gap: 8px;
+  text-align: center;
+}
+.ds-result-header__score {
+  background: #fbe2e2;
+  border-radius: 999px;
+  color: var(--fig-primary);
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin: 0 auto 6px;
+  padding: 7px 14px;
+}
+.ds-result-header h1 {
+  font-size: 2.35rem;
+  margin: 0;
+}
+.ds-result-header > p:not(.ds-result-header__score) {
+  color: var(--fig-subtle);
+  margin-inline: auto;
+  max-width: 660px;
+}
+.ds-result-header__estimate {
+  font-size: 0.75rem;
+}
+.ds-result-score {
+  background: var(--fig-surface);
+  border: 1px solid #f0dada;
+  border-radius: 8px;
+  gap: 28px;
+  padding: 28px;
+}
+.ds-result-score__summary {
+  align-items: center;
+  display: grid;
+  gap: 8px 24px;
+  grid-template-columns: 180px 1fr;
+  text-align: left;
+}
+.ds-result-score__summary .ds-score-ring {
+  grid-row: 1 / 3;
+}
+.ds-result-score__summary h2 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+.ds-result-score__summary p {
+  color: var(--fig-subtle);
+  margin: 0;
+}
+.ds-result-score__panels {
+  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+}
+.ds-result-area {
+  border: 1px solid #e5d1d1;
+  border-radius: 8px;
+  padding: 18px;
+}
+.ds-result-area--gap {
+  background: #fff2f1;
+}
+.ds-result-area li > span {
+  background: #ffe1e1;
+  color: var(--fig-primary);
+}
+.ds-result-plan-layout {
+  align-items: start;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+.ds-result-plan-layout__main {
+  gap: 34px;
+}
+.ds-plan-list {
+  gap: 18px;
+}
+.ds-plan-card {
+  border: 1px solid #eedada;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgb(87 0 19 / 0.04);
+  grid-template-columns: 48px 1fr;
+  padding: 22px;
+}
+.ds-plan-card__icon {
+  background: #ffe8e8;
+  border-radius: 50%;
+  color: var(--fig-primary);
+  height: 42px;
+  width: 42px;
+}
+.ds-plan-card__why {
+  background: #fff7f6;
+  border: 1px solid #f0dddd;
+  border-radius: 6px;
+  padding: 12px;
+}
+.ds-budget-panel {
+  background: #fffdfd;
+  border: 1px solid #e4cccc;
+  border-radius: 8px;
+  padding: 20px;
+  position: sticky;
+  top: 24px;
+}
+.ds-budget-panel .ds-section-header h2 {
+  font-size: 1.15rem;
+}
+.ds-result-map {
+  background: #fff4f3;
+  border-left: 1px solid #f0dada;
+  min-height: calc(100vh - 72px);
+  padding: 30px 22px;
+  position: sticky;
+  top: 0;
+}
+.ds-result-map li.is-review {
+  background: #fbe3e3;
+  border-color: var(--fig-gold);
+}
+.ds-result-restart {
+  display: flex;
+  justify-content: center;
+}
+.ds-result-answer-review {
+  border-top: 1px solid #ead7d7;
+  padding-top: 18px;
+}
+.ds-result-answer-review summary {
+  color: var(--fig-primary);
+  cursor: pointer;
+}
+.ds-result-answer-review summary strong {
+  font-size: 0.95rem;
+  margin-left: 8px;
+}
+.ds-result-answer-review[open] summary {
+  margin-bottom: 20px;
+}

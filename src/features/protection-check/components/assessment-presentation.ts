@@ -1,74 +1,82 @@
 import type { ProtectionIconName } from "@/components/ui/protection-icon";
 
-export type Presentation =
-  "about" | "family" | "life" | "health" | "wealth" | "property" | "readiness";
+export const protectionCategories = ["Life", "Health", "Wealth", "Property", "Family"] as const;
+export type ProtectionCategory = (typeof protectionCategories)[number];
+export type Presentation = "life" | "health" | "wealth" | "property" | "family";
 
 export const presentationMetadata: Record<
   Presentation,
   {
-    stageTitle?: string;
-    stageDescription?: string;
+    stageTitle: string;
+    stageDescription: string;
     icon: ProtectionIconName;
     optionIcon: ProtectionIconName;
   }
 > = {
-  about: {
-    stageTitle: "Let's Get Started",
-    stageDescription: "A small detail to make your protection check feel personal.",
-    icon: "shield",
-    optionIcon: "shield",
-  },
-  family: {
+  life: {
     stageTitle: "Understanding Your Circle",
     stageDescription:
       "To build a safety net that truly protects, we need to know who relies on you.",
-    icon: "people",
+    icon: "heart",
     optionIcon: "people",
   },
-  life: { icon: "heart", optionIcon: "shield" },
   health: {
     stageTitle: "Family Health Cover",
     stageDescription: "Let's ensure everyone in your household is protected.",
-    icon: "shield",
-    optionIcon: "people",
+    icon: "health",
+    optionIcon: "health",
   },
-  wealth: { icon: "wallet", optionIcon: "wallet" },
+  wealth: {
+    stageTitle: "Protection Budget",
+    stageDescription: "Choose a sustainable range that feels comfortable for your household.",
+    icon: "wallet",
+    optionIcon: "wallet",
+  },
   property: {
     stageTitle: "Geographic Context",
     stageDescription:
-      "Help us understand your operational environment to accurately calibrate your Property Protection matrix.",
+      "Help us understand your environment so property and business guidance stays relevant.",
     icon: "home",
     optionIcon: "home",
   },
-  readiness: {
+  family: {
     stageTitle: "Family Readiness",
     stageDescription:
       "A few practical checks can make difficult moments easier for the people who rely on you.",
-    icon: "folder",
+    icon: "people",
     optionIcon: "folder",
   },
 };
 
 export function presentationForQuestion(questionId: string): Presentation {
-  if (questionId.includes("dependent") || questionId.includes("protect")) return "family";
-  if (questionId.includes("life_cover") || questionId.includes("cover_amount")) return "life";
-  if (questionId.includes("health") || questionId.includes("still_need_cover")) return "health";
-  if (questionId.includes("budget") || questionId.includes("monthly")) return "wealth";
-  if (
-    questionId.includes("location") ||
-    questionId.includes("risk") ||
-    questionId.includes("property")
-  )
-    return "property";
-  if (questionId.includes("beneficiary") || questionId.includes("document")) return "readiness";
-  return "about";
+  return categoryForQuestion(questionId).toLowerCase() as Presentation;
 }
 
 export function areaIndexForQuestion(questionId: string) {
-  const presentation = presentationForQuestion(questionId);
-  if (["about", "family", "life"].includes(presentation)) return 0;
-  if (presentation === "health") return 1;
-  if (presentation === "wealth") return 2;
-  if (presentation === "property") return 3;
-  return 4;
+  return protectionCategories.indexOf(categoryForQuestion(questionId));
 }
+
+export function categoryForQuestion(questionId: string): ProtectionCategory {
+  return questionCategoryMap[questionId] ?? "Family";
+}
+
+const questionCategoryMap: Record<string, ProtectionCategory> = {
+  soft_personalization: "Life",
+  protection_intent: "Life",
+  financial_dependents: "Life",
+  dependent_count: "Life",
+  existing_life_cover: "Life",
+  life_cover_range: "Life",
+  health_protection: "Health",
+  health_cover_gaps: "Health",
+  monthly_protection_comfort: "Wealth",
+  location: "Property",
+  location_risk_context: "Property",
+  property_business_needs: "Property",
+  existing_property_business_insurance: "Property",
+  professional_business_risk: "Property",
+  beneficiary_readiness: "Family",
+  document_readiness: "Family",
+  external_insurance_elsewhere: "Family",
+  external_insurance_categories: "Family",
+};

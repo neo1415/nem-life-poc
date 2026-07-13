@@ -1,0 +1,78 @@
+@media (min-width: 921px) and (max-height: 780px) {
+  .ds-question-stage {
+    padding-block: 14px;
+  }
+  .ds-question-stage-heading {
+    margin-bottom: 10px;
+  }
+  .ds-question-stage-heading h1 {
+    font-size: 1.9rem;
+  }
+  .ds-question-card {
+    gap: 9px;
+    padding: 16px 24px;
+  }
+  .ds-question-card h2 {
+    font-size: 1.65rem;
+  }
+  .ds-option {
+    min-height: 58px;
+    padding-block: 7px;
+  }
+  .ds-dependent-counter {
+    gap: 8px;
+    padding: 12px;
+  }
+  .ds-why {
+    padding-block: 6px;
+  }
+}
+
+@media (max-width: 920px) {
+  .ds-topbar {
+    height: 64px;
+    padding: 0 20px;
+  }
+  .ds-brand {
+    font-size: 1.35rem;
+  }
+  .ds-guided-check {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 64px);
+  }
+  .ds-protection-map {
+    min-height: auto;
+    order: -1;
+    padding: 10px 16px;
+    position: static;
+  }
+  .ds-question-stage {
+    align-items: flex-start;
+    padding: 24px 18px 40px;
+  }
+  .ds-location-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .ds-landing-hero {
+    padding-top: 3rem;
+  }
+  .ds-landing h1 {
+    font-size: 2.35rem;
+  }
+  .ds-question-stage-heading {
+    text-align: left;
+  }
+  .ds-question-stage-heading h1 {
+    font-size: 1.85rem;
+  }
+  .ds-question-card {
+    padding: 20px 16px;
+  }
+  .ds-choice-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

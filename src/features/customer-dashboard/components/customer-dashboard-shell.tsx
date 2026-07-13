@@ -28,7 +28,6 @@ export function CustomerDashboardShell({
       <div className="ds-customer-dashboard__layout">
         <div className="ds-customer-dashboard__main">
           <header className="ds-customer-dashboard__welcome">
-            <p className="ds-eyebrow">Protection ecosystem</p>
             <h2 className="ds-visually-hidden">
               {demoTitle ?? "Your NEM Life+ dashboard preview"}
             </h2>
@@ -38,8 +37,8 @@ export function CustomerDashboardShell({
             </h1>
             {demoTitle ? <p className="ds-demo-context">{demoTitle}</p> : null}
             <p>
-              Your family&apos;s protection ecosystem is taking shape. Review your current picture
-              and explore the next milestones in your setup.
+              Your family&apos;s protection ecosystem is stabilizing. Review your current coverage
+              and explore future verified milestones to complete your setup.
             </p>
             {dashboard.customer.maskedEmail || dashboard.customer.maskedPhone ? (
               <p className="ds-muted">

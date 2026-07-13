@@ -1,6 +1,8 @@
-import { ProtectionIcon } from "@/components/ui/protection-icon";
+import { ProtectionIcon, type ProtectionIconName } from "@/components/ui/protection-icon";
+import { protectionCategories } from "./assessment-presentation";
 
-export const protectionAreas = ["Life", "Health", "Wealth", "Property", "Family"] as const;
+export const protectionAreas = protectionCategories;
+const categoryIcons: ProtectionIconName[] = ["heart", "health", "wallet", "home", "people"];
 
 export function ProtectionMapRail({
   activeIndex,
@@ -34,7 +36,11 @@ export function ProtectionMapRail({
                 : "upcoming";
           return (
             <li className={`ds-protection-map__item ds-protection-map__item--${status}`} key={area}>
-              <span className="ds-protection-map__dot" aria-hidden="true" />
+              <span className="ds-protection-map__dot" aria-hidden="true">
+                <ProtectionIcon
+                  name={status === "completed" ? "check" : categoryIcons[areaIndex]!}
+                />
+              </span>
               <span>
                 <strong>{area}</strong>
                 <small>

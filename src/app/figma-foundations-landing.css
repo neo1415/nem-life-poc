@@ -1,0 +1,87 @@
+:root {
+  --fig-bg: #fff8f7;
+  --fig-surface: #ffffff;
+  --fig-soft: #fff0f0;
+  --fig-muted: #fbe2e2;
+  --fig-text: #251819;
+  --fig-subtle: #584141;
+  --fig-primary: #570013;
+  --fig-strong: #800020;
+  --fig-border: #e0bfbf;
+  --fig-gold: #735c00;
+  --fig-gold-soft: #fed65b;
+  --fig-success: #2e8b67;
+}
+
+body {
+  background: var(--fig-bg);
+  color: var(--fig-text);
+}
+.ds-brand {
+  color: var(--fig-primary);
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+.ds-topbar {
+  background: rgb(255 248 247 / 0.96);
+  border-bottom: 1px solid #f1dede;
+  height: 72px;
+  padding: 0 4.5rem;
+}
+
+/* Landing Page, frame 31:134. */
+.ds-landing {
+  background: var(--fig-bg);
+}
+.ds-landing .ds-topbar {
+  height: 72px;
+  min-height: 72px;
+}
+.ds-landing .ds-topbar__link {
+  color: var(--fig-text);
+  font-size: 0.8rem;
+}
+.ds-landing-hero {
+  padding: 4.25rem 1.5rem 5.25rem;
+}
+.ds-landing-hero__content {
+  max-width: 900px;
+}
+.ds-landing h1 {
+  font-size: 3.55rem;
+  line-height: 1.08;
+  max-width: 850px;
+}
+.ds-landing .ds-lede {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 640px;
+}
+.ds-landing .button-link {
+  background: var(--fig-strong);
+  border-color: var(--fig-strong);
+  border-radius: 8px;
+  min-height: 52px;
+}
+.ds-landing-benefits {
+  gap: 24px;
+  margin-top: -2.75rem;
+  max-width: 1080px;
+}
+.ds-benefit-card {
+  background: #fffdfd;
+  border: 1px solid #f2dede;
+  border-radius: 8px;
+  min-height: 246px;
+  padding: 28px;
+}
+.ds-benefit-card__icon {
+  background: #ffe7e7;
+  color: var(--fig-primary);
+}
+.ds-how-section {
+  padding-top: 4.25rem;
+}
+.ds-how-steps {
+  max-width: 1080px;
+}
