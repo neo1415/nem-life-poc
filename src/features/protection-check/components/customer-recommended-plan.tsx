@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import type { CustomerResultViewModel } from "../types/customer-result.types";
+import { ProtectionIcon } from "@/components/ui/protection-icon";
 
 export function CustomerRecommendedPlan({
   result,
@@ -21,7 +22,7 @@ export function CustomerRecommendedPlan({
         {result.recommendedProducts.map((product, index) => (
           <Card key={product.id} className="ds-plan-card">
             <span className="ds-plan-card__icon" aria-hidden="true">
-              {index + 1}
+              <ProtectionIcon name={index === 0 ? "heart" : index === 1 ? "shield" : "home"} />
             </span>
             <div className="ds-plan-card__content">
               <div className="ds-card__topline">

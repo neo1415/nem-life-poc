@@ -1,11 +1,12 @@
 import { Card } from "@/components/ui/card";
 import type { ProtectionEngineSummary } from "../types/customer-dashboard.types";
+import { ProtectionIcon, type ProtectionIconName } from "@/components/ui/protection-icon";
 
 export function ProtectionEngineCard({ engine }: { engine: ProtectionEngineSummary }) {
   return (
     <Card className={`ds-engine-card ds-engine-card--${engine.id}`}>
       <span className="ds-engine-card__icon" aria-hidden="true">
-        {engine.label.slice(0, 1)}
+        <ProtectionIcon name={iconForEngine(engine.id)} />
       </span>
       <div className="ds-card__topline">
         <h3>{engine.label}</h3>
@@ -22,6 +23,14 @@ export function ProtectionEngineCard({ engine }: { engine: ProtectionEngineSumma
       </p>
     </Card>
   );
+}
+
+function iconForEngine(engineId: string): ProtectionIconName {
+  if (engineId.includes("life")) return "heart";
+  if (engineId.includes("health")) return "shield";
+  if (engineId.includes("wealth")) return "wallet";
+  if (engineId.includes("property")) return "home";
+  return "people";
 }
 
 function statusLabel(status: ProtectionEngineSummary["status"]) {

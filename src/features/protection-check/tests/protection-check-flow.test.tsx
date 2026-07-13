@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ProtectionCheckFlow } from "../components/protection-check-flow";
+import { ProtectionMapRail } from "../components/protection-map-rail";
 
 const push = vi.fn();
 
@@ -28,6 +29,8 @@ describe("protection check flow", () => {
     expect(
       screen.getByRole("heading", { name: /who are you mainly trying to protect/i }),
     ).toBeInTheDocument();
+    expect(screen.getByText("Life").closest("li")).toHaveTextContent("In progress");
+    expect(screen.getByText("Health").closest("li")).toHaveTextContent("Upcoming");
 
     fireEvent.click(screen.getByRole("button", { name: /my children/i }));
     fireEvent.click(screen.getByRole("button", { name: /continue/i }));
@@ -63,5 +66,21 @@ describe("protection check flow", () => {
     expect(screen.queryByText(/\d+\/100/)).not.toBeInTheDocument();
     expect(screen.queryByText(/recommended plan/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/submit lead/i)).not.toBeInTheDocument();
+  });
+
+  it("does not infer completed areas from their visual position", () => {
+    render(
+      <ProtectionMapRail
+        activeIndex={3}
+        completedAreaIndexes={[]}
+        currentStep={5}
+        totalSteps={15}
+      />,
+    );
+
+    expect(screen.getByText("Life").closest("li")).toHaveTextContent("Upcoming");
+    expect(screen.getByText("Health").closest("li")).toHaveTextContent("Upcoming");
+    expect(screen.getByText("Wealth").closest("li")).toHaveTextContent("Upcoming");
+    expect(screen.getByText("Property").closest("li")).toHaveTextContent("In progress");
   });
 });

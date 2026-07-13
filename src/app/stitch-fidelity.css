@@ -1,0 +1,557 @@
+/* Final screen-level translation of the approved Stitch references. */
+.ds-landing {
+  background: #fff9f8;
+}
+.ds-landing .ds-topbar {
+  position: relative;
+  min-height: 74px;
+  padding-inline: clamp(1.5rem, 6vw, 4.5rem);
+}
+.ds-landing .ds-topbar__link {
+  font-weight: 600;
+}
+.ds-landing-hero {
+  min-height: 0;
+  padding: 3.25rem 1.5rem 5.5rem;
+}
+.ds-landing-hero::before {
+  inset: auto 10% 0;
+  min-height: 18rem;
+  opacity: 0.32;
+}
+.ds-landing-hero__content {
+  max-width: 48rem;
+}
+.ds-landing h1 {
+  font-size: clamp(2.55rem, 5vw, 3.8rem);
+  line-height: 1.08;
+  max-width: 15ch;
+}
+.ds-landing .ds-lede {
+  color: #66555b;
+  font-size: 1.08rem;
+  max-width: 43rem;
+}
+.ds-landing-actions {
+  margin-block: 1.5rem 0.9rem;
+}
+.ds-landing .button-link {
+  box-shadow: 0 0.5rem 1.25rem rgb(128 0 32 / 0.18);
+  padding: 0.85rem 1.5rem;
+}
+.ds-trust-note {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.ds-landing-benefits {
+  gap: 1.25rem;
+  margin: -2.5rem auto 0;
+  max-width: 64rem;
+  padding: 0 1.5rem;
+}
+.ds-benefit-card {
+  min-height: 15rem;
+  padding: 1.75rem;
+}
+.ds-benefit-card__icon {
+  height: 2.75rem;
+  width: 2.75rem;
+}
+.ds-benefit-card h2 {
+  font-size: 1.45rem;
+  line-height: 1.2;
+  margin: 1.25rem 0 0.5rem;
+}
+.ds-benefit-card p {
+  color: #67565d;
+  margin: 0;
+}
+.ds-how-section {
+  padding: 4rem 1.5rem 3rem;
+}
+.ds-how-section .ds-section-header {
+  margin: 0 auto 1.75rem;
+  text-align: center;
+}
+.ds-how-section h2 {
+  font-size: 2.45rem;
+  margin: 0;
+}
+.ds-how-steps {
+  gap: 2.5rem;
+  max-width: 64rem;
+  padding: 0;
+  position: relative;
+}
+.ds-how-steps::before {
+  background: #e0bfbf;
+  content: "";
+  height: 1px;
+  left: 16%;
+  position: absolute;
+  right: 16%;
+  top: 1.5rem;
+}
+.ds-how-step {
+  background: transparent;
+  border: 0;
+  min-height: 0;
+  padding: 0;
+  position: relative;
+  text-align: center;
+}
+.ds-step-node {
+  background: #ffe8e8;
+  border-color: #dcb2b8;
+  height: 3rem;
+  margin: 0 0 1.25rem;
+  position: relative;
+  width: 3rem;
+}
+.ds-how-step h3 {
+  font-size: 0.95rem;
+  margin: 0 0 0.55rem;
+}
+.ds-how-step p {
+  font-size: 0.9rem;
+}
+.ds-landing-footer {
+  border-top: 1px solid rgb(128 0 32 / 0.08);
+  color: #77666c;
+  padding: 1.5rem;
+  text-align: center;
+}
+.ds-landing-footer p {
+  margin: 0 0 0.5rem;
+}
+.ds-landing-footer nav {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+.ds-page--guided {
+  min-height: 100vh;
+  overflow: visible;
+}
+@media (min-width: 921px) {
+  .ds-page--guided {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+  .ds-page--guided .ds-guided-check {
+    height: auto;
+    min-height: calc(100vh - 72px);
+  }
+}
+.ds-check-header {
+  position: sticky;
+}
+.ds-check-header .ds-brand {
+  font-size: 1.5rem;
+}
+.ds-check-header .button-link {
+  min-height: 42px;
+}
+.ds-guided-check {
+  align-items: start;
+  gap: 0;
+  grid-template-columns: minmax(0, 1fr) 18rem;
+  min-height: calc(100vh - 72px);
+  overflow: visible;
+  padding: 0 0 0 clamp(1.25rem, 5vw, 5rem);
+}
+.ds-question-stage {
+  min-width: 0;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4rem) 3.5rem 0;
+}
+.ds-question-composition {
+  margin-inline: auto;
+  max-width: 52rem;
+  width: 100%;
+}
+.ds-question-stage-heading {
+  margin: 0 auto 1.75rem;
+  max-width: 48rem;
+  text-align: center;
+}
+.ds-question-stage-heading p {
+  color: #806600;
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+.ds-question-stage-heading h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.08;
+  margin: 0;
+}
+.ds-question-stage-heading span {
+  color: #67565d;
+  display: block;
+  margin-top: 0.75rem;
+}
+.ds-question-card {
+  backdrop-filter: none;
+  background: rgb(255 255 255 / 0.9);
+  border-radius: 0.8rem;
+  gap: 1.25rem;
+  margin: 0;
+  min-height: 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+.ds-question-card h2 {
+  font-size: clamp(1.85rem, 3.5vw, 2.7rem);
+  line-height: 1.08;
+  max-width: 21ch;
+}
+.ds-question-card__identity {
+  gap: 0.7rem;
+}
+.ds-question-card__icon {
+  height: 2.8rem;
+  width: 2.8rem;
+}
+.ds-question-card__icon svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+.ds-question-card__section {
+  letter-spacing: 0;
+}
+.ds-choice-grid {
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ds-option {
+  align-items: center;
+  background: #fffafa;
+  border-radius: 0.55rem;
+  min-height: 5rem;
+  padding: 0.85rem 3rem 0.85rem 1rem;
+}
+.ds-option > [aria-hidden="true"] {
+  align-items: center;
+  background: #ffe8e8;
+  border-radius: 50%;
+  color: #70001c;
+  display: inline-flex;
+  flex: 0 0 2.35rem;
+  height: 2.35rem;
+  justify-content: center;
+}
+.ds-option > [aria-hidden="true"] svg {
+  height: 1.15rem;
+  width: 1.15rem;
+}
+.ds-option[class*="ds-option--"]::before {
+  display: none;
+}
+.ds-option strong {
+  line-height: 1.25;
+}
+.ds-option--selected {
+  background: #fff5f4;
+}
+.ds-why {
+  font-size: 0.9rem;
+}
+.ds-why summary {
+  color: #70001c;
+}
+.ds-action-row {
+  border-top: 1px solid rgb(128 0 32 / 0.09);
+  margin-top: 0.25rem;
+  padding-top: 1rem;
+}
+.ds-action-row button:last-child {
+  margin-left: auto;
+}
+.ds-progress__meta {
+  font-size: 0.82rem;
+}
+.ds-progress__track {
+  display: none;
+}
+.ds-progress__segment {
+  height: 0.28rem;
+}
+.ds-progress__segment--complete {
+  background: #8c7405;
+}
+.ds-protection-map {
+  align-self: stretch;
+  background: #fff6f5;
+  border-left: 1px solid rgb(128 0 32 / 0.1);
+  gap: 1.5rem;
+  margin: 0;
+  max-height: none;
+  min-height: calc(100vh - 72px);
+  overflow: visible;
+  padding: 2rem 1.35rem;
+  position: sticky;
+  top: 72px;
+}
+.ds-protection-map__mark {
+  align-items: center;
+  background: #ffe8e8;
+  border-radius: 0.7rem;
+  color: #70001c;
+  display: flex;
+  flex: 0 0 3rem;
+  justify-content: center;
+}
+.ds-protection-map__item {
+  border-left: 0;
+  border-right: 3px solid transparent;
+  border-radius: 0.55rem;
+  min-height: 3.4rem;
+  padding: 0.5rem 0.65rem;
+}
+.ds-protection-map__item small {
+  font-size: 0.75rem;
+}
+.ds-protection-map__item--current {
+  background: #ffe7e5;
+  border-left: 0;
+  border-right-color: #8c7405;
+}
+.ds-protection-map__footer {
+  text-align: left;
+}
+
+.ds-question-card--life .ds-choice-grid,
+.ds-question-card--health .ds-choice-grid,
+.ds-question-card--wealth .ds-choice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ds-question-card--property .ds-choice-grid,
+.ds-question-card--readiness .ds-choice-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.ds-question-card--property h2 {
+  max-width: 28ch;
+}
+.ds-question-card--wealth h2 {
+  max-width: 22ch;
+}
+
+/* Customer dashboard and result surfaces use the same quiet, compact Stitch system. */
+.ds-customer-dashboard__layout {
+  grid-template-columns: minmax(0, 1fr) 18rem;
+}
+.ds-customer-dashboard__main {
+  gap: 3rem;
+  padding: 3rem clamp(1.5rem, 5vw, 4rem);
+}
+.ds-customer-dashboard__welcome h1 {
+  font-size: clamp(2.5rem, 4.5vw, 3.6rem);
+}
+.ds-engine-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.ds-engine-card {
+  gap: 0.75rem;
+  min-height: 18rem;
+  padding: 1.4rem;
+}
+.ds-engine-card__icon {
+  background: #ffe8e8;
+  color: #70001c;
+}
+.ds-engine-card__icon svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+.ds-dashboard-map {
+  background: #fff6f5;
+  min-height: calc(100vh - 72px);
+  padding: 2rem 1.35rem;
+  top: 72px;
+}
+.ds-result-shell {
+  grid-template-columns: minmax(0, 1fr) 18rem;
+}
+.ds-result-page {
+  gap: 3rem;
+  padding: 3rem clamp(1.5rem, 5vw, 4rem);
+}
+.ds-result-header h1 {
+  font-size: clamp(2.5rem, 4.5vw, 3.6rem);
+}
+.ds-result-map {
+  background: #fff6f5;
+  padding: 2rem 1.35rem;
+}
+.ds-plan-card__icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+.ds-plan-card__icon svg {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+@media (min-width: 921px) and (max-height: 950px) {
+  .ds-question-stage {
+    padding-block: 1.35rem 2rem;
+  }
+  .ds-question-stage-heading {
+    margin-bottom: 1rem;
+  }
+  .ds-question-stage-heading p {
+    margin-bottom: 0.55rem;
+  }
+  .ds-question-stage-heading h1 {
+    font-size: 2.35rem;
+  }
+  .ds-question-card {
+    gap: 0.8rem;
+    padding: 1.35rem 2rem;
+  }
+  .ds-question-card h2 {
+    font-size: 2.2rem;
+  }
+  .ds-option {
+    min-height: 4.15rem;
+    padding-block: 0.6rem;
+  }
+  .ds-choice-grid {
+    gap: 0.55rem;
+  }
+  .ds-action-row {
+    padding-top: 0.7rem;
+  }
+}
+
+@media (min-width: 921px) and (max-height: 780px) {
+  .ds-question-stage {
+    padding-block: 0.65rem 0.8rem;
+  }
+  .ds-question-stage-heading {
+    margin-bottom: 0.45rem;
+  }
+  .ds-question-stage-heading p {
+    font-size: 0.72rem;
+    margin-bottom: 0.2rem;
+  }
+  .ds-question-stage-heading h1 {
+    font-size: 1.75rem;
+  }
+  .ds-question-stage-heading span {
+    font-size: 0.82rem;
+    margin-top: 0.15rem;
+  }
+  .ds-question-card {
+    gap: 0.42rem;
+    padding: 0.75rem 1rem;
+  }
+  .ds-question-card h2 {
+    font-size: 1.65rem;
+    line-height: 1.08;
+  }
+  .ds-question-card__icon {
+    height: 2rem;
+    width: 2rem;
+  }
+  .ds-progress {
+    gap: 0.15rem;
+  }
+  .ds-progress__meta {
+    font-size: 0.72rem;
+  }
+  .ds-choice-grid {
+    gap: 0.35rem;
+  }
+  .ds-option {
+    min-height: 3rem;
+    padding: 0.35rem 2.5rem 0.35rem 0.65rem;
+  }
+  .ds-option > [aria-hidden="true"] {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+  .ds-why {
+    padding: 0.45rem 0.65rem;
+  }
+  .ds-action-row {
+    padding-top: 0.4rem;
+  }
+}
+
+@media (max-width: 920px) {
+  .ds-guided-check {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+  .ds-question-stage {
+    padding: 1.25rem;
+  }
+  .ds-protection-map {
+    min-height: 0;
+    order: -1;
+    padding: 0.8rem 1rem;
+    position: static;
+  }
+  .ds-protection-map__header,
+  .ds-protection-map__footer {
+    display: none;
+  }
+  .ds-protection-map__list {
+    gap: 0.4rem;
+  }
+  .ds-protection-map__item {
+    min-width: 7.5rem;
+  }
+}
+@media (max-width: 640px) {
+  .ds-check-header__note {
+    display: none;
+  }
+  .ds-check-header .button-link {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.75rem;
+  }
+  .ds-landing-hero {
+    padding-block: 2.75rem 4.5rem;
+  }
+  .ds-landing h1 {
+    font-size: 2.35rem;
+  }
+  .ds-landing-benefits,
+  .ds-how-steps {
+    grid-template-columns: 1fr;
+  }
+  .ds-how-steps::before {
+    display: none;
+  }
+  .ds-benefit-card {
+    min-height: 0;
+  }
+  .ds-question-stage-heading {
+    text-align: left;
+  }
+  .ds-question-stage-heading h1 {
+    font-size: 2rem;
+  }
+  .ds-question-card {
+    padding: 1.25rem;
+  }
+  .ds-question-card h2 {
+    font-size: 1.85rem;
+  }
+  .ds-choice-grid,
+  .ds-question-card--life .ds-choice-grid,
+  .ds-question-card--health .ds-choice-grid,
+  .ds-question-card--wealth .ds-choice-grid,
+  .ds-question-card--property .ds-choice-grid,
+  .ds-question-card--readiness .ds-choice-grid {
+    grid-template-columns: 1fr;
+  }
+  .ds-option {
+    min-height: 4.5rem;
+  }
+}

@@ -14,6 +14,7 @@ import { CustomerResultDisclaimers } from "./customer-result-disclaimers";
 import { CustomerResultHeader } from "./customer-result-header";
 import { InvalidResultState, MissingResultState } from "./customer-result-states";
 import { CustomerScoreSection } from "./customer-score-section";
+import { ProtectionIcon } from "@/components/ui/protection-icon";
 
 export function CustomerResultPage({ demoResult }: { demoResult?: CustomerResultViewModel }) {
   const [ctaMessage, setCtaMessage] = useState<string | null>(null);
@@ -94,7 +95,9 @@ export function CustomerResultPage({ demoResult }: { demoResult?: CustomerResult
       </div>
       <aside className="ds-result-map" aria-label="Your protection map">
         <div className="ds-protection-map__header">
-          <span className="ds-protection-map__mark" aria-hidden="true" />
+          <span className="ds-protection-map__mark">
+            <ProtectionIcon name="map" />
+          </span>
           <div>
             <h2>Your Protection</h2>
             <p>Evolving Map</p>

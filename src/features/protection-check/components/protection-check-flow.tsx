@@ -2,12 +2,13 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Field, FieldError } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 import { ChoiceGrid, OptionButton } from "@/components/quiz/option-button";
 import { ProgressTracker } from "@/components/quiz/progress-tracker";
 import { QuestionCard } from "@/components/quiz/question-card";
+import { Button } from "@/components/ui/button";
+import { Field, FieldError } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { ProtectionIcon } from "@/components/ui/protection-icon";
 import { defaultQuestionCatalog } from "../config/questions";
 import { saveCheckSession } from "../services/check-session-store";
 import {
@@ -17,9 +18,16 @@ import {
   moveToPreviousQuestion,
   validateQuestionCatalog,
 } from "../services/question-engine";
+import { getVisibleQuestions } from "../services/question-navigation";
 import { toQuestionRenderModel } from "../services/question-render-adapter";
 import type { RawAnswerPayload } from "../types/answer.types";
 import type { Question } from "../types/question.types";
+import {
+  areaIndexForQuestion,
+  presentationForQuestion,
+  presentationMetadata,
+} from "./assessment-presentation";
+import { ProtectionMapRail, protectionAreas } from "./protection-map-rail";
 
 export function ProtectionCheckFlow() {
   const router = useRouter();
@@ -34,11 +42,8 @@ export function ProtectionCheckFlow() {
   const state = useMemo(() => getEngineState(defaultQuestionCatalog, session), [session]);
 
   if (config.status !== "success") {
-    return (
-      <QuestionError message="We could not load the protection check right now. Please try again later." />
-    );
+    return <QuestionError message="We could not load the protection check right now." />;
   }
-
   if (!state.currentQuestion) {
     return (
       <QuestionError message="We could not find the next question. Please restart the check." />
@@ -47,6 +52,21 @@ export function ProtectionCheckFlow() {
 
   const model = toQuestionRenderModel(state.currentQuestion);
   const presentation = presentationForQuestion(state.currentQuestion.id);
+  const presentationMeta = presentationMetadata[presentation];
+  const activeAreaIndex = areaIndexForQuestion(state.currentQuestion.id);
+  const visibleQuestions = getVisibleQuestions(defaultQuestionCatalog, session.answers);
+  const completedAreaIndexes = protectionAreas
+    .map((_, areaIndex) => areaIndex)
+    .filter((areaIndex) => {
+      const questions = visibleQuestions.filter(
+        (question) => areaIndexForQuestion(question.id) === areaIndex,
+      );
+      return (
+        areaIndex !== activeAreaIndex &&
+        questions.length > 0 &&
+        questions.every((question) => Boolean(session.answers[question.id]))
+      );
+    });
 
   function resetDraft() {
     setSelectedOptionIds([]);
@@ -58,18 +78,15 @@ export function ProtectionCheckFlow() {
     if (!state.currentQuestion) return;
     const payload = buildPayload(state.currentQuestion, selectedOptionIds, textValue, skipped);
     const result = answerCurrentQuestion(defaultQuestionCatalog, session, payload);
-
     if (result.status !== "success") {
       setError(result.message);
       return;
     }
-
     saveCheckSession(result.session, window.sessionStorage);
     if (result.session.status === "completed") {
       router.push("/protection-check/complete");
       return;
     }
-
     setDirection("forward");
     setSession(result.session);
     resetDraft();
@@ -106,12 +123,17 @@ export function ProtectionCheckFlow() {
               currentStep={state.progress.currentStep}
               totalSteps={state.progress.totalSteps}
               sectionLabel={state.progress.currentSectionLabel}
+              visualStep={activeAreaIndex + 1}
+              visualTotal={protectionAreas.length}
             />
           }
           title={model.title}
           description={model.description}
           helperText={model.helperText}
           presentation={presentation}
+          stageTitle={presentationMeta.stageTitle}
+          stageDescription={presentationMeta.stageDescription}
+          icon={presentationMeta.icon}
           sectionLabel={state.progress.currentSectionLabel}
           whyWeAsk={model.whyWeAsk}
           stepLabel={`Step ${state.progress.currentStep} of ${state.progress.totalSteps}`}
@@ -143,6 +165,7 @@ export function ProtectionCheckFlow() {
                     label={option.label}
                     description={option.description}
                     selected={selectedOptionIds.includes(option.id)}
+                    icon={<ProtectionIcon name={presentationMeta.optionIcon} />}
                     onClick={() => chooseOption(option.id)}
                   />
                 ))}
@@ -170,89 +193,13 @@ export function ProtectionCheckFlow() {
         </QuestionCard>
       </div>
       <ProtectionMapRail
-        currentSection={state.progress.currentSectionLabel}
+        activeIndex={activeAreaIndex}
+        completedAreaIndexes={completedAreaIndexes}
         currentStep={state.progress.currentStep}
         totalSteps={state.progress.totalSteps}
       />
     </section>
   );
-}
-
-const protectionAreas = ["Life", "Health", "Wealth", "Property", "Family"] as const;
-
-function ProtectionMapRail({
-  currentSection,
-  currentStep,
-  totalSteps,
-}: {
-  currentSection?: string;
-  currentStep: number;
-  totalSteps: number;
-}) {
-  const activeArea = protectionAreas.find((area) =>
-    currentSection?.toLowerCase().includes(area.toLowerCase()),
-  );
-  const activeIndex = activeArea ? protectionAreas.indexOf(activeArea) : 0;
-
-  return (
-    <aside className="ds-protection-map" aria-label="Your protection map">
-      <div className="ds-protection-map__header">
-        <span className="ds-protection-map__mark" aria-hidden="true" />
-        <div>
-          <h2>Your Protection</h2>
-          <p>Evolving Map</p>
-        </div>
-      </div>
-      <ol className="ds-protection-map__list">
-        {protectionAreas.map((area) => {
-          const areaIndex = protectionAreas.indexOf(area);
-          const status =
-            areaIndex < activeIndex
-              ? "completed"
-              : areaIndex === activeIndex
-                ? "current"
-                : "upcoming";
-          return (
-            <li className={`ds-protection-map__item ds-protection-map__item--${status}`} key={area}>
-              <span className="ds-protection-map__dot" aria-hidden="true" />
-              <span>
-                <strong>{area}</strong>
-                <small>
-                  {status === "current"
-                    ? "In progress"
-                    : status === "completed"
-                      ? "Completed"
-                      : "Upcoming"}
-                </small>
-              </span>
-            </li>
-          );
-        })}
-      </ol>
-      <div className="ds-protection-map__footer">
-        <strong>Coverage strength</strong>
-        <span className="ds-protection-map__meter">
-          <i style={{ width: `${Math.round((currentStep / totalSteps) * 100)}%` }} />
-        </span>
-        <small>Your map evolves with every answer.</small>
-      </div>
-    </aside>
-  );
-}
-
-function presentationForQuestion(questionId: string) {
-  if (questionId.includes("dependent") || questionId.includes("protect")) return "family";
-  if (questionId.includes("life_cover") || questionId.includes("cover_amount")) return "life";
-  if (questionId.includes("health") || questionId.includes("still_need_cover")) return "health";
-  if (questionId.includes("budget") || questionId.includes("monthly")) return "wealth";
-  if (
-    questionId.includes("location") ||
-    questionId.includes("risk") ||
-    questionId.includes("property")
-  )
-    return "property";
-  if (questionId.includes("beneficiary") || questionId.includes("document")) return "readiness";
-  return "about";
 }
 
 function buildPayload(
@@ -261,13 +208,7 @@ function buildPayload(
   textValue: string,
   skipped: boolean,
 ): RawAnswerPayload {
-  return {
-    questionId: question.id,
-    selectedOptionIds,
-    textValue,
-    skipped,
-    source: "customer",
-  };
+  return { questionId: question.id, selectedOptionIds, textValue, skipped, source: "customer" };
 }
 
 function toggleOption(optionIds: string[], optionId: string) {

@@ -4,12 +4,23 @@ type ProgressTrackerProps = {
   currentStep: number;
   totalSteps: number;
   sectionLabel?: string;
+  visualStep?: number;
+  visualTotal?: number;
 };
 
-export function ProgressTracker({ currentStep, totalSteps, sectionLabel }: ProgressTrackerProps) {
+export function ProgressTracker({
+  currentStep,
+  totalSteps,
+  sectionLabel,
+  visualStep,
+  visualTotal,
+}: ProgressTrackerProps) {
   const safeTotal = Math.max(totalSteps, 1);
   const safeCurrent = Math.min(Math.max(currentStep, 0), safeTotal);
   const percent = Math.round((safeCurrent / safeTotal) * 100);
+
+  const segmentTotal = Math.max(visualTotal ?? safeTotal, 1);
+  const segmentCurrent = Math.min(Math.max(visualStep ?? safeCurrent, 1), segmentTotal);
 
   return (
     <div
@@ -26,8 +37,8 @@ export function ProgressTracker({ currentStep, totalSteps, sectionLabel }: Progr
         <span style={{ width: `${percent}%` }} />
       </div>
       <div className="ds-progress__segments" aria-hidden="true">
-        {Array.from({ length: safeTotal }, (_, index) => {
-          const status = index + 1 <= safeCurrent ? "complete" : "upcoming";
+        {Array.from({ length: segmentTotal }, (_, index) => {
+          const status = index + 1 <= segmentCurrent ? "complete" : "upcoming";
           return (
             <span className={`ds-progress__segment ds-progress__segment--${status}`} key={index} />
           );

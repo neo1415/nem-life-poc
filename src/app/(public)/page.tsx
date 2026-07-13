@@ -1,18 +1,19 @@
 import Link from "next/link";
+import { ProtectionIcon, type ProtectionIconName } from "@/components/ui/protection-icon";
 
 const benefits = [
   {
-    icon: "01",
+    icon: "eye" as ProtectionIconName,
     title: "Know What You Have",
     copy: "Map your existing protections securely and see your current standing in clear terms.",
   },
   {
-    icon: "02",
+    icon: "search" as ProtectionIconName,
     title: "See What Is Missing",
     copy: "Identify possible gaps in your safety net without confusing jargon or pressure.",
   },
   {
-    icon: "03",
+    icon: "shield" as ProtectionIconName,
     title: "Fix It With NEM",
     copy: "Explore tailored next steps that can strengthen what matters most.",
   },
@@ -25,8 +26,8 @@ export default function HomePage() {
         <Link className="ds-brand" href="/">
           NEM Life+
         </Link>
-        <Link className="ds-topbar__link" href="/demo/nem-entry">
-          NEM entry preview
+        <Link className="ds-topbar__link" href="/">
+          Save &amp; Exit
         </Link>
       </header>
 
@@ -51,8 +52,8 @@ export default function HomePage() {
       <section className="ds-landing-benefits" aria-label="NEM Life+ benefits">
         {benefits.map((benefit) => (
           <article className="ds-benefit-card" key={benefit.title}>
-            <span className="ds-benefit-card__icon" aria-hidden="true">
-              {benefit.icon}
+            <span className="ds-benefit-card__icon">
+              <ProtectionIcon name={benefit.icon} />
             </span>
             <h2>{benefit.title}</h2>
             <p>{benefit.copy}</p>
@@ -87,6 +88,14 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      <footer className="ds-landing-footer">
+        <p>Secure &amp; Encrypted. No BVN/NIN required to start.</p>
+        <nav aria-label="Legal">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#security">Data Security</a>
+          <a href="#terms">Terms</a>
+        </nav>
+      </footer>
     </main>
   );
 }

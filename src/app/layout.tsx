@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./serene-layouts.css";
+import "./stitch-fidelity.css";
 
 export const metadata: Metadata = {
   title: "NEM Life+ POC",

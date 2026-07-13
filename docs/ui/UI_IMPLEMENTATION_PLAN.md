@@ -60,6 +60,7 @@ Status: complete for this pass.
 - Capture viewport metrics for changed routes, especially `/protection-check/start` at 1440x900, 1366x768, 1280x720, and mobile.
 - Capture screenshots for changed routes.
 - Re-read governing docs and produce compliance report.
+- Preserve natural scrolling as a fallback; verify that essential assessment controls remain visible at the required desktop viewports.
 
 ## Initial Affected Files
 

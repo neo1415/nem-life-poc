@@ -73,3 +73,15 @@ Reason: this preserves established accessibility and test contracts without allo
 Decision: adapt the reference budget panel using existing broad budget guidance and product categories only.
 
 Reason: the prototype contains exact sample premiums, but product doctrine requires estimates and forbids presenting unapproved pricing as real.
+
+## 2026-07-13: Natural Scroll Is The Fallback
+
+Decision: keep document scrolling available on every customer route. Compact the assessment at supported desktop heights so its essential question and navigation controls fit, while allowing natural vertical scrolling whenever content, zoom, localization, or a smaller viewport requires it.
+
+Reason: "no scrolling needed" is a layout target, not permission to clip content or disable access to controls.
+
+## 2026-07-13: Preserve PRD Question Order
+
+Decision: retain the configured PRD sequence (family, location, existing life cover, monthly budget, health, property, readiness) even where the Stitch examples present protection areas in a different visual order. The map rail reflects the area for the current question and derives completion only from actual submitted progress.
+
+Reason: the references guide composition and interaction, but cannot silently replace branching, persistence, validation, or approved business flow. This also prevents untouched map areas from appearing complete after the first answer.
