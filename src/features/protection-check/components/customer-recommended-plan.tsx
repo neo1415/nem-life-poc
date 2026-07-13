@@ -17,38 +17,43 @@ export function CustomerRecommendedPlan({
         <h2 id="recommended-plan-title">Recommended protection plan</h2>
         <p>Based on your answers, these are the areas you may want to review first.</p>
       </header>
-      <div className="ds-grid">
-        {result.recommendedProducts.map((product) => (
-          <Card key={product.id} className="ds-stack">
-            <div className="ds-card__topline">
-              <Badge tone="brand">{product.category}</Badge>
-              <Badge tone={product.priorityLabel.includes("High") ? "warning" : "neutral"}>
-                {product.priorityLabel}
-              </Badge>
-            </div>
-            <h3>{product.title}</h3>
-            <p>{product.whyRecommended}</p>
-            <p className="ds-muted">{product.explanation}</p>
-            <p className="ds-muted">{product.confidenceLabel}</p>
-            <div className="ds-action-row">
-              {product.cta.href ? (
-                <Link
-                  className="ds-button ds-button--primary ds-button--md"
-                  href={product.cta.href}
-                >
-                  <span>{product.cta.label}</span>
-                </Link>
-              ) : (
-                <button
-                  className="ds-button ds-button--primary ds-button--md"
-                  onClick={() => onCta(product.cta.placeholder)}
-                >
-                  <span>{product.cta.label}</span>
-                </button>
-              )}
-              {product.secondaryCtas.slice(0, 1).map((cta) => (
-                <SecondaryCta cta={cta} key={cta.id} onCta={onCta} />
-              ))}
+      <div className="ds-plan-list">
+        {result.recommendedProducts.map((product, index) => (
+          <Card key={product.id} className="ds-plan-card">
+            <span className="ds-plan-card__icon" aria-hidden="true">
+              {index + 1}
+            </span>
+            <div className="ds-plan-card__content">
+              <div className="ds-card__topline">
+                <Badge tone="brand">{product.category}</Badge>
+                <span className="ds-plan-card__priority">Priority {index + 1}</span>
+              </div>
+              <h3>{product.title}</h3>
+              <p className="ds-muted">{product.explanation}</p>
+              <div className="ds-plan-card__why">
+                <strong>Why it is recommended</strong>
+                <p>{product.whyRecommended}</p>
+              </div>
+              <div className="ds-action-row">
+                {product.cta.href ? (
+                  <Link
+                    className="ds-button ds-button--primary ds-button--md"
+                    href={product.cta.href}
+                  >
+                    <span>{product.cta.label}</span>
+                  </Link>
+                ) : (
+                  <button
+                    className="ds-button ds-button--primary ds-button--md"
+                    onClick={() => onCta(product.cta.placeholder)}
+                  >
+                    <span>{product.cta.label}</span>
+                  </button>
+                )}
+                {product.secondaryCtas.slice(0, 1).map((cta) => (
+                  <SecondaryCta cta={cta} key={cta.id} onCta={onCta} />
+                ))}
+              </div>
             </div>
           </Card>
         ))}

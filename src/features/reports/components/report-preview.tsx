@@ -12,20 +12,24 @@ import type { ReportViewModel } from "../types/report.types";
 
 export function ReportPreview({ report }: { report: ReportViewModel }) {
   return (
-    <article className="print-page ds-stack" aria-label="Family Protection Report">
+    <article className="print-page ds-report-document" aria-label="Family Protection Report">
       <div className="ds-action-row no-print">
         <p className="ds-muted">Your browser can print this report or save it as a PDF.</p>
         <PrintSaveButton />
       </div>
-      <ReportHeader report={report} />
-      <ReportScoreSummary report={report} />
-      <ReportKeyFindings report={report} />
-      <ReportScoreBreakdown report={report} />
-      <ReportRecommendations report={report} />
-      <ReportBudgetGuidance report={report} />
-      <ReportNextSteps report={report} />
-      <ReportDisclaimers report={report} />
-      <ReportFooter report={report} />
+      <div className="ds-report-document__hero">
+        <ReportHeader report={report} />
+        <ReportScoreSummary report={report} />
+      </div>
+      <div className="ds-report-document__body">
+        <ReportKeyFindings report={report} />
+        <ReportScoreBreakdown report={report} />
+        <ReportRecommendations report={report} />
+        <ReportBudgetGuidance report={report} />
+        <ReportNextSteps report={report} />
+        <ReportDisclaimers report={report} />
+        <ReportFooter report={report} />
+      </div>
     </article>
   );
 }

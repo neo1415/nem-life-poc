@@ -28,8 +28,8 @@ Status: complete for this pass.
 
 - Extend global tokens for warmer premium gradients, status surfaces, glass/material depth, and motion timing.
 - Tune page shells, cards, buttons, badges, fields, tables, report shell, dashboard/admin shells.
-- Keep radius at 8px or less unless existing component requires otherwise.
-- Use the Stitch references' rounded/glass intent within this repository's stricter existing 8px radius rule unless a component already uses a larger radius and the exception is recorded.
+- Use the approved Serene Assurance 24px radius for primary onboarding/result cards and tighter 8px-12px radii for operational/admin elements.
+- Keep the large-radius exception scoped to customer journey surfaces where the approved design system explicitly requires it.
 
 ## Phase 3: Customer Entry And Guided Assessment
 
@@ -41,13 +41,14 @@ Status: complete for this pass.
 
 ## Phase 4: Result, Lead, Report, Dashboard, Admin
 
-Status: complete for this pass through shared design-system primitives; deeper per-screen redesign can build on this baseline.
+Status: complete through screen-level components and route-specific layouts.
 
-- Improve result information hierarchy and CTA clarity.
-- Improve lead capture spacing and privacy notice visibility.
-- Improve print/report readability.
-- Improve customer dashboard scanability.
-- Improve admin/config operational density without marketing-style hero sections.
+- Rebuild result as a score-first protection picture with strong/gap panels and a persistent protection map.
+- Rebuild recommendations as prioritized plan rows with a sticky, estimate-safe budget panel.
+- Rebuild lead capture as a calm two-column follow-up flow while preserving visible consent and validation.
+- Rebuild reports as a polished, print-safe protection document.
+- Rebuild the customer dashboard as an ecosystem status view with a persistent map and explicit preview boundary.
+- Rebuild admin lead surfaces as a dense operational workspace with navigation and compact lead rows.
 
 ## Phase 5: Verification
 

@@ -46,6 +46,7 @@ export function ProtectionCheckFlow() {
   }
 
   const model = toQuestionRenderModel(state.currentQuestion);
+  const presentation = presentationForQuestion(state.currentQuestion.id);
 
   function resetDraft() {
     setSelectedOptionIds([]);
@@ -110,6 +111,8 @@ export function ProtectionCheckFlow() {
           title={model.title}
           description={model.description}
           helperText={model.helperText}
+          presentation={presentation}
+          sectionLabel={state.progress.currentSectionLabel}
           whyWeAsk={model.whyWeAsk}
           stepLabel={`Step ${state.progress.currentStep} of ${state.progress.totalSteps}`}
           actions={
@@ -130,11 +133,12 @@ export function ProtectionCheckFlow() {
             </>
           }
         >
-          <div role="group" aria-labelledby="question-title">
+          <div className="ds-question-card__answers" role="group" aria-labelledby="question-title">
             {model.options.length > 0 ? (
               <ChoiceGrid>
                 {model.options.map((option) => (
                   <OptionButton
+                    className={`ds-option--${presentation}`}
                     key={option.id}
                     label={option.label}
                     description={option.description}
@@ -165,17 +169,30 @@ export function ProtectionCheckFlow() {
           {error && model.options.length > 0 ? <FieldError>{error}</FieldError> : null}
         </QuestionCard>
       </div>
-      <ProtectionMapRail currentSection={state.progress.currentSectionLabel} />
+      <ProtectionMapRail
+        currentSection={state.progress.currentSectionLabel}
+        currentStep={state.progress.currentStep}
+        totalSteps={state.progress.totalSteps}
+      />
     </section>
   );
 }
 
 const protectionAreas = ["Life", "Health", "Wealth", "Property", "Family"] as const;
 
-function ProtectionMapRail({ currentSection }: { currentSection?: string }) {
+function ProtectionMapRail({
+  currentSection,
+  currentStep,
+  totalSteps,
+}: {
+  currentSection?: string;
+  currentStep: number;
+  totalSteps: number;
+}) {
   const activeArea = protectionAreas.find((area) =>
     currentSection?.toLowerCase().includes(area.toLowerCase()),
   );
+  const activeIndex = activeArea ? protectionAreas.indexOf(activeArea) : 0;
 
   return (
     <aside className="ds-protection-map" aria-label="Your protection map">
@@ -188,21 +205,54 @@ function ProtectionMapRail({ currentSection }: { currentSection?: string }) {
       </div>
       <ol className="ds-protection-map__list">
         {protectionAreas.map((area) => {
-          const status = activeArea === area ? "current" : activeArea ? "upcoming" : "upcoming";
+          const areaIndex = protectionAreas.indexOf(area);
+          const status =
+            areaIndex < activeIndex
+              ? "completed"
+              : areaIndex === activeIndex
+                ? "current"
+                : "upcoming";
           return (
             <li className={`ds-protection-map__item ds-protection-map__item--${status}`} key={area}>
               <span className="ds-protection-map__dot" aria-hidden="true" />
               <span>
                 <strong>{area}</strong>
-                <small>{status === "current" ? "In progress" : "Upcoming"}</small>
+                <small>
+                  {status === "current"
+                    ? "In progress"
+                    : status === "completed"
+                      ? "Completed"
+                      : "Upcoming"}
+                </small>
               </span>
             </li>
           );
         })}
       </ol>
-      <p className="ds-protection-map__footer">Secure assessment context</p>
+      <div className="ds-protection-map__footer">
+        <strong>Coverage strength</strong>
+        <span className="ds-protection-map__meter">
+          <i style={{ width: `${Math.round((currentStep / totalSteps) * 100)}%` }} />
+        </span>
+        <small>Your map evolves with every answer.</small>
+      </div>
     </aside>
   );
+}
+
+function presentationForQuestion(questionId: string) {
+  if (questionId.includes("dependent") || questionId.includes("protect")) return "family";
+  if (questionId.includes("life_cover") || questionId.includes("cover_amount")) return "life";
+  if (questionId.includes("health") || questionId.includes("still_need_cover")) return "health";
+  if (questionId.includes("budget") || questionId.includes("monthly")) return "wealth";
+  if (
+    questionId.includes("location") ||
+    questionId.includes("risk") ||
+    questionId.includes("property")
+  )
+    return "property";
+  if (questionId.includes("beneficiary") || questionId.includes("document")) return "readiness";
+  return "about";
 }
 
 function buildPayload(

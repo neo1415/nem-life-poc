@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import type { Lead } from "@/features/leads/types/lead.types";
 import { buildAdminLeadViewModel } from "../services/admin-lead-view-model";
@@ -34,29 +35,41 @@ export function AdminRuntime({ mode }: { mode: Mode }) {
   const selected = leads.find((lead) => lead.id === params.leadId) ?? leads[0];
 
   return (
-    <main className="ds-page ds-stack">
-      <AdminDemoBanner title={mode === "demo" ? "Admin Demo - Not Production CRM" : undefined} />
-      <AdminInvalidDataNotice count={loaded.invalidCount} />
-      {leads.length === 0 ? <AdminEmptyState /> : null}
-      {leads.length > 0 && mode === "export" ? <ExportSimulationPanel leads={leads} /> : null}
-      {leads.length > 0 && mode === "detail" && selected ? (
-        <LeadDetailPanel lead={selected} />
-      ) : null}
-      {leads.length > 0 && (mode === "overview" || mode === "demo") ? (
-        <>
-          <LeadMetricsGrid metrics={metrics} />
-          <ProductOpportunitySummary opportunities={opportunities} />
-          <LeadList leads={leads.slice(0, 4)} />
-        </>
-      ) : null}
-      {leads.length > 0 && mode === "list" ? (
-        <>
-          <LeadMetricsGrid metrics={metrics} />
-          <LeadSearch filters={filters} onChange={setFilters} />
-          <LeadFilters filters={filters} onChange={setFilters} />
-          <LeadList leads={filtered} />
-        </>
-      ) : null}
+    <main className="ds-admin-workspace">
+      <aside className="ds-admin-workspace__nav">
+        <strong>NEM Life+</strong>
+        <span>Demo operations</span>
+        <nav aria-label="Admin navigation">
+          <Link href="/admin">Overview</Link>
+          <Link href="/admin/leads">Leads</Link>
+          <Link href="/admin/config">Configuration</Link>
+          <Link href="/admin/leads/export">Export preview</Link>
+        </nav>
+      </aside>
+      <div className="ds-admin-workspace__content">
+        <AdminDemoBanner title={mode === "demo" ? "Admin Demo - Not Production CRM" : undefined} />
+        <AdminInvalidDataNotice count={loaded.invalidCount} />
+        {leads.length === 0 ? <AdminEmptyState /> : null}
+        {leads.length > 0 && mode === "export" ? <ExportSimulationPanel leads={leads} /> : null}
+        {leads.length > 0 && mode === "detail" && selected ? (
+          <LeadDetailPanel lead={selected} />
+        ) : null}
+        {leads.length > 0 && (mode === "overview" || mode === "demo") ? (
+          <>
+            <LeadMetricsGrid metrics={metrics} />
+            <ProductOpportunitySummary opportunities={opportunities} />
+            <LeadList leads={leads.slice(0, 4)} />
+          </>
+        ) : null}
+        {leads.length > 0 && mode === "list" ? (
+          <>
+            <LeadMetricsGrid metrics={metrics} />
+            <LeadSearch filters={filters} onChange={setFilters} />
+            <LeadFilters filters={filters} onChange={setFilters} />
+            <LeadList leads={filtered} />
+          </>
+        ) : null}
+      </div>
     </main>
   );
 }

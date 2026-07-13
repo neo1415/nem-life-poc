@@ -1,6 +1,4 @@
-import { ScoreBandBadge, ScoreBreakdownCard } from "@/components/score/score-breakdown-card";
 import { ScoreRing } from "@/components/score/score-ring";
-import { Card } from "@/components/ui/card";
 import type { CustomerResultViewModel } from "../types/customer-result.types";
 
 const statusMap = {
@@ -13,12 +11,9 @@ const statusMap = {
 
 export function CustomerScoreSection({ result }: { result: CustomerResultViewModel }) {
   return (
-    <section aria-labelledby="score-title" className="ds-two-column">
-      <Card tone="elevated" className="ds-stack">
-        <div className="ds-card__topline">
-          <h2 id="score-title">Your estimated score</h2>
-          <ScoreBandBadge label={result.scoreBandLabel} />
-        </div>
+    <section aria-labelledby="score-title" className="ds-result-score">
+      <h2 className="ds-visually-hidden">Score breakdown by area</h2>
+      <div className="ds-result-score__summary">
         <ScoreRing
           label="Family Protection Score"
           maxScore={result.maxScore}
@@ -26,18 +21,50 @@ export function CustomerScoreSection({ result }: { result: CustomerResultViewMod
           status={result.scoreBandLabel}
           tone={toneForScore(result.score)}
         />
+        <h2 id="score-title">{result.scoreBandLabel}</h2>
         <p>{result.scoreExplanation}</p>
-        <p className="ds-muted">{result.confidenceLabel}</p>
-      </Card>
-      <ScoreBreakdownCard
-        title="Score breakdown by area"
-        areas={result.areaBreakdown.map((area) => ({
-          label: area.label,
-          value: area.earnedPoints,
-          max: area.maxPoints,
-          status: statusMap[area.status],
-        }))}
-      />
+      </div>
+      <div className="ds-result-score__panels">
+        <ResultAreaPanel
+          title="Strong Areas"
+          tone="strong"
+          areas={result.areaBreakdown.filter((area) => area.status === "Strong")}
+        />
+        <ResultAreaPanel
+          title="Important Gaps"
+          tone="gap"
+          areas={result.areaBreakdown.filter((area) => area.status !== "Strong")}
+        />
+      </div>
+    </section>
+  );
+}
+
+function ResultAreaPanel({
+  title,
+  tone,
+  areas,
+}: {
+  title: string;
+  tone: "strong" | "gap";
+  areas: CustomerResultViewModel["areaBreakdown"];
+}) {
+  return (
+    <section className={`ds-result-area ds-result-area--${tone}`} aria-label={title}>
+      <h3>{title}</h3>
+      <ul>
+        {areas.slice(0, 3).map((area) => (
+          <li key={area.id}>
+            <span aria-hidden="true">{tone === "strong" ? "OK" : "!"}</span>
+            <div>
+              <strong>{area.label}</strong>
+              <small>
+                {statusMap[area.status]} · {area.earnedPoints}/{area.maxPoints}
+              </small>
+            </div>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

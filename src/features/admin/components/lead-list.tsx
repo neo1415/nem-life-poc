@@ -7,9 +7,9 @@ export function LeadList({ leads }: { leads: AdminLead[] }) {
   return (
     <section aria-labelledby="lead-list-title" className="ds-stack">
       <h2 id="lead-list-title">Lead list</h2>
-      <div className="ds-stack">
+      <div className="ds-admin-lead-table" role="list">
         {leads.map((lead) => (
-          <Card className="ds-stack" key={lead.id}>
+          <Card className="ds-admin-lead-row" key={lead.id} role="listitem">
             <div className="ds-card__topline">
               <h3>{lead.customerName}</h3>
               <span className="ds-badge ds-badge--warning">
@@ -36,8 +36,9 @@ export function LeadList({ leads }: { leads: AdminLead[] }) {
                 <dd>{lead.ctaIntent.replace(/_/g, " ")}</dd>
               </div>
             </dl>
-            <p className="ds-muted">Top gaps: {lead.topGaps.join(", ") || "No gaps listed"}.</p>
-            <p>Recommended: {lead.recommendedProductCategories.slice(0, 4).join(", ")}.</p>
+            <p className="ds-admin-lead-row__summary">
+              {lead.topGaps.join(", ") || "No gaps listed"}
+            </p>
             <Link className="button-link" href={`/admin/leads/${lead.id}`}>
               View Lead Detail
             </Link>

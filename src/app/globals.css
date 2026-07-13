@@ -1231,3 +1231,847 @@ a {
     font-size: 0.85em;
   }
 }
+
+/* Stitch fidelity correction: composed Serene Assurance screens. */
+.ds-topbar__link {
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ds-landing-hero {
+  min-height: 31rem;
+  padding: 4.5rem 1.5rem 3rem;
+  place-items: start center;
+  text-align: center;
+}
+
+.ds-landing-hero__content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 48rem;
+}
+
+.ds-landing h1 {
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  line-height: 1.08;
+  max-width: 46rem;
+}
+
+.ds-landing .ds-lede {
+  max-width: 39rem;
+}
+
+.ds-landing-actions {
+  justify-content: center;
+}
+
+.ds-landing-benefits {
+  margin: -2.5rem auto 0;
+  max-width: 68rem;
+  position: relative;
+  z-index: 2;
+}
+
+.ds-benefit-card {
+  min-height: 18rem;
+  padding: 2.25rem;
+}
+
+.ds-benefit-card__icon,
+.ds-question-card__icon {
+  align-items: center;
+  background: var(--color-primary-fixed);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 50%;
+  color: var(--color-primary);
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 800;
+  height: 3.25rem;
+  justify-content: center;
+  width: 3.25rem;
+}
+
+.ds-how-section {
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.ds-how-section .ds-section-header {
+  align-items: center;
+}
+
+.ds-how-steps {
+  margin-inline: auto;
+  max-width: 68rem;
+}
+
+.ds-how-step {
+  min-height: 13rem;
+  padding: 2rem;
+}
+
+.ds-how-step p {
+  color: var(--color-text-muted);
+  margin-inline: auto;
+  max-width: 18rem;
+}
+
+.ds-question-card {
+  background: color-mix(in srgb, white 86%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  border-radius: 1.5rem;
+  gap: 1.25rem;
+  min-height: min(40rem, calc(100vh - 11rem));
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.ds-question-card__heading {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ds-question-card__identity {
+  align-items: center;
+  display: flex;
+  gap: 0.875rem;
+}
+
+.ds-question-card__section {
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin: 0.15rem 0 0;
+  text-transform: uppercase;
+}
+
+.ds-question-card h2 {
+  font-size: clamp(2.25rem, 3.6vw, 3.75rem);
+  line-height: 1.08;
+  max-width: 54rem;
+}
+
+.ds-question-card__answers {
+  margin-top: auto;
+}
+
+.ds-choice-grid {
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ds-option {
+  background: color-mix(in srgb, var(--color-surface-low) 70%, white);
+  border: 1.5px solid var(--color-outline-variant);
+  border-radius: 0.9rem;
+  min-height: 5.7rem;
+  padding: 1.15rem 3.5rem 1.15rem 1.25rem;
+  position: relative;
+}
+
+.ds-option::after {
+  border: 2px solid var(--color-outline-variant);
+  border-radius: 50%;
+  content: "";
+  height: 1.25rem;
+  position: absolute;
+  right: 1.25rem;
+  top: calc(50% - 0.625rem);
+  width: 1.25rem;
+}
+
+.ds-option--selected {
+  background: var(--color-primary-fixed);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 7%, transparent);
+}
+
+.ds-option--selected::after {
+  background: var(--color-primary);
+  border: 4px solid var(--color-primary-fixed);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.ds-question-card--health .ds-question-card__icon,
+.ds-option--health::before {
+  content: "+";
+}
+
+.ds-question-card--life .ds-question-card__icon,
+.ds-option--life::before {
+  content: "L";
+}
+
+.ds-question-card--wealth .ds-question-card__icon,
+.ds-option--wealth::before {
+  content: "W";
+}
+
+.ds-question-card--property .ds-question-card__icon,
+.ds-option--property::before {
+  content: "P";
+}
+
+.ds-question-card--family .ds-question-card__icon,
+.ds-question-card--readiness .ds-question-card__icon,
+.ds-option--family::before,
+.ds-option--readiness::before {
+  content: "F";
+}
+
+.ds-question-card--about .ds-question-card__icon,
+.ds-option--about::before {
+  content: "A";
+}
+
+.ds-option[class*="ds-option--"]::before {
+  align-items: center;
+  background: color-mix(in srgb, var(--color-primary-fixed) 78%, white);
+  border-radius: 50%;
+  color: var(--color-primary);
+  display: inline-flex;
+  flex: 0 0 2.25rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  height: 2.25rem;
+  justify-content: center;
+}
+
+.ds-why {
+  background: color-mix(in srgb, var(--color-primary-fixed) 46%, white);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+}
+
+.ds-protection-map {
+  background: color-mix(in srgb, var(--color-surface-container-low) 82%, white);
+  padding: 2.5rem 1.75rem;
+}
+
+.ds-protection-map__mark {
+  background: var(--color-secondary-container);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 24%, transparent);
+  border-radius: 50%;
+  height: 3.75rem;
+  width: 3.75rem;
+}
+
+.ds-protection-map__item {
+  border-radius: 0.75rem;
+  min-height: 4.5rem;
+}
+
+.ds-protection-map__item--current {
+  border-right: 4px solid var(--color-secondary);
+}
+
+.ds-protection-map__item--completed .ds-protection-map__dot {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.ds-protection-map__item--completed small {
+  color: var(--color-success);
+}
+
+.ds-protection-map__footer {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.ds-protection-map__meter {
+  background: var(--color-surface-highest);
+  border-radius: 999px;
+  display: block;
+  height: 0.45rem;
+  overflow: hidden;
+}
+
+.ds-protection-map__meter i {
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-secondary-container));
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+  transition: width 360ms ease;
+}
+
+@media (max-width: 920px) {
+  .ds-landing h1 {
+    font-size: 2.75rem;
+  }
+
+  .ds-landing-benefits {
+    margin-top: 1rem;
+  }
+
+  .ds-question-card {
+    border-radius: 1rem;
+    min-height: auto;
+  }
+
+  .ds-question-card h2 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .ds-landing-hero {
+    min-height: auto;
+    padding-top: 3rem;
+  }
+
+  .ds-landing h1 {
+    font-size: 2.4rem;
+  }
+
+  .ds-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-option {
+    min-height: 4.8rem;
+  }
+}
+
+.ds-customer-dashboard {
+  min-height: 100vh;
+}
+
+.ds-customer-dashboard__topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.ds-customer-dashboard__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 22rem;
+}
+
+.ds-customer-dashboard__main {
+  display: grid;
+  gap: 3.5rem;
+  min-width: 0;
+  padding: 5rem clamp(1.5rem, 5vw, 5rem);
+}
+
+.ds-customer-dashboard__welcome {
+  max-width: 52rem;
+}
+
+.ds-customer-dashboard__welcome h1 {
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  line-height: 1.08;
+  margin-bottom: 1rem;
+}
+
+.ds-engine-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ds-engine-card {
+  display: grid;
+  gap: 1rem;
+  min-height: 22rem;
+  padding: 1.75rem;
+}
+
+.ds-engine-card:first-child {
+  border-top: 4px solid var(--color-secondary);
+}
+
+.ds-engine-card__icon {
+  align-items: center;
+  background: var(--color-primary-fixed);
+  border-radius: 50%;
+  color: var(--color-primary);
+  display: inline-flex;
+  font-weight: 900;
+  height: 3rem;
+  justify-content: center;
+  width: 3rem;
+}
+
+.ds-engine-card__next {
+  border-top: 1px solid var(--color-outline-variant);
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.ds-dashboard-map {
+  background: color-mix(in srgb, var(--color-surface-container-low) 86%, white);
+  border-left: 1px solid var(--color-outline-variant);
+  min-height: calc(100vh - 5rem);
+  padding: 3rem 2rem;
+  position: sticky;
+  top: 5rem;
+}
+
+.ds-dashboard-map nav {
+  display: grid;
+  gap: 0.75rem;
+  margin: 3rem 0;
+}
+
+.ds-dashboard-map__action {
+  align-items: center;
+  border-bottom: 1px solid var(--color-outline-variant);
+  color: var(--color-primary);
+  display: flex;
+  font-weight: 700;
+  justify-content: space-between;
+  min-height: 3.5rem;
+  text-decoration: none;
+}
+
+.ds-report-page {
+  background: linear-gradient(180deg, var(--color-surface-container-low), var(--color-background));
+  padding-block: 2rem 5rem;
+}
+
+.ds-report-document {
+  background: white;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 1.25rem;
+  box-shadow: 0 2rem 5rem color-mix(in srgb, var(--color-primary) 9%, transparent);
+  display: grid;
+  gap: 0;
+  margin-inline: auto;
+  max-width: 72rem;
+  overflow: hidden;
+}
+
+.ds-report-document > .ds-action-row {
+  background: var(--color-surface-low);
+  padding: 1rem 2rem;
+}
+
+.ds-report-document__hero {
+  background: linear-gradient(135deg, var(--color-primary-fixed), white 68%);
+  display: grid;
+  gap: 2rem;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.ds-report-document__hero .ds-report-header h1 {
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.ds-report-document__body {
+  display: grid;
+  gap: 2.5rem;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.ds-lead-layout {
+  align-items: start;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 0.8fr) minmax(30rem, 1.2fr);
+  margin-inline: auto;
+  max-width: 72rem;
+  padding: 4rem 1.5rem 6rem;
+}
+
+.ds-lead-layout__intro {
+  display: grid;
+  gap: 1.5rem;
+  position: sticky;
+  top: 2rem;
+}
+
+.ds-lead-header h1 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.08;
+}
+
+.ds-lead-layout__form > .ds-card {
+  border-radius: 1.25rem;
+  padding: 2rem;
+}
+
+.ds-admin-workspace {
+  background: #fbf8f7;
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.ds-admin-workspace__nav {
+  background: var(--color-primary);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem 1.25rem;
+}
+
+.ds-admin-workspace__nav > strong {
+  font-size: 1.45rem;
+}
+
+.ds-admin-workspace__nav > span {
+  color: var(--color-primary-fixed-dim);
+  font-size: 0.8rem;
+}
+
+.ds-admin-workspace__nav nav {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 2.5rem;
+}
+
+.ds-admin-workspace__nav a {
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.8rem;
+  text-decoration: none;
+}
+
+.ds-admin-workspace__nav a:hover,
+.ds-admin-workspace__nav a:focus-visible {
+  background: color-mix(in srgb, white 14%, transparent);
+}
+
+.ds-admin-workspace__content {
+  display: grid;
+  gap: 2rem;
+  min-width: 0;
+  padding: 2rem;
+}
+
+.ds-admin-workspace__content .ds-grid {
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.ds-admin-lead-table {
+  background: white;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.ds-admin-lead-row {
+  align-items: center;
+  border: 0;
+  border-bottom: 1px solid var(--color-outline-variant);
+  border-radius: 0;
+  box-shadow: none;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(10rem, 1fr) minmax(22rem, 2fr) minmax(12rem, 1fr) auto;
+  padding: 1rem 1.25rem;
+}
+
+.ds-admin-lead-row:last-child {
+  border-bottom: 0;
+}
+
+.ds-admin-lead-row .ds-card__topline {
+  align-items: start;
+  flex-direction: column;
+}
+
+.ds-admin-lead-row .ds-data-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ds-admin-lead-row__summary {
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .ds-customer-dashboard__layout,
+  .ds-admin-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-dashboard-map {
+    border-left: 0;
+    border-top: 1px solid var(--color-outline-variant);
+    min-height: auto;
+    position: static;
+  }
+
+  .ds-admin-workspace__nav {
+    position: static;
+  }
+
+  .ds-admin-workspace__nav nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .ds-admin-lead-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .ds-engine-grid,
+  .ds-lead-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-lead-layout__intro {
+    position: static;
+  }
+
+  .ds-admin-workspace__content {
+    padding: 1rem;
+  }
+}
+
+@media print {
+  .ds-report-document {
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .ds-report-document__hero,
+  .ds-report-document__body {
+    padding: 1.5rem;
+  }
+}
+
+.ds-result-page {
+  display: grid;
+  gap: 4rem;
+  margin-inline: auto;
+  max-width: 76rem;
+  padding: 3rem 2rem 6rem;
+}
+
+.ds-result-header {
+  margin-inline: auto;
+  max-width: 48rem;
+  text-align: center;
+}
+
+.ds-result-header h1 {
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+  line-height: 1.08;
+}
+
+.ds-result-header__estimate {
+  background: var(--color-primary-fixed);
+  border-radius: 999px;
+  color: var(--color-primary);
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 0.55rem 1rem;
+}
+
+.ds-result-score {
+  background: color-mix(in srgb, white 84%, transparent);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 1.5rem;
+  box-shadow: 0 1.5rem 4rem color-mix(in srgb, var(--color-primary) 8%, transparent);
+  display: grid;
+  gap: 3rem;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.ds-result-score__summary {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  max-width: 42rem;
+  text-align: center;
+}
+
+.ds-result-score__summary .ds-score-ring {
+  align-items: center;
+  flex-direction: column;
+}
+
+.ds-result-score__summary .ds-score-ring__circle {
+  height: 11rem;
+  width: 11rem;
+}
+
+.ds-result-score__summary .ds-score-ring figcaption {
+  display: none;
+}
+
+.ds-result-score__summary h2 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.ds-result-score__panels {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-inline: auto;
+  max-width: 58rem;
+  width: 100%;
+}
+
+.ds-result-area {
+  background: color-mix(in srgb, var(--color-surface-low) 58%, white);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 1rem;
+  padding: 1.75rem;
+}
+
+.ds-result-area--gap {
+  background: color-mix(in srgb, var(--color-error-container) 28%, white);
+}
+
+.ds-result-area h3 {
+  border-bottom: 1px solid var(--color-outline-variant);
+  margin: 0 0 1.25rem;
+  padding-bottom: 1rem;
+}
+
+.ds-result-area ul {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ds-result-area li {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.ds-result-area li > span {
+  align-items: center;
+  background: white;
+  border-radius: 50%;
+  color: var(--color-primary);
+  display: inline-flex;
+  flex: 0 0 2rem;
+  font-size: 0.68rem;
+  font-weight: 900;
+  height: 2rem;
+  justify-content: center;
+}
+
+.ds-result-area li small {
+  color: var(--color-text-muted);
+  display: block;
+}
+
+.ds-result-plan-layout {
+  align-items: start;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+}
+
+.ds-result-plan-layout__main {
+  display: grid;
+  gap: 4rem;
+}
+
+.ds-plan-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.ds-plan-card {
+  align-items: start;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  padding: 2rem;
+}
+
+.ds-plan-card__icon {
+  align-items: center;
+  background: var(--color-primary-fixed);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 50%;
+  color: var(--color-primary);
+  display: inline-flex;
+  font-size: 1.1rem;
+  font-weight: 800;
+  height: 3.5rem;
+  justify-content: center;
+}
+
+.ds-plan-card__content {
+  display: grid;
+  gap: 1rem;
+}
+
+.ds-plan-card__priority {
+  color: var(--color-secondary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ds-plan-card__why {
+  background: var(--color-surface-low);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+}
+
+.ds-plan-card__why p {
+  margin-bottom: 0;
+}
+
+.ds-budget-panel {
+  background: white;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 1rem;
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.ds-budget-panel .ds-section-header h2 {
+  font-size: 1.45rem;
+}
+
+.ds-budget-panel__categories {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (max-width: 920px) {
+  .ds-result-page {
+    padding-inline: 1rem;
+  }
+
+  .ds-result-plan-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-budget-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .ds-result-score__panels {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-plan-card {
+    grid-template-columns: 1fr;
+  }
+}

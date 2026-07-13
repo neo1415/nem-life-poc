@@ -3,14 +3,17 @@ import type { ProtectionEngineSummary } from "../types/customer-dashboard.types"
 
 export function ProtectionEngineCard({ engine }: { engine: ProtectionEngineSummary }) {
   return (
-    <Card className="ds-stack">
+    <Card className={`ds-engine-card ds-engine-card--${engine.id}`}>
+      <span className="ds-engine-card__icon" aria-hidden="true">
+        {engine.label.slice(0, 1)}
+      </span>
       <div className="ds-card__topline">
         <h3>{engine.label}</h3>
         <span className={`ds-badge ${toneClass(engine.status)}`}>{statusLabel(engine.status)}</span>
       </div>
       <p>{engine.summary}</p>
       <p className="ds-muted">{engine.customerExplanation}</p>
-      <p>
+      <p className="ds-engine-card__next">
         <strong>Next step:</strong> {engine.nextStep}
       </p>
       <p className="ds-muted">

@@ -8,7 +8,7 @@ export function FiveEngineGrid({ dashboard }: { dashboard: CustomerDashboardView
         <p className="ds-eyebrow">Five-engine summary</p>
         <h2 id="five-engine-title">Your protection picture across five areas.</h2>
       </div>
-      <div className="ds-grid">
+      <div className="ds-engine-grid">
         {dashboard.fiveEngines.map((engine) => (
           <ProtectionEngineCard engine={engine} key={engine.id} />
         ))}

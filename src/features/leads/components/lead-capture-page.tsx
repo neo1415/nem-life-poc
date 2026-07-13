@@ -41,15 +41,19 @@ export function LeadCapturePage({ intentParam }: { intentParam?: string }) {
 
   const intent: LeadIntent = intentResult.data;
   return (
-    <div className="ds-stack">
-      <header className="ds-page__header">
-        <p className="ds-eyebrow">Lead capture</p>
-        <h1>{leadIntentConfig[intent].title}</h1>
-        <p>{leadIntentConfig[intent].helperText}</p>
-      </header>
-      <LeadIntentSummary intent={leadIntentConfig[intent]} context={context.context} />
-      <LeadPrivacyNotice />
-      <LeadCaptureForm intent={intent} context={context.context} />
+    <div className="ds-lead-layout">
+      <div className="ds-lead-layout__intro">
+        <header className="ds-lead-header">
+          <p className="ds-eyebrow">Lead capture</p>
+          <h1>{leadIntentConfig[intent].title}</h1>
+          <p>{leadIntentConfig[intent].helperText}</p>
+        </header>
+        <LeadIntentSummary intent={leadIntentConfig[intent]} context={context.context} />
+        <LeadPrivacyNotice />
+      </div>
+      <div className="ds-lead-layout__form">
+        <LeadCaptureForm intent={intent} context={context.context} />
+      </div>
     </div>
   );
 }

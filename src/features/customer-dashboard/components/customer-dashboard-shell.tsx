@@ -19,41 +19,66 @@ export function CustomerDashboardShell({
   demoTitle?: string;
 }) {
   return (
-    <main className="ds-page ds-stack" aria-label="Customer Dashboard Preview">
-      <header className="ds-page__header">
-        <p className="ds-eyebrow">NEM Life+</p>
-        <h1>{demoTitle ?? "Your NEM Life+ dashboard preview"}</h1>
-        <p>
-          A saved protection view based on your answers. This is a preview, not a real customer
-          account.
-        </p>
+    <main className="ds-customer-dashboard" aria-label="Customer Dashboard Preview">
+      <header className="ds-topbar ds-customer-dashboard__topbar">
+        <strong className="ds-brand">NEM Life+</strong>
         <span className="ds-badge ds-badge--brand">{dashboard.demoLabel}</span>
-        {dashboard.customer.maskedEmail || dashboard.customer.maskedPhone ? (
-          <p className="ds-muted">
-            Contact shown on preview:{" "}
-            {dashboard.customer.maskedEmail ?? dashboard.customer.maskedPhone}
-          </p>
-        ) : null}
       </header>
-      <div className="ds-action-row">
-        {dashboard.ctas.map((cta) => (
-          <Link className="button-link secondary" href={cta.href} key={cta.label}>
-            {cta.label}
-          </Link>
-        ))}
+      <div className="ds-customer-dashboard__layout">
+        <div className="ds-customer-dashboard__main">
+          <header className="ds-customer-dashboard__welcome">
+            <p className="ds-eyebrow">Protection ecosystem</p>
+            <h2 className="ds-visually-hidden">
+              {demoTitle ?? "Your NEM Life+ dashboard preview"}
+            </h2>
+            <h1>
+              Welcome
+              {dashboard.customer.displayName ? `, ${dashboard.customer.displayName}` : " back"}.
+            </h1>
+            {demoTitle ? <p className="ds-demo-context">{demoTitle}</p> : null}
+            <p>
+              Your family&apos;s protection ecosystem is taking shape. Review your current picture
+              and explore the next milestones in your setup.
+            </p>
+            {dashboard.customer.maskedEmail || dashboard.customer.maskedPhone ? (
+              <p className="ds-muted">
+                Contact shown on preview:{" "}
+                {dashboard.customer.maskedEmail ?? dashboard.customer.maskedPhone}
+              </p>
+            ) : null}
+          </header>
+          <FiveEngineGrid dashboard={dashboard} />
+          <SavedResultCard dashboard={dashboard} />
+          <DashboardGapSummary dashboard={dashboard} />
+          <DashboardRecommendations dashboard={dashboard} />
+          <MonthlyProtectionGuidance dashboard={dashboard} />
+          <ProtectionTimeline dashboard={dashboard} />
+          <section className="ds-grid" aria-label="Report and follow-up summary">
+            <DashboardReportCard dashboard={dashboard} />
+            <LeadFollowUpCard dashboard={dashboard} />
+          </section>
+          <FutureVerifiedDataPanel dashboard={dashboard} />
+          <DashboardDisclaimers dashboard={dashboard} />
+        </div>
+        <aside className="ds-dashboard-map" aria-label="Your protection map">
+          <div className="ds-protection-map__header">
+            <span className="ds-protection-map__mark" aria-hidden="true" />
+            <div>
+              <h2>Your Protection</h2>
+              <p>Evolving Map</p>
+            </div>
+          </div>
+          <nav aria-label="Dashboard actions">
+            {dashboard.ctas.map((cta) => (
+              <Link className="ds-dashboard-map__action" href={cta.href} key={cta.label}>
+                {cta.label}
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            ))}
+          </nav>
+          <p>Preview only. Verified details require approved NEM records.</p>
+        </aside>
       </div>
-      <SavedResultCard dashboard={dashboard} />
-      <FiveEngineGrid dashboard={dashboard} />
-      <DashboardGapSummary dashboard={dashboard} />
-      <DashboardRecommendations dashboard={dashboard} />
-      <MonthlyProtectionGuidance dashboard={dashboard} />
-      <ProtectionTimeline dashboard={dashboard} />
-      <section className="ds-grid" aria-label="Report and follow-up summary">
-        <DashboardReportCard dashboard={dashboard} />
-        <LeadFollowUpCard dashboard={dashboard} />
-      </section>
-      <FutureVerifiedDataPanel dashboard={dashboard} />
-      <DashboardDisclaimers dashboard={dashboard} />
     </main>
   );
 }

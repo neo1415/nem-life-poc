@@ -38,11 +38,11 @@ Decision: this redesign pass is not Module 15 completion.
 
 Reason: Module 15 explicitly excludes major UI redesign and is a QA-quality-gate module. This pass will run verification for changed UI but will not mark Module 15 complete.
 
-## 2026-07-13: Rounded Reference Cards Adapted To Repo Radius
+## 2026-07-13: Serene Assurance Radius Exception
 
-Decision: approximate the Stitch glass-card direction with the repo's existing 8px radius tokens.
+Decision: use the approved Serene Assurance 24px radius on primary onboarding and result cards while keeping operational and repeated admin elements at tighter radii.
 
-Reason: frontend steering requires cards at 8px radius or less unless the existing design system requires otherwise. The Stitch files use larger prototype radii, but those are visual references rather than production source.
+Reason: the binding Serene Assurance design system explicitly defines 24px primary cards. This is the documented design-system exception; it is not applied indiscriminately to dashboard and admin content.
 
 ## 2026-07-13: Protection Rings Without Standalone Decorative Blobs
 
@@ -55,3 +55,21 @@ Reason: the Stitch visual system calls for protection rings, while frontend guid
 Decision: keep the existing question engine rendering one configured question at a time.
 
 Reason: several Stitch assessment screens combine related questions, but the current engine includes branching, validation, and session persistence around individual configured questions. Combining them during a UI pass would risk logic and validation regressions.
+
+## 2026-07-13: Screen-Level Fidelity Correction
+
+Decision: replace the earlier global-token-only treatment with route and component-level compositions for result, plan, lead, report, dashboard, and admin surfaces.
+
+Reason: live comparison showed that shared colors and card styles did not implement the approved information hierarchy, interaction guidance, or ecosystem-map layouts.
+
+## 2026-07-13: Preserve Dashboard Compatibility Headings
+
+Decision: retain the former dashboard route titles as visually hidden headings while using the approved welcome composition as the visible hero.
+
+Reason: this preserves established accessibility and test contracts without allowing the required demo warning to dominate the visual hierarchy.
+
+## 2026-07-13: No Fabricated Premium Values
+
+Decision: adapt the reference budget panel using existing broad budget guidance and product categories only.
+
+Reason: the prototype contains exact sample premiums, but product doctrine requires estimates and forbids presenting unapproved pricing as real.

@@ -7,7 +7,7 @@ import type { CustomerResultViewModel } from "../types/customer-result.types";
 
 export function CustomerBudgetPreview({ result }: { result: CustomerResultViewModel }) {
   return (
-    <section aria-labelledby="budget-title" className="ds-stack">
+    <aside aria-labelledby="budget-title" className="ds-budget-panel">
       <SectionHeader
         eyebrow="Budget preview"
         title="See how your monthly protection budget could guide your next steps."
@@ -16,7 +16,7 @@ export function CustomerBudgetPreview({ result }: { result: CustomerResultViewMo
         range={result.budgetPreview.selectedBudgetLabel}
         note={result.budgetPreview.guidance}
       />
-      <div className="ds-grid">
+      <div className="ds-budget-panel__categories">
         {result.budgetPreview.categories.map((category) => (
           <ProductCategoryCard key={category} title={category}>
             Recommended for review based on your answers.
@@ -27,6 +27,6 @@ export function CustomerBudgetPreview({ result }: { result: CustomerResultViewMo
         This is not a final premium or policy quote. Final pricing and eligibility depend on
         NEM&apos;s approved products, underwriting rules, and policy terms.
       </Callout>
-    </section>
+    </aside>
   );
 }
