@@ -95,26 +95,18 @@ export function ProtectionCheckFlow() {
 
   return (
     <section className="ds-guided-check" aria-label="Family Protection Check guided flow">
-      <div className="ds-guided-check__orb ds-guided-check__orb--gold" aria-hidden="true" />
-      <div className="ds-guided-check__orb ds-guided-check__orb--burgundy" aria-hidden="true" />
-      <aside className="ds-guided-check__rail" aria-label="Journey guide">
-        <p className="ds-eyebrow">Guided check</p>
-        <h2>One calm step at a time.</h2>
-        <p>
-          We only ask what helps estimate your protection picture. Your answers stay in this demo
-          session until you choose a follow-up step.
-        </p>
-        <ProgressTracker
-          currentStep={state.progress.currentStep}
-          totalSteps={state.progress.totalSteps}
-          sectionLabel={state.progress.currentSectionLabel}
-        />
-      </aside>
       <div
         key={state.currentQuestion.id}
         className={`ds-question-stage ds-question-stage--${direction}`}
       >
         <QuestionCard
+          progress={
+            <ProgressTracker
+              currentStep={state.progress.currentStep}
+              totalSteps={state.progress.totalSteps}
+              sectionLabel={state.progress.currentSectionLabel}
+            />
+          }
           title={model.title}
           description={model.description}
           helperText={model.helperText}
@@ -173,7 +165,43 @@ export function ProtectionCheckFlow() {
           {error && model.options.length > 0 ? <FieldError>{error}</FieldError> : null}
         </QuestionCard>
       </div>
+      <ProtectionMapRail currentSection={state.progress.currentSectionLabel} />
     </section>
+  );
+}
+
+const protectionAreas = ["Life", "Health", "Wealth", "Property", "Family"] as const;
+
+function ProtectionMapRail({ currentSection }: { currentSection?: string }) {
+  const activeArea = protectionAreas.find((area) =>
+    currentSection?.toLowerCase().includes(area.toLowerCase()),
+  );
+
+  return (
+    <aside className="ds-protection-map" aria-label="Your protection map">
+      <div className="ds-protection-map__header">
+        <span className="ds-protection-map__mark" aria-hidden="true" />
+        <div>
+          <h2>Your Protection</h2>
+          <p>Evolving Map</p>
+        </div>
+      </div>
+      <ol className="ds-protection-map__list">
+        {protectionAreas.map((area) => {
+          const status = activeArea === area ? "current" : activeArea ? "upcoming" : "upcoming";
+          return (
+            <li className={`ds-protection-map__item ds-protection-map__item--${status}`} key={area}>
+              <span className="ds-protection-map__dot" aria-hidden="true" />
+              <span>
+                <strong>{area}</strong>
+                <small>{status === "current" ? "In progress" : "Upcoming"}</small>
+              </span>
+            </li>
+          );
+        })}
+      </ol>
+      <p className="ds-protection-map__footer">Secure assessment context</p>
+    </aside>
   );
 }
 

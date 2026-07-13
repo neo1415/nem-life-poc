@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 type ProgressTrackerProps = {
   currentStep: number;
   totalSteps: number;
@@ -23,6 +25,14 @@ export function ProgressTracker({ currentStep, totalSteps, sectionLabel }: Progr
       <div className="ds-progress__track" aria-hidden="true">
         <span style={{ width: `${percent}%` }} />
       </div>
+      <div className="ds-progress__segments" aria-hidden="true">
+        {Array.from({ length: safeTotal }, (_, index) => {
+          const status = index + 1 <= safeCurrent ? "complete" : "upcoming";
+          return (
+            <span className={`ds-progress__segment ds-progress__segment--${status}`} key={index} />
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -40,4 +50,3 @@ export function StepIndicator({
 export function MobileStepShell({ children }: { children: ReactNode }) {
   return <section className="ds-mobile-step">{children}</section>;
 }
-import type { ReactNode } from "react";

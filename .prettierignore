@@ -1,6 +1,7 @@
 agent-docs
 docs/PRD.md
 docs/modules/module-*.md
+docs/stitch_nem_life_visual_redesign
 pnpm-lock.yaml
 node_modules
 .next

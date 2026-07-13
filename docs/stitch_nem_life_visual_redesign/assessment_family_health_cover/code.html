@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Family Health Assessment - NEM Life+</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#fff0f0",
+                        "secondary": "#735c00",
+                        "on-surface": "#251819",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "inverse-on-surface": "#ffedec",
+                        "on-surface-variant": "#584141",
+                        "primary": "#570013",
+                        "on-primary-container": "#ff828a",
+                        "outline": "#8c7071",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#ffb3b5",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#edd4d4",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#a9a7a7",
+                        "surface-container-highest": "#f5dddd",
+                        "primary-fixed": "#ffdada",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary-container": "#fed65b",
+                        "surface-tint": "#af2b3e",
+                        "secondary-fixed": "#ffe088",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#40000b",
+                        "surface-variant": "#f5dddd",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#800020",
+                        "background": "#fff8f7",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-background": "#251819",
+                        "on-secondary-container": "#745c00",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "surface-bright": "#fff8f7",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#fbe2e2",
+                        "surface-container": "#ffe9e8",
+                        "outline-variant": "#e0bfbf",
+                        "tertiary-container": "#3d3d3d",
+                        "tertiary": "#272727",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "inverse-surface": "#3b2d2d",
+                        "surface": "#fff8f7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "section-gap": "80px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "container-max": "1100px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "display-xl": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-sm": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .protection-ring {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(128, 0, 32, 0.05) 0%, rgba(128, 0, 32, 0) 70%);
+            z-index: -1;
+        }
+        .protection-ring-gold {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(115, 92, 0, 0.05) 0%, rgba(115, 92, 0, 0) 70%);
+            z-index: -1;
+        }
+        .active-ring {
+            box-shadow: 0 0 30px rgba(87, 0, 19, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden relative">
+<!-- TopAppBar -->
+<header class="bg-background/60 backdrop-blur-xl border-b border-primary/10 fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+<div class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary">
+            NEM Life+
+        </div>
+<div class="flex items-center gap-4">
+<button class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors">
+                Save &amp; Exit
+            </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/10">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="A small, circular profile avatar showing a smiling person in a brightly lit, modern environment. The lighting is soft and natural, contributing to a calm, professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOa1UJ0pKmxQSwN6Lg0WiM4XigKZFgKp5H-EEf8yoavR9l3PHdRMyGiF1BtxN6cO67y94Or0NHBWiWiCcvn4tAZBgSIHzLZUIAAAzW06YGUMBpKu9-KsWUv4w5ZtOKZHDs9L0BJp7ko-tZeHImw4uE2cu6cEN8AdxQB56-5pVmh-gFXQcK-WIymmHXqDvc76Hmf-uoTCdlNume6yGWtV9en6sJPBwk9i1v3zvPofXNrnJjnjfgNteu"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low/60 backdrop-blur-xl border-l border-primary/10 shadow-sm transition-all duration-300 ease-in-out hidden lg:flex flex-col h-full p-gutter h-screen w-80 fixed right-0 top-0 pt-[80px] z-40">
+<div class="mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-primary/20 flex items-center justify-center bg-surface">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+</div>
+<div>
+<h2 class="font-label-bold text-label-bold text-on-background">Your Protection</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Evolving Map</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-tertiary-container hover:bg-primary-container/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-bold text-label-bold">Life</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-primary-container/5 transition-colors opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="health_and_safety" data-weight="fill" style="font-variation-settings: 'FILL' 1;">health_and_safety</span>
+<span class="font-label-bold text-label-bold">Health</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-tertiary-container hover:bg-primary-container/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-bold text-label-bold">Wealth</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-tertiary-container hover:bg-primary-container/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home_work">home_work</span>
+<span class="font-label-bold text-label-bold">Property</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-tertiary-container hover:bg-primary-container/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="family_restroom">family_restroom</span>
+<span class="font-label-bold text-label-bold">Family</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow pt-[100px] lg:pr-80 pb-section-gap px-margin-mobile md:px-margin-desktop flex justify-center relative">
+<!-- Ambient Background Rings -->
+<div class="protection-ring w-[600px] h-[600px] top-[10%] left-[-10%]"></div>
+<div class="protection-ring-gold w-[500px] h-[500px] bottom-[10%] right-[20%]"></div>
+<div class="w-full max-w-[800px] glass-panel rounded-2xl p-6 md:p-10 border border-primary/10 active-ring">
+<!-- Header / Progress -->
+<div class="flex items-center gap-2 mb-8">
+<span class="px-3 py-1 bg-secondary-container/30 text-secondary-container-on font-label-bold text-label-bold rounded-full">Step 2 of 4</span>
+<div class="flex gap-1">
+<div class="w-8 h-1 bg-secondary rounded-full"></div>
+<div class="w-8 h-1 bg-secondary/30 rounded-full"></div>
+<div class="w-8 h-1 bg-secondary/30 rounded-full"></div>
+<div class="w-8 h-1 bg-secondary/30 rounded-full"></div>
+</div>
+</div>
+<div class="text-center mb-10">
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mx-auto mb-4 border border-primary/10">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="health_and_safety">health_and_safety</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-primary mb-2">Family Health Cover</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Let's ensure everyone in your household is protected.</p>
+</div>
+<!-- Current Cover Status -->
+<div class="mb-10">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-4">Does your family currently have health cover?</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="cursor-pointer relative flex flex-col items-start p-6 rounded-xl border-2 border-primary/20 bg-surface hover:bg-surface-container-low transition-all">
+<input class="peer sr-only" name="cover_status" type="radio" value="yes"/>
+<div class="w-full flex justify-between items-center mb-2">
+<span class="font-label-bold text-label-bold text-on-background">Yes, partially or fully</span>
+<span class="material-symbols-outlined text-primary/40 peer-checked:text-primary transition-colors" data-icon="check_circle">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">We have some level of existing coverage.</p>
+<div class="absolute inset-0 border-2 border-transparent rounded-xl peer-checked:border-primary peer-checked:bg-primary-container/5 transition-all pointer-events-none"></div>
+</label>
+<label class="cursor-pointer relative flex flex-col items-start p-6 rounded-xl border-2 border-primary/20 bg-surface hover:bg-surface-container-low transition-all">
+<input class="peer sr-only" name="cover_status" type="radio" value="no"/>
+<div class="w-full flex justify-between items-center mb-2">
+<span class="font-label-bold text-label-bold text-on-background">No, we need cover</span>
+<span class="material-symbols-outlined text-primary/40 peer-checked:text-primary transition-colors" data-icon="add_circle">add_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Looking for comprehensive protection options.</p>
+<div class="absolute inset-0 border-2 border-transparent rounded-xl peer-checked:border-primary peer-checked:bg-primary-container/5 transition-all pointer-events-none"></div>
+</label>
+</div>
+</div>
+<div class="h-px w-full bg-primary/10 my-8"></div>
+<!-- Who Needs Cover -->
+<div class="mb-10">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-4">Who may still need cover?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Select all family members you wish to include in your new plan assessment.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Member: Self -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="needs_cover" type="checkbox" value="self"/>
+<div class="flex flex-col items-center p-4 rounded-xl border-2 border-transparent bg-surface-container-low hover:bg-surface-container-highest transition-all peer-checked:border-primary peer-checked:bg-primary-container/5">
+<div class="w-12 h-12 rounded-full overflow-hidden mb-3 border border-primary/20 group-hover:border-primary/40 transition-colors">
+<img alt="Self avatar" class="w-full h-full object-cover" data-alt="A softly lit, close-up avatar of a person, representing 'Self', styled in a warm, premium corporate modernism aesthetic with a subtle glassmorphic backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpnWkHplrZpZeUBptt7eTUjwIoCDFriOwjKoOcEK0o6A_R240zBsDKF3xurUUJyeLz_KJURvQYnADgHtM3Oxzc3iKsBqsvxiilG4yctnt7jei2vwdaWtq5vKhqq9kwNW1lA7jQFnMgxEYh9rdj4yeTjuzTqZfWTn8SH4CyJSYp2qFj2d0g6CnJvt9B--D2OcEWZiwvx4v1Lzpb3W1oJpDyunCFWK2GM8C9taFyS7LJ3z9Hq3hIpPaw"/>
+</div>
+<span class="font-label-bold text-label-bold text-on-background">Myself</span>
+</div>
+</label>
+<!-- Member: Spouse -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="needs_cover" type="checkbox" value="spouse"/>
+<div class="flex flex-col items-center p-4 rounded-xl border-2 border-transparent bg-surface-container-low hover:bg-surface-container-highest transition-all peer-checked:border-primary peer-checked:bg-primary-container/5">
+<div class="w-12 h-12 rounded-full overflow-hidden mb-3 border border-primary/20 group-hover:border-primary/40 transition-colors">
+<img alt="Spouse avatar" class="w-full h-full object-cover" data-alt="A softly lit, close-up avatar of a person, representing 'Spouse', styled in a warm, premium corporate modernism aesthetic with a subtle glassmorphic backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfNtku7l3cR0UBsqOkD2SCrGB0hhQGH9bm1oZJLnsG9lLB0Hlol4cUfF1SguKa-nbcsfGwN8N_knGrdUFGr1LUzM92NXYkkVciV_G4cC_4aptEYazmO-t-or4xfG_tJ1GBu7k2__KF4q2iJvVzc6Qu0mpG7U7Kgt7-dmpAZnvtFr9D61IUhf-GZ1oUK_JQC9tvtUuA5MkdZh7Wbx57vGZCkJPznBRYmPCxj1bNdfmveGXl_WZU6peT"/>
+</div>
+<span class="font-label-bold text-label-bold text-on-background">Spouse / Partner</span>
+</div>
+</label>
+<!-- Member: Children -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="needs_cover" type="checkbox" value="children"/>
+<div class="flex flex-col items-center p-4 rounded-xl border-2 border-transparent bg-surface-container-low hover:bg-surface-container-highest transition-all peer-checked:border-primary peer-checked:bg-primary-container/5">
+<div class="w-12 h-12 rounded-full bg-surface-dim flex items-center justify-center mb-3 border border-primary/20 group-hover:border-primary/40 transition-colors text-primary/70">
+<span class="material-symbols-outlined" data-icon="child_care">child_care</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-background">Children</span>
+</div>
+</label>
+<!-- Member: Parents -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="needs_cover" type="checkbox" value="parents"/>
+<div class="flex flex-col items-center p-4 rounded-xl border-2 border-transparent bg-surface-container-low hover:bg-surface-container-highest transition-all peer-checked:border-primary peer-checked:bg-primary-container/5">
+<div class="w-12 h-12 rounded-full bg-surface-dim flex items-center justify-center mb-3 border border-primary/20 group-hover:border-primary/40 transition-colors text-primary/70">
+<span class="material-symbols-outlined" data-icon="elderly">elderly</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-background">Parents</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Navigation Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-center mt-10 gap-4 pt-6 border-t border-primary/10">
+<button class="font-label-bold text-label-bold text-on-surface-variant hover:text-on-background flex items-center gap-2 transition-colors order-2 sm:order-1">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+                    Back
+                </button>
+<button class="w-full sm:w-auto bg-primary-container text-on-primary font-label-bold text-label-bold px-8 py-4 rounded-xl hover:bg-primary-fixed-variant transition-colors flex items-center justify-center gap-2 order-1 sm:order-2 shadow-sm">
+                    Continue to Details
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-transparent w-full flex flex-col items-center py-8 gap-2 mt-auto z-10 relative">
+<div class="flex gap-4">
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Data Security</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Terms</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Secure &amp; Encrypted. No BVN/NIN required to start.</p>
+</footer>
+</body></html>

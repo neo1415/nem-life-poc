@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEM Life+ | Serene Assurance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#3d3d3d",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-tertiary-container": "#a9a7a7",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-fixed": "#ffdada",
+                        "surface-bright": "#fff8f7",
+                        "on-background": "#251819",
+                        "secondary-fixed": "#ffe088",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#fff0f0",
+                        "surface-container-high": "#fbe2e2",
+                        "background": "#fff8f7",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "primary": "#570013",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#edd4d4",
+                        "inverse-surface": "#3b2d2d",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#ffb3b5",
+                        "on-primary-fixed": "#40000b",
+                        "surface-variant": "#f5dddd",
+                        "surface-tint": "#af2b3e",
+                        "surface": "#fff8f7",
+                        "surface-container-highest": "#f5dddd",
+                        "inverse-on-surface": "#ffedec",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "primary-container": "#800020",
+                        "surface-container": "#ffe9e8",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#745c00",
+                        "outline": "#8c7071",
+                        "on-surface-variant": "#584141",
+                        "on-primary": "#ffffff",
+                        "secondary": "#735c00",
+                        "outline-variant": "#e0bfbf",
+                        "on-primary-container": "#ff828a",
+                        "tertiary": "#272727",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary-container": "#fed65b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#251819"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "section-gap": "80px",
+                        "margin-desktop": "64px",
+                        "container-max": "1100px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "label-bold": ["Plus Jakarta Sans", "sans-serif"],
+                        "body-md": ["Plus Jakarta Sans", "sans-serif"],
+                        "headline-lg-mobile": ["Manrope", "sans-serif"],
+                        "headline-lg": ["Manrope", "sans-serif"],
+                        "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+                        "display-xl": ["Manrope", "sans-serif"]
+                    },
+                    fontSize: {
+                        "label-bold": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-sm": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "display-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .protection-rings {
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(128, 0, 32, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(254, 214, 91, 0.05) 20%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(128, 0, 32, 0.03) 40%, transparent 60%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased relative min-h-screen flex flex-col font-body-md">
+<!-- Ambient Background Motifs -->
+<div class="fixed inset-0 pointer-events-none z-[-1] protection-rings"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-background/60 backdrop-blur-xl border-b border-primary/10">
+<div class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary">
+            NEM Life+
+        </div>
+<div>
+<button class="font-label-bold text-label-bold text-primary hover:bg-primary-container/5 px-4 py-2 rounded-full transition-colors hidden md:block">
+                Save &amp; Exit
+            </button>
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto gap-section-gap relative">
+<!-- Hero Section -->
+<section class="text-center flex flex-col items-center gap-8 max-w-3xl relative z-10 w-full">
+<h1 class="font-display-xl text-display-xl text-on-surface">
+                Is your family protected if life changes tomorrow?
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                A calm, guided journey to understand your current safety net and secure what matters most. No pressure, just clarity.
+            </p>
+<div class="flex flex-col items-center gap-4 mt-4 w-full">
+<button class="bg-primary-container text-on-primary font-label-bold text-label-bold px-8 py-4 rounded-[16px] hover:opacity-90 transition-opacity w-full md:w-auto shadow-[0_4px_14px_0_rgba(128,0,32,0.39)]">
+                    Start My Free Check
+                </button>
+<div class="flex items-center gap-2 text-on-surface-variant/80 mt-2">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span class="font-body-sm text-body-sm">No BVN, NIN, payment, or document upload required to start.</span>
+</div>
+</div>
+</section>
+<!-- Benefit Cards (Bento Grid Style) -->
+<section class="w-full grid grid-cols-1 md:grid-cols-3 gap-gutter relative z-10">
+<!-- Card 1 -->
+<div class="glass-card rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(128,0,32,0.08)] transition-shadow group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</div>
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Know What You Have</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Map out your existing protections securely and see your current standing in clear terms.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(128,0,32,0.08)] transition-shadow group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="troubleshoot">troubleshoot</span>
+</div>
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">See What Is Missing</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Identify gaps in your safety net without confusing jargon or aggressive sales tactics.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-xl p-8 flex flex-col gap-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(128,0,32,0.08)] transition-shadow group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="healing">healing</span>
+</div>
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Fix It With NEM</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Access tailored, straightforward solutions to close those gaps and ensure peace of mind.</p>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="w-full flex flex-col items-center gap-12 relative z-10">
+<h2 class="font-display-xl text-display-xl text-on-surface text-center">How It Works</h2>
+<div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 w-full relative">
+<!-- Connecting Pathway (Desktop) -->
+<div class="hidden md:block absolute top-1/2 left-1/4 right-1/4 h-[1.5px] bg-outline-variant -z-10 transform -translate-y-1/2"></div>
+<!-- Connecting Pathway (Mobile) -->
+<div class="md:hidden absolute top-0 bottom-0 left-1/2 w-[1.5px] bg-outline-variant -z-10 transform -translate-x-1/2"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center gap-4 w-full md:w-1/3 bg-background p-4 rounded-xl">
+<div class="w-16 h-16 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center text-primary shadow-[0_0_20px_rgba(128,0,32,0.1)]">
+<span class="font-headline-lg text-headline-lg">1</span>
+</div>
+<h4 class="font-label-bold text-label-bold text-on-surface">Answer Simple Questions</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tell us a bit about your life stage in a secure, conversational format.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center gap-4 w-full md:w-1/3 bg-background p-4 rounded-xl">
+<div class="w-16 h-16 rounded-full bg-surface-container border border-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="font-headline-lg text-headline-lg">2</span>
+</div>
+<h4 class="font-label-bold text-label-bold text-on-surface">Review Your Map</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Get an instant, visual snapshot of your current coverage and potential risks.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center gap-4 w-full md:w-1/3 bg-background p-4 rounded-xl">
+<div class="w-16 h-16 rounded-full bg-surface-container border border-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="font-headline-lg text-headline-lg">3</span>
+</div>
+<h4 class="font-label-bold text-label-bold text-on-surface">Secure Your Future</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Choose actionable plans to strengthen your safety net when you're ready.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full flex flex-col items-center py-8 gap-2 bg-transparent text-on-surface-variant font-body-sm text-body-sm z-10 border-t border-primary/5">
+<p class="text-center max-w-md px-margin-mobile">Secure &amp; Encrypted. No BVN/NIN required to start.</p>
+<div class="flex gap-4 mt-2">
+<a class="text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<span class="text-on-surface-variant/30">•</span>
+<a class="text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Data Security</a>
+<span class="text-on-surface-variant/30">•</span>
+<a class="text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Terms</a>
+</div>
+</footer>
+</body></html>

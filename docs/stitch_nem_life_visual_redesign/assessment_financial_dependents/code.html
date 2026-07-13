@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dependents Assessment - NEM Life+</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-low": "#fff0f0",
+                        "secondary": "#735c00",
+                        "on-surface": "#251819",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "inverse-on-surface": "#ffedec",
+                        "on-surface-variant": "#584141",
+                        "primary": "#570013",
+                        "on-primary-container": "#ff828a",
+                        "outline": "#8c7071",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#ffb3b5",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#edd4d4",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#a9a7a7",
+                        "surface-container-highest": "#f5dddd",
+                        "primary-fixed": "#ffdada",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary-container": "#fed65b",
+                        "surface-tint": "#af2b3e",
+                        "secondary-fixed": "#ffe088",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#40000b",
+                        "surface-variant": "#f5dddd",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#800020",
+                        "background": "#fff8f7",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-background": "#251819",
+                        "on-secondary-container": "#745c00",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "surface-bright": "#fff8f7",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#fbe2e2",
+                        "surface-container": "#ffe9e8",
+                        "outline-variant": "#e0bfbf",
+                        "tertiary-container": "#3d3d3d",
+                        "tertiary": "#272727",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "inverse-surface": "#3b2d2d",
+                        "surface": "#fff8f7"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "4xl": "2rem"
+                    },
+                    spacing: {
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "section-gap": "80px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "container-max": "1100px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Manrope", "sans-serif"],
+                        "display-xl": ["Manrope", "sans-serif"],
+                        "headline-lg-mobile": ["Manrope", "sans-serif"],
+                        "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+                        "label-bold": ["Plus Jakarta Sans", "sans-serif"],
+                        "body-md": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "display-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+                        "body-sm": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-bold": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Protection Rings ambient background */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(128, 0, 32, 0.1);
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-x-hidden antialiased selection:bg-primary-container selection:text-on-primary">
+<!-- Ambient Protection Rings -->
+<div class="ambient-glow bg-surface-tint w-[600px] h-[600px] top-[-200px] left-[-100px]"></div>
+<div class="ambient-glow bg-secondary-container w-[500px] h-[500px] bottom-[-100px] right-[20vw] opacity-20"></div>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col lg:pr-80 min-h-screen relative z-10">
+<!-- Top App Bar (Simplified for inline flow) -->
+<header class="w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined filled text-primary text-3xl">shield</span>
+<span class="font-headline-lg text-headline-lg font-bold text-primary">NEM Life+</span>
+</div>
+<button class="font-label-bold text-label-bold text-primary hover:text-primary-fixed-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                Save &amp; Exit
+            </button>
+</header>
+<!-- Centered Action Canvas -->
+<div class="flex-1 flex flex-col justify-center items-center px-margin-mobile md:px-margin-desktop py-12">
+<div class="w-full max-w-container-max flex flex-col gap-12">
+<!-- Progress Header -->
+<div class="flex flex-col gap-2 items-center text-center max-w-2xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-1 bg-secondary rounded-full"></div>
+<span class="font-label-bold text-label-bold text-secondary uppercase tracking-widest">Step 2 of 5</span>
+<div class="w-2 h-1 bg-secondary/30 rounded-full"></div>
+<div class="w-2 h-1 bg-secondary/30 rounded-full"></div>
+</div>
+<h1 class="font-display-xl text-display-xl text-on-surface mt-6">Understanding Your Circle</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">To build a safety net that truly protects, we need to know who relies on you.</p>
+</div>
+<!-- Glassmorphism Main Card -->
+<div class="bg-surface-container-lowest/70 backdrop-blur-2xl border-1.5 border-primary/10 rounded-4xl p-8 md:p-12 shadow-[0_16px_64px_-12px_rgba(87,0,19,0.06)] flex flex-col lg:flex-row gap-16 items-start">
+<!-- Left Column: Primary Question -->
+<div class="flex-1 flex flex-col gap-8 w-full">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-surface-container flex items-center justify-center mb-6 border border-primary/5">
+<span class="material-symbols-outlined text-primary text-[24px]">group</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Do people currently depend on your income or support?</h2>
+</div>
+<!-- Yes/No Tactile Toggle -->
+<div class="grid grid-cols-2 gap-4">
+<label class="cursor-pointer group">
+<input checked="" class="peer sr-only" name="has_dependents" type="radio" value="yes"/>
+<div class="h-16 flex items-center justify-center rounded-2xl border-1.5 border-outline-variant bg-surface peer-checked:border-primary peer-checked:bg-surface-container-low peer-checked:shadow-[0_0_0_4px_rgba(128,0,32,0.05)] transition-all duration-300">
+<span class="font-label-bold text-label-bold text-on-surface-variant peer-checked:text-primary">Yes, they do</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="has_dependents" type="radio" value="no"/>
+<div class="h-16 flex items-center justify-center rounded-2xl border-1.5 border-outline-variant bg-surface peer-checked:border-primary peer-checked:bg-surface-container-low peer-checked:shadow-[0_0_0_4px_rgba(128,0,32,0.05)] transition-all duration-300">
+<span class="font-label-bold text-label-bold text-on-surface-variant peer-checked:text-primary">No, just me</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Right Column: Interactive Counter (Conditional visibility simulated) -->
+<div class="flex-1 w-full bg-surface-container-low/50 rounded-3xl p-8 border border-primary/5 flex flex-col items-center justify-center min-h-[320px] relative overflow-hidden transition-all duration-500" id="counter-section">
+<!-- Decorative background element -->
+<div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,var(--tw-colors-secondary-container)_0%,transparent_70%)]"></div>
+<div class="relative z-10 w-full flex flex-col items-center">
+<h3 class="font-body-md text-body-md text-on-surface-variant mb-8 text-center font-medium">How many people depend on you financially?</h3>
+<!-- Large Counter UI -->
+<div class="flex items-center justify-center gap-8 mb-8">
+<button class="w-14 h-14 rounded-full bg-surface border-1.5 border-outline-variant flex items-center justify-center text-on-surface hover:border-primary hover:text-primary transition-all shadow-sm active:scale-95" id="btn-decrease">
+<span class="material-symbols-outlined text-[28px]">remove</span>
+</button>
+<div class="w-24 text-center">
+<span class="font-display-xl text-[64px] leading-none text-primary font-bold tracking-tighter" id="dependent-count">2</span>
+</div>
+<button class="w-14 h-14 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-md hover:opacity-90 hover:shadow-lg transition-all active:scale-95" id="btn-increase">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</div>
+<!-- Visual indicator dots -->
+<div class="flex justify-center gap-3 h-8" id="visual-indicators">
+<span class="material-symbols-outlined filled text-secondary text-[24px]">person</span>
+<span class="material-symbols-outlined filled text-secondary text-[24px]">person</span>
+<span class="material-symbols-outlined text-outline-variant text-[24px]">person</span>
+<span class="material-symbols-outlined text-outline-variant text-[24px]">person</span>
+<span class="material-symbols-outlined text-outline-variant text-[24px]">person</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex items-center justify-between mt-4">
+<button class="flex items-center gap-2 font-label-bold text-label-bold text-on-surface-variant hover:text-on-surface transition-colors py-3 px-4 rounded-xl hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                        Back
+                    </button>
+<button class="bg-primary-container text-on-primary border border-transparent hover:opacity-90 rounded-[16px] px-8 py-4 font-label-bold text-label-bold shadow-md transition-all flex items-center gap-2 group">
+                        Continue
+                        <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- SideNavBar (Protection Map) -->
+<aside class="hidden lg:flex flex-col h-screen w-80 fixed right-0 bg-surface-container-low/60 backdrop-blur-xl border-l border-primary/10 shadow-sm p-gutter z-40 Transition-all duration-300 ease-in-out">
+<!-- Sidebar Header -->
+<div class="flex flex-col gap-4 mb-10 pt-4">
+<div class="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center shadow-inner overflow-hidden border border-primary/10">
+<!-- Using an icon as a fallback for the avatar since we don't have a specific image placeholder requested -->
+<span class="material-symbols-outlined filled text-primary text-3xl">map</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary text-[24px] leading-tight mb-1">Your Protection</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                    Evolving Map
+                </p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-2">
+<!-- Active Tab: Life -->
+<a class="flex items-center gap-4 py-4 px-4 text-secondary font-bold border-r-4 border-secondary bg-primary-container/5 rounded-l-xl Transition-all duration-300 ease-in-out group relative overflow-hidden" href="#">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined filled text-[24px] z-10">favorite</span>
+<span class="font-label-bold text-label-bold z-10">Life</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-4 py-4 px-4 text-on-tertiary-container hover:bg-primary-container/5 hover:text-on-surface rounded-l-xl Transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[24px]">health_and_safety</span>
+<span class="font-label-bold text-label-bold">Health</span>
+</a>
+<a class="flex items-center gap-4 py-4 px-4 text-on-tertiary-container hover:bg-primary-container/5 hover:text-on-surface rounded-l-xl Transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[24px]">payments</span>
+<span class="font-label-bold text-label-bold">Wealth</span>
+</a>
+<a class="flex items-center gap-4 py-4 px-4 text-on-tertiary-container hover:bg-primary-container/5 hover:text-on-surface rounded-l-xl Transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[24px]">home_work</span>
+<span class="font-label-bold text-label-bold">Property</span>
+</a>
+<a class="flex items-center gap-4 py-4 px-4 text-on-tertiary-container hover:bg-primary-container/5 hover:text-on-surface rounded-l-xl Transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[24px]">family_restroom</span>
+<span class="font-label-bold text-label-bold">Family</span>
+</a>
+</nav>
+<!-- Sidebar Footer / Status -->
+<div class="mt-auto pb-4">
+<div class="bg-surface rounded-2xl p-4 border border-outline-variant/50">
+<p class="font-label-bold text-label-bold text-on-surface-variant mb-2">Coverage Strength</p>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mb-2 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 25%"></div>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant/70">Assessing foundations...</p>
+</div>
+</div>
+</aside>
+<script>
+        // Simple Counter Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const countEl = document.getElementById('dependent-count');
+            const btnDecrease = document.getElementById('btn-decrease');
+            const btnIncrease = document.getElementById('btn-increase');
+            const indicatorsContainer = document.getElementById('visual-indicators');
+            const radioButtons = document.querySelectorAll('input[name="has_dependents"]');
+            const counterSection = document.getElementById('counter-section');
+            
+            let count = 2;
+            const maxIndicators = 5;
+
+            function updateUI() {
+                countEl.textContent = count;
+                
+                // Update indicator dots
+                indicatorsContainer.innerHTML = '';
+                for (let i = 0; i < maxIndicators; i++) {
+                    const span = document.createElement('span');
+                    if (i < count) {
+                        span.className = 'material-symbols-outlined filled text-secondary text-[24px] transition-all duration-300 transform scale-100';
+                    } else {
+                        span.className = 'material-symbols-outlined text-outline-variant text-[24px] transition-all duration-300 transform scale-90 opacity-50';
+                    }
+                    span.textContent = 'person';
+                    indicatorsContainer.appendChild(span);
+                }
+                
+                // If count > 5, show a + indicator
+                if (count > maxIndicators) {
+                    indicatorsContainer.children[maxIndicators - 1].textContent = 'group_add';
+                }
+
+                // Disable decrease if 1
+                if (count <= 1) {
+                    btnDecrease.classList.add('opacity-50', 'pointer-events-none');
+                } else {
+                    btnDecrease.classList.remove('opacity-50', 'pointer-events-none');
+                }
+            }
+
+            btnDecrease.addEventListener('click', () => {
+                if (count > 1) {
+                    count--;
+                    updateUI();
+                }
+            });
+
+            btnIncrease.addEventListener('click', () => {
+                if (count < 20) { // arbitrary max for demo
+                    count++;
+                    updateUI();
+                }
+            });
+
+            // Handle Yes/No Toggle
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    if (e.target.value === 'no') {
+                        counterSection.classList.add('opacity-30', 'pointer-events-none', 'grayscale');
+                    } else {
+                        counterSection.classList.remove('opacity-30', 'pointer-events-none', 'grayscale');
+                    }
+                });
+            });
+
+            updateUI();
+        });
+    </script>
+</body></html>

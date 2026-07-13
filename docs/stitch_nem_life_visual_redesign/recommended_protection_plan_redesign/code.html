@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEM Life+ | Recommended Protection Plan</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#3d3d3d",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-tertiary-container": "#a9a7a7",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-fixed": "#ffdada",
+                        "surface-bright": "#fff8f7",
+                        "on-background": "#251819",
+                        "secondary-fixed": "#ffe088",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#fff0f0",
+                        "surface-container-high": "#fbe2e2",
+                        "background": "#fff8f7",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "primary": "#570013",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#edd4d4",
+                        "inverse-surface": "#3b2d2d",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#ffb3b5",
+                        "on-primary-fixed": "#40000b",
+                        "surface-variant": "#f5dddd",
+                        "surface-tint": "#af2b3e",
+                        "surface": "#fff8f7",
+                        "surface-container-highest": "#f5dddd",
+                        "inverse-on-surface": "#ffedec",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "primary-container": "#800020",
+                        "surface-container": "#ffe9e8",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#745c00",
+                        "outline": "#8c7071",
+                        "on-surface-variant": "#584141",
+                        "on-primary": "#ffffff",
+                        "secondary": "#735c00",
+                        "outline-variant": "#e0bfbf",
+                        "on-primary-container": "#ff828a",
+                        "tertiary": "#272727",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary-container": "#fed65b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#251819"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "margin-desktop": "64px",
+                        "container-max": "1100px",
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "display-xl": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Ambient Background Protection Rings */
+        body {
+            position: relative;
+            overflow-x: hidden;
+            background-color: theme('colors.background');
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20vh;
+            left: -10vw;
+            width: 80vw;
+            height: 80vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(128, 0, 32, 0.03) 0%, rgba(255, 248, 247, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20vh;
+            right: -10vw;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(254, 214, 91, 0.04) 0%, rgba(255, 248, 247, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(87, 0, 19, 0.02);
+        }
+
+        .active-card-shadow {
+            box-shadow: 0 10px 40px 0 rgba(87, 0, 19, 0.05);
+        }
+        
+        .connected-path {
+            position: absolute;
+            top: 50%;
+            left: -12px;
+            width: 24px;
+            height: 2px;
+            background: theme('colors.primary-container');
+            opacity: 0.1;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="text-on-background min-h-screen font-body-md antialiased selection:bg-primary-container selection:text-on-primary">
+<!-- TopAppBar JSON Translation -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-background/60 backdrop-blur-xl flat no shadows border-b border-primary/10 transition-all">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary">NEM Life+</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+                Save &amp; Exit
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-primary/10">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="A professional headshot of an individual, warmly lit against a clean, minimal white background. The image evokes a sense of trust and professionalism typical of a modern corporate portrait. The colors are soft and natural." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhQUDACrBmWhUMLdhVkaSyJps9Sbk2lVUx5YPtU3DHs3oJdlZAEEuYm2kDg0gCQ9N0gADer-ruJdxlGnWvr3OMUp_n9oveniyPBpSLhcLL7U9xPVS3P_9l5KOoZrgdImBukuO4GepCG4gcQQAQyVjLzg95vgaCDPMR-qEA78TTipaARoPrB-LdeJLSJ2PoBm6dUWEl4aTr9OmfKUTmSxGmIRu1FghtvXSzjTCOff4z4Jb3GITVtY8j"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10">
+<!-- Header Section -->
+<div class="max-w-3xl mb-16 text-center mx-auto">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high mb-6 border border-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1; font-size: 18px;">verified_user</span>
+<span class="font-label-bold text-label-bold text-primary">Your Protection Score: 72/100</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-on-background mb-4">Recommended Protection Plan</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Based on your answers, we've structured a prioritized plan to secure your life, health, and business. Start with the essentials.</p>
+</div>
+<!-- Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Recommendations Section -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Priority 1: Life Cover -->
+<div class="glass-card rounded-xl p-8 relative overflow-hidden group hover:active-card-shadow transition-all duration-300">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex flex-col md:flex-row gap-6 relative z-10">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center shrink-0 border border-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1; font-size: 32px;">favorite</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<span class="px-2 py-1 rounded-md bg-secondary-container/30 text-secondary font-label-bold text-[12px] uppercase tracking-wider">Priority 1</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">Term Life Cover</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Essential financial protection for your dependents in the event of unforeseen circumstances.</p>
+<div class="bg-surface/50 rounded-lg p-4 border border-outline-variant/30 mb-6 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1" style="font-variation-settings: 'FILL' 0; font-size: 20px;">lightbulb</span>
+<div>
+<span class="font-label-bold text-label-bold text-on-background block mb-1">Why it is recommended</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">You indicated having 2 dependents and a mortgage. This provides immediate liquidity to clear major debts and replace lost income for up to 10 years.</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Est. Premium:</span>
+<span class="font-headline-lg-mobile text-[20px] text-on-background font-bold">₦12,500</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<button class="bg-primary-container text-on-primary font-label-bold text-label-bold px-8 py-3 rounded-[16px] hover:opacity-90 transition-opacity">Get a Quote</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Priority 2: Health -->
+<div class="glass-card rounded-xl p-8 relative overflow-hidden group hover:active-card-shadow transition-all duration-300">
+<div class="flex flex-col md:flex-row gap-6 relative z-10">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center shrink-0 border border-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1; font-size: 32px;">health_and_safety</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<span class="px-2 py-1 rounded-md bg-surface-variant text-on-surface-variant font-label-bold text-[12px] uppercase tracking-wider">Priority 2</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">Comprehensive Health</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">In-patient and out-patient medical cover, including preventive care and specialist consultations.</p>
+<div class="bg-surface/50 rounded-lg p-4 border border-outline-variant/30 mb-6 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1" style="font-variation-settings: 'FILL' 0; font-size: 20px;">lightbulb</span>
+<div>
+<span class="font-label-bold text-label-bold text-on-background block mb-1">Why it is recommended</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">To mitigate out-of-pocket medical expenses, ensuring your family has access to quality healthcare without disrupting your savings plan.</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Est. Premium:</span>
+<span class="font-headline-lg-mobile text-[20px] text-on-background font-bold">₦15,000</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<button class="bg-transparent text-primary-container font-label-bold text-label-bold px-8 py-3 rounded-[16px] border-[1.5px] border-primary-container hover:bg-primary-container/5 transition-colors">View Details</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Priority 3: Business Protection -->
+<div class="glass-card rounded-xl p-8 relative overflow-hidden group hover:active-card-shadow transition-all duration-300 opacity-80">
+<div class="flex flex-col md:flex-row gap-6 relative z-10">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center shrink-0 border border-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1; font-size: 32px;">home_work</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<span class="px-2 py-1 rounded-md bg-surface-variant text-on-surface-variant font-label-bold text-[12px] uppercase tracking-wider">Optional</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">SME Business Shield</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Covers business assets, public liability, and minor business interruptions.</p>
+<div class="flex flex-wrap items-center justify-between gap-4 mt-6 pt-6 border-t border-primary/10">
+<div class="flex items-center gap-2">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Est. Premium:</span>
+<span class="font-headline-lg-mobile text-[20px] text-on-background font-bold">₦8,000</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<button class="text-on-surface-variant font-label-bold text-label-bold px-4 py-2 hover:text-primary transition-colors flex items-center gap-1">
+                                    Explore Later
+                                    <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Budget Guidance Sidebar -->
+<div class="lg:col-span-4 mt-8 lg:mt-0">
+<div class="glass-card rounded-xl p-6 sticky top-32 border border-secondary/20">
+<h3 class="font-headline-lg-mobile text-[22px] text-on-background mb-2">Budget Guidance</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">A suggested allocation to balance protection and affordability.</p>
+<div class="mb-6">
+<label class="font-label-bold text-label-bold text-on-background block mb-2">Monthly Protection Budget</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-body-md text-on-surface-variant">₦</span>
+<input class="w-full bg-surface-bright border-[1.5px] border-outline-variant rounded-lg py-3 pl-10 pr-4 font-headline-lg-mobile text-[20px] text-on-background focus:border-primary-container focus:ring-0 transition-colors" readonly="" type="text" value="35,500"/>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Life Cover</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-background">₦12,500</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Health</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-background">₦15,000</span>
+</div>
+<div class="flex justify-between items-center text-sm opacity-50">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary-container"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Business</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-background">₦8,000</span>
+</div>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden flex mb-8">
+<div class="h-full bg-primary-container" style="width: 35%;"></div>
+<div class="h-full bg-secondary" style="width: 42%;"></div>
+<div class="h-full bg-tertiary-container opacity-50" style="width: 23%;"></div>
+</div>
+<button class="w-full bg-primary-container text-on-primary font-label-bold text-label-bold py-4 rounded-[16px] hover:opacity-90 transition-opacity shadow-sm flex justify-center items-center gap-2">
+                        Start Registration
+                        <span class="material-symbols-outlined" style="font-size: 20px;">arrow_forward</span>
+</button>
+<p class="text-center font-body-sm text-[12px] text-on-surface-variant mt-4">You can adjust these amounts during registration.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer JSON Translation -->
+<footer class="w-full flex flex-col items-center py-8 gap-2 bg-transparent full-width bottom-0 flat no shadows opacity-100 mt-auto">
+<div class="flex gap-4">
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Data Security</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Terms</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center">Secure &amp; Encrypted. No BVN/NIN required to start.</p>
+</footer>
+</body></html>

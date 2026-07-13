@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Existing Cover Assessment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#fff0f0",
+                      "secondary": "#735c00",
+                      "on-surface": "#251819",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "inverse-on-surface": "#ffedec",
+                      "on-surface-variant": "#584141",
+                      "primary": "#570013",
+                      "on-primary-container": "#ff828a",
+                      "outline": "#8c7071",
+                      "tertiary-fixed": "#e4e2e1",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "inverse-primary": "#ffb3b5",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#edd4d4",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#a9a7a7",
+                      "surface-container-highest": "#f5dddd",
+                      "primary-fixed": "#ffdada",
+                      "on-secondary-fixed": "#241a00",
+                      "secondary-fixed-dim": "#e9c349",
+                      "secondary-container": "#fed65b",
+                      "surface-tint": "#af2b3e",
+                      "secondary-fixed": "#ffe088",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-primary-fixed-variant": "#8e0f28",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#40000b",
+                      "surface-variant": "#f5dddd",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#800020",
+                      "background": "#fff8f7",
+                      "on-tertiary-fixed": "#1b1c1c",
+                      "on-background": "#251819",
+                      "on-secondary-container": "#745c00",
+                      "primary-fixed-dim": "#ffb3b5",
+                      "surface-bright": "#fff8f7",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#fbe2e2",
+                      "surface-container": "#ffe9e8",
+                      "outline-variant": "#e0bfbf",
+                      "tertiary-container": "#3d3d3d",
+                      "tertiary": "#272727",
+                      "tertiary-fixed-dim": "#c8c6c6",
+                      "inverse-surface": "#3b2d2d",
+                      "surface": "#fff8f7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "margin-mobile": "20px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "container-max": "1100px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Manrope"
+                      ],
+                      "display-xl": [
+                              "Manrope"
+                      ],
+                      "headline-lg-mobile": [
+                              "Manrope"
+                      ],
+                      "body-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-bold": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .protection-ring {
+            background: radial-gradient(circle at center, rgba(128, 0, 32, 0.05) 0%, rgba(254, 214, 91, 0.02) 40%, transparent 70%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #800020;
+            cursor: pointer;
+            margin-top: -10px;
+            box-shadow: 0 0 0 4px rgba(128, 0, 32, 0.2);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e0bfbf;
+            border-radius: 2px;
+        }
+
+        .range-slider-fill {
+            position: absolute;
+            height: 4px;
+            background: #800020;
+            border-radius: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Protection Rings Background Motif -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-1/4 left-1/4 w-[800px] h-[800px] -ml-[400px] -mt-[400px] protection-ring rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] -mr-[300px] -mb-[300px] protection-ring rounded-full"></div>
+</div>
+<!-- TopAppBar -->
+<header class="bg-background/60 backdrop-blur-xl border-b border-primary/10 flat no shadows fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+<div class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary">
+            NEM Life+
+        </div>
+<button class="text-on-surface-variant font-label-bold text-label-bold flex items-center gap-2 hover:text-primary transition-colors">
+            Save &amp; Exit <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+</button>
+</header>
+<main class="flex-grow pt-[80px] md:pt-[100px] pb-[100px] flex justify-center z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Action Card (Central Flow) -->
+<div class="w-full lg:w-2/3 max-w-[720px] flex flex-col gap-section-gap relative">
+<!-- Progress Segmented Pathway -->
+<div class="flex items-center gap-2 mb-8">
+<div class="h-1 flex-1 bg-secondary rounded-full shadow-[0_0_8px_rgba(115,92,0,0.4)]"></div>
+<div class="h-1 flex-1 bg-secondary rounded-full shadow-[0_0_8px_rgba(115,92,0,0.4)]"></div>
+<div class="h-1 flex-1 bg-secondary rounded-full shadow-[0_0_8px_rgba(115,92,0,0.4)]"></div>
+<div class="h-1 flex-1 bg-surface-variant rounded-full relative">
+<div class="absolute inset-y-0 left-0 bg-secondary rounded-full w-1/2 shadow-[0_0_8px_rgba(115,92,0,0.4)]"></div>
+</div>
+<div class="h-1 flex-1 bg-surface-variant rounded-full"></div>
+</div>
+<!-- Content Area -->
+<div class="glass-card rounded-xl border border-primary/10 p-8 md:p-12 relative overflow-hidden">
+<!-- Subtle internal blur/glow -->
+<div class="absolute -top-20 -right-20 w-40 h-40 bg-surface-container-low rounded-full blur-3xl opacity-50"></div>
+<div class="mb-6">
+<span class="font-label-bold text-label-bold text-primary tracking-widest uppercase mb-2 block">Step 4 of 8</span>
+<h1 class="font-display-xl text-display-xl text-on-surface mb-4">Do you currently have life insurance?</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Tell us about any existing protection so we can tailor our recommendations.</p>
+</div>
+<!-- Provider Selection (Bento style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+<label class="cursor-pointer relative group">
+<input class="peer sr-only" name="provider" type="radio" value="nem"/>
+<div class="h-full p-6 rounded-lg border-1.5 border-outline-variant bg-[#F7F5F2] hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary-container/5 transition-all duration-300 flex flex-col items-center justify-center text-center gap-3">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary peer-checked:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">shield</span>
+<span class="font-label-bold text-label-bold text-on-surface">Yes, with NEM</span>
+</div>
+<div class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<label class="cursor-pointer relative group">
+<input checked="" class="peer sr-only" name="provider" type="radio" value="employer"/>
+<div class="h-full p-6 rounded-lg border-[1.5px] border-primary bg-primary-container/5 transition-all duration-300 flex flex-col items-center justify-center text-center gap-3 shadow-[0_0_30px_rgba(87,0,19,0.05)]">
+<span class="material-symbols-outlined text-4xl text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">work</span>
+<span class="font-label-bold text-label-bold text-on-surface">Yes, through Employer</span>
+</div>
+<div class="absolute top-3 right-3 opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<label class="cursor-pointer relative group">
+<input class="peer sr-only" name="provider" type="radio" value="other"/>
+<div class="h-full p-6 rounded-lg border-1.5 border-outline-variant bg-[#F7F5F2] hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary-container/5 transition-all duration-300 flex flex-col items-center justify-center text-center gap-3">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary peer-checked:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">account_balance</span>
+<span class="font-label-bold text-label-bold text-on-surface">Yes, Other Provider</span>
+</div>
+<div class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<label class="cursor-pointer relative group">
+<input class="peer sr-only" name="provider" type="radio" value="none"/>
+<div class="h-full p-6 rounded-lg border-1.5 border-outline-variant bg-[#F7F5F2] hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary-container/5 transition-all duration-300 flex flex-col items-center justify-center text-center gap-3">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary peer-checked:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">not_interested</span>
+<span class="font-label-bold text-label-bold text-on-surface">No existing cover</span>
+</div>
+<div class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+</div>
+<!-- Coverage Amount (Conditional UI based on selection, assumed visible for this state) -->
+<div class="border-t border-primary/10 pt-8 mt-4">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-6">About how much cover do you have?</h3>
+<div class="relative pt-6 pb-2">
+<div class="font-display-xl text-display-xl text-primary text-center mb-8" id="coverage-display">₦25,000,000</div>
+<div class="relative w-full h-10 flex items-center">
+<div class="range-slider-fill w-[30%]" id="slider-fill"></div>
+<input class="w-full relative z-10" id="coverage-slider" max="100000000" min="0" oninput="updateCoverage(this.value)" step="1000000" type="range" value="25000000"/>
+</div>
+<div class="flex justify-between font-label-bold text-label-bold text-on-surface-variant mt-2">
+<span>₦0</span>
+<span>₦100M+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Actions -->
+<div class="flex justify-between items-center mt-4">
+<button class="text-on-surface-variant/60 hover:text-on-surface font-label-bold text-label-bold flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0;">chevron_left</span> Back
+                </button>
+<button class="bg-primary-container text-on-primary font-label-bold text-label-bold py-4 px-8 rounded-[16px] hover:opacity-90 transition-opacity shadow-[0_4px_14px_rgba(128,0,32,0.2)]">
+                    Continue
+                </button>
+</div>
+</div>
+</main>
+<!-- SideNavBar (Protection Map) -->
+<nav class="hidden lg:flex flex-col h-full p-gutter bg-surface-container-low/60 backdrop-blur-xl border-l border-primary/10 shadow-sm h-screen w-80 fixed right-0 top-0 z-40 pt-[100px]">
+<div class="mb-8 flex items-center gap-4 px-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+</div>
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Your Protection</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Evolving Map</p>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<!-- Active Tab: Life (Current context) -->
+<li class="rounded-lg Transition-all duration-300 ease-in-out bg-primary-container/5 relative">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary font-bold border-r-4 border-secondary font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                    Life
+                    <!-- Protection Chip Indicator -->
+<span class="ml-auto bg-secondary-fixed text-on-secondary-fixed-variant text-xs px-2 py-0.5 rounded-full font-label-bold">Reviewing</span>
+</a>
+</li>
+<li class="rounded-lg Transition-all duration-300 ease-in-out hover:bg-primary-container/5">
+<a class="flex items-center gap-3 px-4 py-3 text-on-tertiary-container font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">health_and_safety</span>
+                    Health
+                </a>
+</li>
+<li class="rounded-lg Transition-all duration-300 ease-in-out hover:bg-primary-container/5">
+<a class="flex items-center gap-3 px-4 py-3 text-on-tertiary-container font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
+                    Wealth
+                </a>
+</li>
+<li class="rounded-lg Transition-all duration-300 ease-in-out hover:bg-primary-container/5">
+<a class="flex items-center gap-3 px-4 py-3 text-on-tertiary-container font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home_work</span>
+                    Property
+                </a>
+</li>
+<li class="rounded-lg Transition-all duration-300 ease-in-out hover:bg-primary-container/5">
+<a class="flex items-center gap-3 px-4 py-3 text-on-tertiary-container font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">family_restroom</span>
+                    Family
+                </a>
+</li>
+</ul>
+<div class="mt-auto p-4">
+<div class="bg-surface-variant rounded-lg p-4 text-center">
+<span class="material-symbols-outlined text-primary mb-2" style="font-variation-settings: 'FILL' 0;">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your map updates as you complete your profile.</p>
+</div>
+</div>
+</nav>
+<script>
+        function updateCoverage(value) {
+            const display = document.getElementById('coverage-display');
+            const fill = document.getElementById('slider-fill');
+            
+            // Format number to currency
+            const formatted = new Intl.NumberFormat('en-NG', { 
+                style: 'currency', 
+                currency: 'NGN',
+                maximumFractionDigits: 0
+            }).format(value);
+            
+            display.textContent = formatted;
+            
+            // Update fill width
+            const percentage = (value / 100000000) * 100;
+            fill.style.width = percentage + '%';
+        }
+    </script>
+</body></html>

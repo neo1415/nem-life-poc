@@ -24,4 +24,5 @@ Update steering documents only when the PRD or accepted project direction change
 - `11-reporting-and-definition-of-done.md`: completion report and done criteria.
 - `12-accessibility.md`: practical WCAG 2.2 AA expectations.
 - `13-error-handling-logging-and-audit.md`: safe errors, logging, audit events.
+- `14-ui-implementation-rules.md`: mandatory rules for UI reference use, frontend implementation, and visual verification.
 - `99-known-limitations-and-assumptions.md`: current assumptions and deferred risks.

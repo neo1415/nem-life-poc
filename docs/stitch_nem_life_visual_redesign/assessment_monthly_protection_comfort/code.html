@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Protection Budget - NEM Life+</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#fff0f0",
+                        "secondary": "#735c00",
+                        "on-surface": "#251819",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "inverse-on-surface": "#ffedec",
+                        "on-surface-variant": "#584141",
+                        "primary": "#570013",
+                        "on-primary-container": "#ff828a",
+                        "outline": "#8c7071",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#ffb3b5",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#edd4d4",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#a9a7a7",
+                        "surface-container-highest": "#f5dddd",
+                        "primary-fixed": "#ffdada",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary-container": "#fed65b",
+                        "surface-tint": "#af2b3e",
+                        "secondary-fixed": "#ffe088",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#40000b",
+                        "surface-variant": "#f5dddd",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#800020",
+                        "background": "#fff8f7",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-background": "#251819",
+                        "on-secondary-container": "#745c00",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "surface-bright": "#fff8f7",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#fbe2e2",
+                        "surface-container": "#ffe9e8",
+                        "outline-variant": "#e0bfbf",
+                        "tertiary-container": "#3d3d3d",
+                        "tertiary": "#272727",
+                        "tertiary-fixed-dim": "#c8c6c6",
+                        "inverse-surface": "#3b2d2d",
+                        "surface": "#fff8f7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "section-gap": "80px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "container-max": "1100px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "display-xl": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-sm": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fff8f7; /* background */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(128, 0, 32, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(115, 92, 0, 0.03) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+        
+        /* Glassmorphism setup */
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Protection Rings Motif */
+        .protection-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(128, 0, 32, 0.05); /* primary-container */
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Budget Card Selection Effects */
+        .budget-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .budget-card:hover {
+            border-color: rgba(128, 0, 32, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .budget-card.selected {
+            border-color: #800020; /* primary-container */
+            background-color: rgba(128, 0, 32, 0.02);
+            box-shadow: 0 4px 30px rgba(87, 0, 19, 0.05); /* primary shadow */
+        }
+        
+        .budget-card.selected .card-icon {
+            color: #800020;
+            background-color: rgba(128, 0, 32, 0.1);
+        }
+
+        /* Progress Pathway */
+        .pathway-node {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #e0bfbf; /* outline-variant */
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+        
+        .pathway-line {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            right: -12px;
+            height: 2px;
+            background-color: #e0bfbf;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .pathway-node.completed {
+            background-color: #735c00; /* secondary */
+        }
+        
+        .pathway-node.completed .pathway-line {
+            background-color: #735c00;
+        }
+
+        .pathway-node.active {
+            background-color: #fed65b; /* secondary-container */
+            box-shadow: 0 0 0 4px rgba(254, 214, 91, 0.3);
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body class="text-on-background font-body-md antialiased min-h-screen flex flex-col md:flex-row">
+<!-- Decorative Protection Rings Background -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1] flex items-center justify-center">
+<div class="protection-ring w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] border-[0.5px]"></div>
+<div class="protection-ring w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] border-[1px]"></div>
+<div class="protection-ring w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] border-[1.5px] border-primary-container/10"></div>
+</div>
+<!-- TopAppBar (Mobile Only - based on responsive pivot logic) -->
+<header class="md:hidden bg-background/60 backdrop-blur-xl fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 border-b border-primary/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[28px]">shield</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">NEM Life+</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary font-label-bold text-label-bold hover:text-primary/80 transition-colors">
+                Save &amp; Exit
+            </button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="A small circular avatar placeholder image showing a subtle, soft-focus generic human silhouette in warm gray tones against a light cream background, fitting a modern, minimal UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu5Oputk5PCFG4Ovj08TFLaXYvdRwPBEZidC8KA7nzdqFgPgX3b9FXXCAEjtIphAHHS_tbBdNqkPa6odD3d8QWYLy7Nimq_2h2weGQSORXua9SCNGNmvbhGKi7hnBzz5HocILsEbOFqaLx_0-Qt-rcWN8b8NZKrgKV77hHSFiBfjf-0xiMC0xB80374WGlehK0fHgQw4zrbBTJjn-9aKXwAwtYCIbZ1Mg4jUIG6ovEeOuHaFhlugHb"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-section-gap mt-[72px] md:mt-0 min-h-screen relative z-10 w-full lg:mr-80">
+<div class="max-w-[800px] w-full mx-auto">
+<!-- Context & Navigation Header -->
+<div class="flex items-center justify-between mb-8 md:mb-12">
+<button class="flex items-center gap-2 text-on-surface-variant/60 hover:text-on-surface-variant transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="font-label-bold text-label-bold">Back</span>
+</button>
+<div class="flex items-center gap-3">
+<span class="font-label-bold text-label-bold text-secondary uppercase tracking-widest">Step 3 of 5</span>
+<div class="flex items-center gap-3 w-32 relative">
+<!-- Progress Pathway -->
+<div class="pathway-node completed"><div class="pathway-line"></div></div>
+<div class="pathway-node completed"><div class="pathway-line"></div></div>
+<div class="pathway-node active"><div class="pathway-line"></div></div>
+<div class="pathway-node"><div class="pathway-line"></div></div>
+<div class="pathway-node"></div>
+</div>
+</div>
+</div>
+<!-- Action Card -->
+<div class="glass-card rounded-[24px] md:rounded-[32px] p-6 md:p-10 shadow-sm relative overflow-hidden">
+<!-- Section Icon/Motif -->
+<div class="w-16 h-16 rounded-full bg-secondary-container/20 flex items-center justify-center mb-8 border border-secondary/10">
+<span class="material-symbols-outlined text-[32px] text-secondary" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<!-- Headline -->
+<h1 class="font-display-xl text-headline-lg-mobile md:text-display-xl text-on-surface mb-3">
+                    How much can you comfortably set aside monthly for family protection?
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10 max-w-2xl">
+                    This helps us tailor your protection plan. We recommend aiming for a sustainable amount that won't strain your daily living expenses.
+                </p>
+<!-- Grid Options -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+<!-- Option 1 -->
+<div class="budget-card rounded-xl border-2 border-surface-variant p-5 flex items-center gap-4" onclick="selectCard(this)">
+<div class="card-icon w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<div>
+<div class="font-label-bold text-label-bold text-on-surface">Below ₦5,000</div>
+<div class="font-body-sm text-[13px] text-on-surface-variant/70 mt-1">Starting small</div>
+</div>
+<div class="ml-auto w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center radio-indicator">
+<!-- Inner dot for selected state -->
+</div>
+</div>
+<!-- Option 2 -->
+<div class="budget-card rounded-xl border-2 border-surface-variant p-5 flex items-center gap-4" onclick="selectCard(this)">
+<div class="card-icon w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<div>
+<div class="font-label-bold text-label-bold text-on-surface">₦5,000 – ₦15,000</div>
+<div class="font-body-sm text-[13px] text-on-surface-variant/70 mt-1">Standard coverage</div>
+</div>
+<div class="ml-auto w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center radio-indicator"></div>
+</div>
+<!-- Option 3 -->
+<div class="budget-card rounded-xl border-2 border-surface-variant p-5 flex items-center gap-4" onclick="selectCard(this)">
+<div class="card-icon w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+</div>
+<div>
+<div class="font-label-bold text-label-bold text-on-surface">₦15,000 – ₦50,000</div>
+<div class="font-body-sm text-[13px] text-on-surface-variant/70 mt-1">Enhanced protection</div>
+</div>
+<div class="ml-auto w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center radio-indicator"></div>
+</div>
+<!-- Option 4 -->
+<div class="budget-card rounded-xl border-2 border-surface-variant p-5 flex items-center gap-4" onclick="selectCard(this)">
+<div class="card-icon w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div>
+<div class="font-label-bold text-label-bold text-on-surface">Above ₦50,000</div>
+<div class="font-body-sm text-[13px] text-on-surface-variant/70 mt-1">Comprehensive legacy</div>
+</div>
+<div class="ml-auto w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center radio-indicator"></div>
+</div>
+</div>
+<!-- Trust Callout -->
+<div class="bg-surface-container/50 rounded-xl p-4 flex gap-3 border border-surface-variant mb-10">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">info</span>
+<div>
+<div class="font-label-bold text-label-bold text-on-surface mb-1">Why we ask</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80">
+                            This is purely for estimation to build your personalized map. You are not committing to any payments at this stage, and you can adjust this later.
+                        </p>
+</div>
+</div>
+<!-- Action Area -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-primary/10">
+<button class="font-label-bold text-label-bold text-primary hover:text-primary/80 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+                        I need guidance
+                    </button>
+<button class="w-full sm:w-auto bg-primary-container text-on-primary font-label-bold text-label-bold px-8 py-4 rounded-2xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-sm">
+                        Continue to Property
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full flex flex-col items-center py-8 gap-2 bg-transparent text-on-surface-variant mt-8">
+<div class="flex gap-4 mb-2">
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<span class="text-on-surface-variant/30">•</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Data Security</a>
+<span class="text-on-surface-variant/30">•</span>
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Terms</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant/60 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+                    Secure &amp; Encrypted. No BVN/NIN required to start.
+                </p>
+</footer>
+</div>
+</main>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex flex-col h-screen w-80 fixed right-0 bg-surface-container-low/60 backdrop-blur-xl border-l border-primary/10 shadow-sm p-gutter z-40 transition-all duration-300 ease-in-out">
+<!-- Header -->
+<div class="flex items-center gap-4 mb-12 mt-4 px-2">
+<div class="w-12 h-12 rounded-xl bg-surface-variant border border-outline-variant flex items-center justify-center shadow-inner overflow-hidden">
+<img alt="Protection Map" class="w-full h-full object-cover" data-alt="A stylized 3D map icon, glowing softly with warm amber and burgundy tones, representing a personalized 'Protection Map' in a minimal, high-end digital aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb-KBQ3cm1PrtzC2z_59b0SR6H8fl3iJsqOcQ4-czFUtM8ZSTAXAk6KQu--PuvEQmJC_T9_TBVQqofHWyOZt6vAmychLIQx2HqiSTZQruy3xQbKiHzIBS0WcLP6srPv9y3MdvnWmi7tZ06b-uHvbpQXAbBSouVkMbIKJMgTfOs4OijNjTd1meoda9JGTuxAQsFNgcrZG8ZNbcZkZPSvi0jFEcpgSpveVStywi9rJ5KximG6Ryi2JQ5"/>
+</div>
+<div>
+<h2 class="font-headline-lg text-body-md font-bold text-primary tracking-tight">Your Protection</h2>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Evolving Map</p>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-2 flex-1">
+<!-- Tab 1: Life (Completed) -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-tertiary-container hover:bg-primary-container/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] text-secondary">favorite</span>
+<span class="font-label-bold text-label-bold">Life</span>
+<span class="material-symbols-outlined ml-auto text-[16px] text-secondary">check_circle</span>
+</a>
+<!-- Tab 2: Health (Completed) -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-tertiary-container hover:bg-primary-container/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] text-secondary">health_and_safety</span>
+<span class="font-label-bold text-label-bold">Health</span>
+<span class="material-symbols-outlined ml-auto text-[16px] text-secondary">check_circle</span>
+</a>
+<!-- Tab 3: Wealth (Active - Matches Intent of Budget/Financial) -->
+<a class="flex items-center gap-4 px-4 py-3 bg-primary-container/5 rounded-l-xl text-secondary font-bold border-r-4 border-secondary transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-label-bold text-label-bold">Wealth</span>
+<div class="ml-auto w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+</a>
+<!-- Tab 4: Property -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-tertiary-container hover:bg-primary-container/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">home_work</span>
+<span class="font-label-bold text-label-bold group-hover:text-on-surface-variant transition-colors">Property</span>
+</a>
+<!-- Tab 5: Family -->
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-on-tertiary-container hover:bg-primary-container/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px]">family_restroom</span>
+<span class="font-label-bold text-label-bold group-hover:text-on-surface-variant transition-colors">Family</span>
+</a>
+</nav>
+<!-- Save Action -->
+<div class="mt-auto px-2 pb-4">
+<button class="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-outline-variant text-on-surface-variant font-label-bold text-label-bold hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                Save &amp; Exit
+            </button>
+</div>
+</aside>
+<script>
+        // Simple JS for card selection micro-interaction
+        function selectCard(element) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.budget-card').forEach(card => {
+                card.classList.remove('selected');
+                card.querySelector('.radio-indicator').innerHTML = '';
+                card.querySelector('.radio-indicator').classList.remove('border-primary-container');
+                card.querySelector('.radio-indicator').classList.add('border-outline-variant');
+            });
+            
+            // Add selected class to clicked card
+            element.classList.add('selected');
+            
+            // Update radio indicator
+            const indicator = element.querySelector('.radio-indicator');
+            indicator.classList.remove('border-outline-variant');
+            indicator.classList.add('border-primary-container');
+            indicator.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>';
+        }
+    </script>
+</body></html>

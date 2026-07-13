@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Family Protection Check - NEM Life+</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Custom Ring Animation */
+        @keyframes dash {
+          to {
+            stroke-dashoffset: 84.82; /* (100 - 73) / 100 * 314.159 (circumference of r=50) */
+          }
+        }
+        .progress-ring {
+            stroke-dasharray: 314.159;
+            stroke-dashoffset: 314.159;
+            animation: dash 1.5s ease-out forwards 0.5s;
+        }
+    </style>
+<!-- Tailwind Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#3d3d3d",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-tertiary-container": "#a9a7a7",
+                    "primary-fixed-dim": "#ffb3b5",
+                    "tertiary-fixed": "#e4e2e1",
+                    "on-secondary-fixed-variant": "#574500",
+                    "primary-fixed": "#ffdada",
+                    "surface-bright": "#fff8f7",
+                    "on-background": "#251819",
+                    "secondary-fixed": "#ffe088",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#fff0f0",
+                    "surface-container-high": "#fbe2e2",
+                    "background": "#fff8f7",
+                    "on-primary-fixed-variant": "#8e0f28",
+                    "primary": "#570013",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#edd4d4",
+                    "inverse-surface": "#3b2d2d",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#ffb3b5",
+                    "on-primary-fixed": "#40000b",
+                    "surface-variant": "#f5dddd",
+                    "surface-tint": "#af2b3e",
+                    "surface": "#fff8f7",
+                    "surface-container-highest": "#f5dddd",
+                    "inverse-on-surface": "#ffedec",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "primary-container": "#800020",
+                    "surface-container": "#ffe9e8",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#745c00",
+                    "outline": "#8c7071",
+                    "on-surface-variant": "#584141",
+                    "on-primary": "#ffffff",
+                    "secondary": "#735c00",
+                    "outline-variant": "#e0bfbf",
+                    "on-primary-container": "#ff828a",
+                    "tertiary": "#272727",
+                    "secondary-fixed-dim": "#e9c349",
+                    "secondary-container": "#fed65b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#251819"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "80px",
+                    "margin-desktop": "64px",
+                    "container-max": "1100px",
+                    "unit": "8px",
+                    "margin-mobile": "20px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-bold": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-lg-mobile": [
+                            "Manrope"
+                    ],
+                    "headline-lg": [
+                            "Manrope"
+                    ],
+                    "body-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "display-xl": [
+                            "Manrope"
+                    ]
+            },
+            "fontSize": {
+                    "label-bold": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-xl": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+          },
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Ambient Background Protection Rings -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-10%] left-[-5%] w-[800px] h-[800px] bg-surface-container-high/40 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[1000px] h-[1000px] bg-secondary-container/10 rounded-full blur-[120px]"></div>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-background/60 backdrop-blur-xl border-b border-primary/10 flat no shadows">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary">NEM Life+</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+                Save &amp; Exit
+            </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged individual smiling gently in a well-lit, modern home office setting. Soft natural light highlights their features, creating a warm and approachable aesthetic. High quality, realistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnr8LJQ_VJO2C8Nqoy0mCR4Fn1JEwSyMuPU6vnCp4u7av7ciaz5DbgaVphxBs06nJS5jNXR05UqX-8z3CwF8VpUndCld3uawPg5HzxPgTjbLRHyjJHe0bbH4wrwghFEJT5DkjN3TmDO37HPYazj5e-KYkEGlLEwHZ896q-XDK76wqZdsh8W69QEnLuWXuxYWLYXAUkGDG9wTJ4Su0rHVzJHQp821waAY0_cPoTGLLLg5BurKldoEG6"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<nav class="h-screen w-80 fixed right-0 hidden lg:flex flex-col p-gutter bg-surface-container-low/60 backdrop-blur-xl border-l border-primary/10 shadow-sm z-40 pt-[88px] Transition-all duration-300 ease-in-out">
+<div class="mb-8 flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-surface-container-high border-2 border-surface flex items-center justify-center mb-4 overflow-hidden relative shadow-sm">
+<img alt="Protection Map" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-multiply" data-alt="A highly stylized, minimalist map illustration showing connected nodes and pathways in a soft, premium color palette of deep burgundy and warm gold on a white background. It represents a digital 'Protection Map' interface. Clean, modern, ui element." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk0vuBF38kfddu-SYDQKFU0-7MDY722XCQ-3xftG4XdfgxAQ3mpX--6I8Kc9IQt25n6GCsMVOEzT5sAXA9uoYfL2VC4WtcDhFFBOy4q8hWkpplLOHIA_2SpfEXdPo5OpFzWq7Q59WCahuqqsU5HIPWwKOsVSuywiJ1d9JLJ6L7Q6qJJtM_nbtj9yOUeZXVe1Zc60KYMkns8Y1vaOOLvKzw5R2kVU3wPeINwSv_JQ_s0UoVsmnYvVNg"/>
+<span class="material-symbols-outlined text-primary text-[32px] relative z-10" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary text-[24px] leading-tight">Your Protection</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Evolving Map</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<!-- Life -->
+<li>
+<a class="flex items-center gap-4 p-4 rounded-xl font-label-bold text-label-bold text-on-tertiary-container hover:bg-primary-container/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+                    Life
+                </a>
+</li>
+<!-- Health -->
+<li>
+<a class="flex items-center gap-4 p-4 rounded-xl font-label-bold text-label-bold text-on-tertiary-container hover:bg-primary-container/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="health_and_safety">health_and_safety</span>
+                    Health
+                </a>
+</li>
+<!-- Wealth -->
+<li>
+<a class="flex items-center gap-4 p-4 rounded-xl font-label-bold text-label-bold text-on-tertiary-container hover:bg-primary-container/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                    Wealth
+                </a>
+</li>
+<!-- Property -->
+<li>
+<a class="flex items-center gap-4 p-4 rounded-xl font-label-bold text-label-bold text-on-tertiary-container hover:bg-primary-container/5 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home_work">home_work</span>
+                    Property
+                </a>
+</li>
+<!-- Family (ACTIVE) -->
+<li class="relative">
+<a class="flex items-center gap-4 p-4 rounded-xl font-label-bold text-label-bold text-secondary font-bold bg-primary-container/5 transition-colors relative z-10" href="#">
+<span class="material-symbols-outlined" data-icon="family_restroom" data-weight="fill" style="font-variation-settings: 'FILL' 1;">family_restroom</span>
+                    Family
+                </a>
+<!-- Active Indicator Border (Simulated as positioned element for better control over curve) -->
+<div class="absolute right-[-24px] top-0 bottom-0 w-1 bg-secondary rounded-l-full"></div>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="pt-[100px] pb-16 lg:pr-80 min-h-screen relative z-10 flex flex-col items-center px-margin-mobile md:px-margin-desktop">
+<div class="w-full max-w-container-max flex flex-col gap-section-gap mt-12 mb-auto">
+<!-- Glassmorphism Action Card -->
+<section class="bg-surface-container-lowest/60 backdrop-blur-[20px] rounded-[32px] border border-primary/10 shadow-[0_10px_40px_rgba(87,0,19,0.03)] p-8 md:p-16 relative overflow-hidden flex flex-col items-center">
+<!-- Internal Card Protection Glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] bg-surface-container-high/50 rounded-full blur-[80px] pointer-events-none"></div>
+<!-- Header / Score Section -->
+<div class="text-center flex flex-col items-center relative z-10 w-full mb-16">
+<!-- Score Ring Graphic -->
+<div class="relative w-48 h-48 mb-8 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<!-- Background Track -->
+<circle class="stroke-surface-container-high" cx="60" cy="60" fill="none" r="50" stroke-linecap="round" stroke-width="8"></circle>
+<!-- Progress Track (73%) -->
+<circle class="stroke-primary progress-ring" cx="60" cy="60" fill="none" r="50" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<div class="flex items-baseline">
+<span class="font-display-xl text-display-xl text-primary">73</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant/60 ml-1">/100</span>
+</div>
+<span class="font-label-bold text-label-bold text-secondary uppercase tracking-wider mt-1 text-[10px]">Score</span>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">Ready to Protect</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                        Your foundation is strong, but we've identified a few key areas where your family's safety net could be reinforced. Let's build a comprehensive shield together.
+                    </p>
+</div>
+<!-- Split Content: Strengths vs Gaps -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl relative z-10 mb-16">
+<!-- Strong Areas -->
+<div class="bg-surface-container/30 rounded-2xl p-8 border border-outline-variant/30 flex flex-col gap-6">
+<div class="flex items-center gap-3 mb-2 border-b border-outline-variant/20 pb-4">
+<span class="material-symbols-outlined text-tertiary-container text-[28px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h3 class="font-body-md text-body-md font-bold text-on-surface">Strong Areas</h3>
+</div>
+<ul class="flex flex-col gap-4">
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">health_and_safety</span>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-background">Health Coverage</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-1">Excellent foundational medical protection.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">home_work</span>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-background">Property Assets</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-1">Primary residence is well secured.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Important Gaps -->
+<div class="bg-surface-container-lowest rounded-2xl p-8 border border-error/20 shadow-[0_4px_20px_rgba(186,26,26,0.03)] flex flex-col gap-6 relative overflow-hidden">
+<!-- Subtle red wash background -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-error-container/30 rounded-bl-full pointer-events-none"></div>
+<div class="flex items-center gap-3 mb-2 border-b border-error/10 pb-4 relative z-10">
+<span class="material-symbols-outlined text-error text-[28px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield</span>
+<h3 class="font-body-md text-body-md font-bold text-error">Important Gaps</h3>
+</div>
+<ul class="flex flex-col gap-4 relative z-10">
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-error-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-error-container text-[18px]">payments</span>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-background">Income Replacement</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-1">Vulnerable to sudden loss of primary income.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-error-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-error-container text-[18px]">school</span>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-background">Education Fund</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant/80 mt-1">Future tuition provisions are currently unallocated.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Call to Action -->
+<div class="relative z-10">
+<button class="bg-primary-container text-on-primary font-label-bold text-label-bold px-8 py-4 rounded-[16px] hover:bg-primary transition-all duration-300 shadow-[0_8px_20px_rgba(128,0,32,0.2)] hover:shadow-[0_12px_24px_rgba(128,0,32,0.3)] flex items-center gap-3">
+                        View Your Recommended Protection Plan
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="w-full flex flex-col items-center py-8 gap-4 mt-auto border-t border-primary/5">
+<div class="flex gap-6">
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Data Security</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant/60 hover:text-on-surface transition-colors" href="#">Terms</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant/60 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+                Secure &amp; Encrypted. No BVN/NIN required to start.
+            </p>
+</footer>
+</main>
+</body></html>
